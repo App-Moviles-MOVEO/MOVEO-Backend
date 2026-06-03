@@ -1,0 +1,1184 @@
+Usando la configuración de inicio de C:\Desarrollo\cosas xd\MOVEO-Backend\Properties\launchSettings.json...
+warn: Microsoft.EntityFrameworkCore.Model.Validation[10400]
+      Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+warn: 06/03/2026 15:55:36.485 CoreEventId.SensitiveDataLoggingEnabledWarning[10400] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (40ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE DATABASE `moveo_db`;
+info: 06/03/2026 15:55:40.170 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (40ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE DATABASE `moveo_db`;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (25ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT GET_LOCK('__moveo_db_EFMigrationsLock', 259200)
+info: 06/03/2026 15:55:40.404 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (25ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT GET_LOCK('__moveo_db_EFMigrationsLock', 259200)
+info: 06/03/2026 15:55:40.814 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (96ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE IF NOT EXISTS `__EFMigrationsHistory` (
+          `MigrationId` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+          `ProductVersion` varchar(32) CHARACTER SET utf8mb4 NOT NULL,
+          CONSTRAINT `PK___EFMigrationsHistory` PRIMARY KEY (`MigrationId`)
+      ) CHARACTER SET=utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (96ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE IF NOT EXISTS `__EFMigrationsHistory` (
+          `MigrationId` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+          `ProductVersion` varchar(32) CHARACTER SET utf8mb4 NOT NULL,
+          CONSTRAINT `PK___EFMigrationsHistory` PRIMARY KEY (`MigrationId`)
+      ) CHARACTER SET=utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (46ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='moveo_db' AND TABLE_NAME='__EFMigrationsHistory';
+info: 06/03/2026 15:55:40.967 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (46ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='moveo_db' AND TABLE_NAME='__EFMigrationsHistory';
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (31ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `MigrationId`, `ProductVersion`
+      FROM `__EFMigrationsHistory`
+      ORDER BY `MigrationId`;
+info: 06/03/2026 15:55:41.024 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (31ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `MigrationId`, `ProductVersion`
+      FROM `__EFMigrationsHistory`
+      ORDER BY `MigrationId`;
+info: Microsoft.EntityFrameworkCore.Migrations[20402]
+      Applying migration '20251202122236_InitialCreate'.
+info: 06/03/2026 15:55:41.105 RelationalEventId.MigrationApplying[20402] (Microsoft.EntityFrameworkCore.Migrations) 
+      Applying migration '20251202122236_InitialCreate'.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (31ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER DATABASE CHARACTER SET utf8mb4;
+info: 06/03/2026 15:55:41.513 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (31ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER DATABASE CHARACTER SET utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (101ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `AdventureRoutes` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `OwnerId` int NOT NULL,
+          `Name` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Title` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Description` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `StartLocation` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `EndLocation` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Type` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Duration` int NOT NULL,
+          `Difficulty` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `EstimatedCost` decimal(18,2) NOT NULL,
+          `VehicleName` longtext CHARACTER SET utf8mb4 NULL,
+          `ImageUrl` longtext CHARACTER SET utf8mb4 NULL,
+          `TagsJson` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Featured` tinyint(1) NOT NULL,
+          `MaxCapacity` int NULL,
+          `Rating` double NOT NULL,
+          `ReviewsCount` int NOT NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `UpdatedAt` datetime(6) NOT NULL,
+          `Tags` json NOT NULL,
+          CONSTRAINT `PK_AdventureRoutes` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: 06/03/2026 15:55:41.618 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (101ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `AdventureRoutes` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `OwnerId` int NOT NULL,
+          `Name` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Title` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Description` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `StartLocation` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `EndLocation` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Type` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Duration` int NOT NULL,
+          `Difficulty` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `EstimatedCost` decimal(18,2) NOT NULL,
+          `VehicleName` longtext CHARACTER SET utf8mb4 NULL,
+          `ImageUrl` longtext CHARACTER SET utf8mb4 NULL,
+          `TagsJson` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Featured` tinyint(1) NOT NULL,
+          `MaxCapacity` int NULL,
+          `Rating` double NOT NULL,
+          `ReviewsCount` int NOT NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `UpdatedAt` datetime(6) NOT NULL,
+          `Tags` json NOT NULL,
+          CONSTRAINT `PK_AdventureRoutes` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (84ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Notifications` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `UserId` int NOT NULL,
+          `Title` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Body` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Type` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `IsRead` tinyint(1) NOT NULL,
+          `RelatedEntityId` int NULL,
+          `RelatedEntityType` longtext CHARACTER SET utf8mb4 NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `UpdatedAt` datetime(6) NOT NULL,
+          CONSTRAINT `PK_Notifications` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: 06/03/2026 15:55:41.721 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (84ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Notifications` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `UserId` int NOT NULL,
+          `Title` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Body` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Type` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `IsRead` tinyint(1) NOT NULL,
+          `RelatedEntityId` int NULL,
+          `RelatedEntityType` longtext CHARACTER SET utf8mb4 NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `UpdatedAt` datetime(6) NOT NULL,
+          CONSTRAINT `PK_Notifications` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (96ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Payments` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `PayerId` int NOT NULL,
+          `RecipientId` int NOT NULL,
+          `RentalId` int NOT NULL,
+          `Amount` decimal(18,2) NOT NULL,
+          `Currency` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Method` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Status` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `TransactionId` longtext CHARACTER SET utf8mb4 NULL,
+          `Type` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Description` longtext CHARACTER SET utf8mb4 NULL,
+          `Reason` longtext CHARACTER SET utf8mb4 NULL,
+          `DueDate` datetime(6) NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `CompletedAt` datetime(6) NULL,
+          CONSTRAINT `PK_Payments` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: 06/03/2026 15:55:41.828 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (96ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Payments` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `PayerId` int NOT NULL,
+          `RecipientId` int NOT NULL,
+          `RentalId` int NOT NULL,
+          `Amount` decimal(18,2) NOT NULL,
+          `Currency` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Method` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Status` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `TransactionId` longtext CHARACTER SET utf8mb4 NULL,
+          `Type` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Description` longtext CHARACTER SET utf8mb4 NULL,
+          `Reason` longtext CHARACTER SET utf8mb4 NULL,
+          `DueDate` datetime(6) NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `CompletedAt` datetime(6) NULL,
+          CONSTRAINT `PK_Payments` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (79ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Rentals` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `VehicleId` int NOT NULL,
+          `RenterId` int NOT NULL,
+          `OwnerId` int NOT NULL,
+          `StartDate` datetime(6) NOT NULL,
+          `EndDate` datetime(6) NOT NULL,
+          `TotalPrice` decimal(18,2) NOT NULL,
+          `Status` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `PickupLocation` longtext CHARACTER SET utf8mb4 NULL,
+          `ReturnLocation` longtext CHARACTER SET utf8mb4 NULL,
+          `Notes` longtext CHARACTER SET utf8mb4 NULL,
+          `AdventureRouteId` int NULL,
+          `VehicleRated` tinyint(1) NULL,
+          `VehicleRating` int NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `AcceptedAt` datetime(6) NULL,
+          `CompletedAt` datetime(6) NULL,
+          CONSTRAINT `PK_Rentals` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: 06/03/2026 15:55:41.919 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (79ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Rentals` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `VehicleId` int NOT NULL,
+          `RenterId` int NOT NULL,
+          `OwnerId` int NOT NULL,
+          `StartDate` datetime(6) NOT NULL,
+          `EndDate` datetime(6) NOT NULL,
+          `TotalPrice` decimal(18,2) NOT NULL,
+          `Status` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `PickupLocation` longtext CHARACTER SET utf8mb4 NULL,
+          `ReturnLocation` longtext CHARACTER SET utf8mb4 NULL,
+          `Notes` longtext CHARACTER SET utf8mb4 NULL,
+          `AdventureRouteId` int NULL,
+          `VehicleRated` tinyint(1) NULL,
+          `VehicleRating` int NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `AcceptedAt` datetime(6) NULL,
+          `CompletedAt` datetime(6) NULL,
+          CONSTRAINT `PK_Rentals` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (87ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `SupportTickets` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `UserId` int NOT NULL,
+          `Subject` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Description` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Category` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Status` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Priority` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `AssignedToId` int NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `UpdatedAt` datetime(6) NOT NULL,
+          `ResolvedAt` datetime(6) NULL,
+          CONSTRAINT `PK_SupportTickets` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: 06/03/2026 15:55:42.018 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (87ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `SupportTickets` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `UserId` int NOT NULL,
+          `Subject` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Description` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Category` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Status` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Priority` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `AssignedToId` int NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `UpdatedAt` datetime(6) NOT NULL,
+          `ResolvedAt` datetime(6) NULL,
+          CONSTRAINT `PK_SupportTickets` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: 06/03/2026 15:55:42.142 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (112ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Users` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `FirstName` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `LastName` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Email` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `PasswordHash` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Role` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Phone` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Dni` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `LicenseNumber` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Address` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Avatar` longtext CHARACTER SET utf8mb4 NULL,
+          `EmailVerified` tinyint(1) NOT NULL,
+          `PhoneVerified` tinyint(1) NOT NULL,
+          `DniVerified` tinyint(1) NOT NULL,
+          `LicenseVerified` tinyint(1) NOT NULL,
+          `TotalRentals` int NOT NULL,
+          `TotalSpent` decimal(65,30) NOT NULL,
+          `TotalEarned` decimal(65,30) NOT NULL,
+          `ActiveRentals` int NOT NULL,
+          `CompletedRentals` int NOT NULL,
+          `CanceledRentals` int NOT NULL,
+          `BankName` longtext CHARACTER SET utf8mb4 NULL,
+          `BankAccountType` longtext CHARACTER SET utf8mb4 NULL,
+          `BankAccountNumber` longtext CHARACTER SET utf8mb4 NULL,
+          `BankAccountVerified` tinyint(1) NOT NULL,
+          `PreferredLanguage` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `EmailNotifications` tinyint(1) NOT NULL,
+          `PushNotifications` tinyint(1) NOT NULL,
+          `SmsNotifications` tinyint(1) NOT NULL,
+          `AutoAcceptRentals` tinyint(1) NOT NULL,
+          `MinimumRentalDays` int NOT NULL,
+          `InstantBooking` tinyint(1) NOT NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `UpdatedAt` datetime(6) NOT NULL,
+          CONSTRAINT `PK_Users` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (112ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Users` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `FirstName` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `LastName` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Email` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `PasswordHash` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Role` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Phone` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Dni` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `LicenseNumber` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Address` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Avatar` longtext CHARACTER SET utf8mb4 NULL,
+          `EmailVerified` tinyint(1) NOT NULL,
+          `PhoneVerified` tinyint(1) NOT NULL,
+          `DniVerified` tinyint(1) NOT NULL,
+          `LicenseVerified` tinyint(1) NOT NULL,
+          `TotalRentals` int NOT NULL,
+          `TotalSpent` decimal(65,30) NOT NULL,
+          `TotalEarned` decimal(65,30) NOT NULL,
+          `ActiveRentals` int NOT NULL,
+          `CompletedRentals` int NOT NULL,
+          `CanceledRentals` int NOT NULL,
+          `BankName` longtext CHARACTER SET utf8mb4 NULL,
+          `BankAccountType` longtext CHARACTER SET utf8mb4 NULL,
+          `BankAccountNumber` longtext CHARACTER SET utf8mb4 NULL,
+          `BankAccountVerified` tinyint(1) NOT NULL,
+          `PreferredLanguage` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `EmailNotifications` tinyint(1) NOT NULL,
+          `PushNotifications` tinyint(1) NOT NULL,
+          `SmsNotifications` tinyint(1) NOT NULL,
+          `AutoAcceptRentals` tinyint(1) NOT NULL,
+          `MinimumRentalDays` int NOT NULL,
+          `InstantBooking` tinyint(1) NOT NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `UpdatedAt` datetime(6) NOT NULL,
+          CONSTRAINT `PK_Users` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (99ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Vehicles` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `OwnerId` int NOT NULL,
+          `Brand` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Model` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Year` int NOT NULL,
+          `Color` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Transmission` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `FuelType` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Seats` int NOT NULL,
+          `LicensePlate` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `DailyPrice` decimal(18,2) NOT NULL,
+          `DailyPriceCurrency` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `DepositAmount` decimal(18,2) NOT NULL,
+          `DepositAmountCurrency` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `LocationDistrict` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `LocationAddress` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `LocationLat` double NOT NULL,
+          `LocationLng` double NOT NULL,
+          `FeaturesJson` json NOT NULL,
+          `RestrictionsJson` json NOT NULL,
+          `ImagesJson` json NOT NULL,
+          `Status` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Description` longtext CHARACTER SET utf8mb4 NULL,
+          `IsAvailable` tinyint(1) NOT NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `UpdatedAt` datetime(6) NOT NULL,
+          CONSTRAINT `PK_Vehicles` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: 06/03/2026 15:55:42.254 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (99ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Vehicles` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `OwnerId` int NOT NULL,
+          `Brand` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Model` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Year` int NOT NULL,
+          `Color` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Transmission` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `FuelType` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Seats` int NOT NULL,
+          `LicensePlate` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `DailyPrice` decimal(18,2) NOT NULL,
+          `DailyPriceCurrency` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `DepositAmount` decimal(18,2) NOT NULL,
+          `DepositAmountCurrency` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `LocationDistrict` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `LocationAddress` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `LocationLat` double NOT NULL,
+          `LocationLng` double NOT NULL,
+          `FeaturesJson` json NOT NULL,
+          `RestrictionsJson` json NOT NULL,
+          `ImagesJson` json NOT NULL,
+          `Status` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Description` longtext CHARACTER SET utf8mb4 NULL,
+          `IsAvailable` tinyint(1) NOT NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `UpdatedAt` datetime(6) NOT NULL,
+          CONSTRAINT `PK_Vehicles` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (111ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Reviews` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `RentalId` int NOT NULL,
+          `ReviewerId` int NOT NULL,
+          `RevieweeId` int NOT NULL,
+          `Rating` int NOT NULL,
+          `Comment` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Type` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          CONSTRAINT `PK_Reviews` PRIMARY KEY (`Id`),
+          CONSTRAINT `FK_Reviews_Rentals_RentalId` FOREIGN KEY (`RentalId`) REFERENCES `Rentals` (`Id`) ON DELETE RESTRICT
+      ) CHARACTER SET=utf8mb4;
+info: 06/03/2026 15:55:42.380 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (111ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Reviews` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `RentalId` int NOT NULL,
+          `ReviewerId` int NOT NULL,
+          `RevieweeId` int NOT NULL,
+          `Rating` int NOT NULL,
+          `Comment` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Type` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          CONSTRAINT `PK_Reviews` PRIMARY KEY (`Id`),
+          CONSTRAINT `FK_Reviews_Rentals_RentalId` FOREIGN KEY (`RentalId`) REFERENCES `Rentals` (`Id`) ON DELETE RESTRICT
+      ) CHARACTER SET=utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (109ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `TicketMessages` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `TicketId` int NOT NULL,
+          `SenderId` int NOT NULL,
+          `Message` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `IsStaffReply` tinyint(1) NOT NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          CONSTRAINT `PK_TicketMessages` PRIMARY KEY (`Id`),
+          CONSTRAINT `FK_TicketMessages_SupportTickets_TicketId` FOREIGN KEY (`TicketId`) REFERENCES `SupportTickets` (`Id`) ON DELETE CASCADE
+      ) CHARACTER SET=utf8mb4;
+info: 06/03/2026 15:55:42.497 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (109ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `TicketMessages` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `TicketId` int NOT NULL,
+          `SenderId` int NOT NULL,
+          `Message` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `IsStaffReply` tinyint(1) NOT NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          CONSTRAINT `PK_TicketMessages` PRIMARY KEY (`Id`),
+          CONSTRAINT `FK_TicketMessages_SupportTickets_TicketId` FOREIGN KEY (`TicketId`) REFERENCES `SupportTickets` (`Id`) ON DELETE CASCADE
+      ) CHARACTER SET=utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (113ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX `IX_Reviews_RentalId` ON `Reviews` (`RentalId`);
+info: 06/03/2026 15:55:42.619 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (113ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX `IX_Reviews_RentalId` ON `Reviews` (`RentalId`);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (94ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX `IX_TicketMessages_TicketId` ON `TicketMessages` (`TicketId`);
+info: 06/03/2026 15:55:42.719 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (94ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX `IX_TicketMessages_TicketId` ON `TicketMessages` (`TicketId`);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (25ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+      VALUES ('20251202122236_InitialCreate', '9.0.10');
+info: 06/03/2026 15:55:42.749 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (25ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+      VALUES ('20251202122236_InitialCreate', '9.0.10');
+info: Microsoft.EntityFrameworkCore.Migrations[20402]
+      Applying migration '20251202131543_AddUserReviewAndUpdatedEntities'.
+info: 06/03/2026 15:55:42.756 RelationalEventId.MigrationApplying[20402] (Microsoft.EntityFrameworkCore.Migrations) 
+      Applying migration '20251202131543_AddUserReviewAndUpdatedEntities'.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (179ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `RelatedId` int NULL;
+info: 06/03/2026 15:55:43.089 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (179ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `RelatedId` int NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (181ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `RelatedType` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:43.274 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (181ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `RelatedType` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (184ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `ResolutionNotes` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:43.462 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (184ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `ResolutionNotes` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (193ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `Type` longtext CHARACTER SET utf8mb4 NOT NULL;
+info: 06/03/2026 15:55:43.660 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (193ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `Type` longtext CHARACTER SET utf8mb4 NOT NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (192ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Reviews` ADD `VehicleId` int NULL;
+info: 06/03/2026 15:55:43.859 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (192ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Reviews` ADD `VehicleId` int NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (183ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Notifications` ADD `ActionLabel` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:44.047 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (183ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Notifications` ADD `ActionLabel` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (180ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Notifications` ADD `ActionUrl` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:44.232 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (180ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Notifications` ADD `ActionUrl` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Notifications` ADD `MetadataJson` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:44.415 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Notifications` ADD `MetadataJson` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (203ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Notifications` ADD `ReadAt` datetime(6) NULL;
+info: 06/03/2026 15:55:44.626 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (203ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Notifications` ADD `ReadAt` datetime(6) NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (87ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `UserReviews` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `ReviewerId` int NOT NULL,
+          `ReviewedUserId` int NOT NULL,
+          `RentalId` int NOT NULL,
+          `Rating` int NOT NULL,
+          `Comment` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Type` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          CONSTRAINT `PK_UserReviews` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: 06/03/2026 15:55:44.718 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (87ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `UserReviews` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `ReviewerId` int NOT NULL,
+          `ReviewedUserId` int NOT NULL,
+          `RentalId` int NOT NULL,
+          `Rating` int NOT NULL,
+          `Comment` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Type` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          CONSTRAINT `PK_UserReviews` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+      VALUES ('20251202131543_AddUserReviewAndUpdatedEntities', '9.0.10');
+info: 06/03/2026 15:55:44.742 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (15ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+      VALUES ('20251202131543_AddUserReviewAndUpdatedEntities', '9.0.10');
+info: Microsoft.EntityFrameworkCore.Migrations[20402]
+      Applying migration '20251202165856_AddSupportTicketDamageAndDisputeFields'.
+info: 06/03/2026 15:55:44.750 RelationalEventId.MigrationApplying[20402] (Microsoft.EntityFrameworkCore.Migrations) 
+      Applying migration '20251202165856_AddSupportTicketDamageAndDisputeFields'.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `AdditionalProofJson` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:45.012 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `AdditionalProofJson` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (182ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `AdditionalProofMessage` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:45.199 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (182ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `AdditionalProofMessage` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `AdditionalProofSentAt` datetime(6) NULL;
+info: 06/03/2026 15:55:45.379 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (176ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `AdditionalProofSentAt` datetime(6) NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (193ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `AttachmentsJson` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:45.576 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (193ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `AttachmentsJson` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (209ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `DisputeDescription` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:45.791 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (209ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `DisputeDescription` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (217ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `DisputeReason` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:46.012 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (217ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `DisputeReason` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (204ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `DisputeStatus` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:46.219 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (204ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `DisputeStatus` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:46.460 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (236ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `DisputedAt` datetime(6) NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (236ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `DisputedAt` datetime(6) NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (208ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `DisputedBy` int NULL;
+info: 06/03/2026 15:55:46.672 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (208ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `DisputedBy` int NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (208ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `EstimatedCost` decimal(65,30) NULL;
+info: 06/03/2026 15:55:46.888 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (208ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `EstimatedCost` decimal(65,30) NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (210ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `PaidAt` datetime(6) NULL;
+info: 06/03/2026 15:55:47.104 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (210ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `PaidAt` datetime(6) NULL;
+info: 06/03/2026 15:55:47.330 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (222ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `PaymentStatus` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (222ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `PaymentStatus` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (198ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `RentalId` int NULL;
+info: 06/03/2026 15:55:47.531 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (198ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `RentalId` int NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (203ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `RenterId` int NULL;
+info: 06/03/2026 15:55:47.739 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (203ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `RenterId` int NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (221ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `RenterName` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:47.964 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (221ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `RenterName` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (201ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `VehicleId` int NULL;
+info: 06/03/2026 15:55:48.172 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (201ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `VehicleId` int NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (207ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `VehicleName` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:48.384 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (207ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `SupportTickets` ADD `VehicleName` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+      VALUES ('20251202165856_AddSupportTicketDamageAndDisputeFields', '9.0.10');
+info: 06/03/2026 15:55:48.401 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+      VALUES ('20251202165856_AddSupportTicketDamageAndDisputeFields', '9.0.10');
+info: 06/03/2026 15:55:48.408 RelationalEventId.MigrationApplying[20402] (Microsoft.EntityFrameworkCore.Migrations) 
+      Applying migration '20260603133144_MobileAppIntegration'.
+info: Microsoft.EntityFrameworkCore.Migrations[20402]
+      Applying migration '20260603133144_MobileAppIntegration'.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (162ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Vehicles` ADD `BodyType` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:48.732 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (162ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `Vehicles` ADD `BodyType` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `Community` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:48.915 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (178ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `Community` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (194ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `DepartureDate` datetime(6) NULL;
+info: 06/03/2026 15:55:49.113 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (194ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `DepartureDate` datetime(6) NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (203ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `DepartureTime` longtext CHARACTER SET utf8mb4 NULL;
+info: 06/03/2026 15:55:49.322 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (203ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `DepartureTime` longtext CHARACTER SET utf8mb4 NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (170ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `Lat` double NULL;
+info: 06/03/2026 15:55:49.497 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (170ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `Lat` double NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (174ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `Lng` double NULL;
+info: 06/03/2026 15:55:49.678 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (174ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `Lng` double NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (173ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `OnlyWomen` tinyint(1) NOT NULL DEFAULT FALSE;
+info: 06/03/2026 15:55:49.854 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (173ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `OnlyWomen` tinyint(1) NOT NULL DEFAULT FALSE;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (169ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `PricePerSeat` decimal(18,2) NULL;
+info: 06/03/2026 15:55:50.028 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (169ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `PricePerSeat` decimal(18,2) NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (214ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `SeatsAvailable` int NULL;
+info: 06/03/2026 15:55:50.247 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (214ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `SeatsAvailable` int NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (228ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `SeatsTotal` int NULL;
+info: 06/03/2026 15:55:50.479 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (228ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `SeatsTotal` int NULL;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (318ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `Status` longtext CHARACTER SET utf8mb4 NOT NULL DEFAULT ('active');
+info: 06/03/2026 15:55:50.802 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (318ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      ALTER TABLE `AdventureRoutes` ADD `Status` longtext CHARACTER SET utf8mb4 NOT NULL DEFAULT ('active');
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (89ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Messages` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `SenderId` int NOT NULL,
+          `ReceiverId` int NOT NULL,
+          `Content` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Read` tinyint(1) NOT NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `ReadAt` datetime(6) NULL,
+          CONSTRAINT `PK_Messages` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: 06/03/2026 15:55:50.896 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (89ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE TABLE `Messages` (
+          `Id` int NOT NULL AUTO_INCREMENT,
+          `SenderId` int NOT NULL,
+          `ReceiverId` int NOT NULL,
+          `Content` longtext CHARACTER SET utf8mb4 NOT NULL,
+          `Read` tinyint(1) NOT NULL,
+          `CreatedAt` datetime(6) NOT NULL,
+          `ReadAt` datetime(6) NULL,
+          CONSTRAINT `PK_Messages` PRIMARY KEY (`Id`)
+      ) CHARACTER SET=utf8mb4;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (90ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX `IX_Messages_SenderId_ReceiverId` ON `Messages` (`SenderId`, `ReceiverId`);
+info: 06/03/2026 15:55:50.995 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (90ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      CREATE INDEX `IX_Messages_SenderId_ReceiverId` ON `Messages` (`SenderId`, `ReceiverId`);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+      VALUES ('20260603133144_MobileAppIntegration', '9.0.10');
+info: 06/03/2026 15:55:51.012 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+      VALUES ('20260603133144_MobileAppIntegration', '9.0.10');
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT RELEASE_LOCK('__moveo_db_EFMigrationsLock')
+info: 06/03/2026 15:55:51.043 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (10ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT RELEASE_LOCK('__moveo_db_EFMigrationsLock')
+✅ Migraciones aplicadas correctamente (esquema actualizado sin perder datos).
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://[::]:8080
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: C:\Desarrollo\cosas xd\MOVEO-Backend
+warn: Microsoft.AspNetCore.HttpsPolicy.HttpsRedirectionMiddleware[3]
+      Failed to determine the https port for redirect.
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `v`.`Id`, `v`.`BodyType`, `v`.`Brand`, `v`.`Color`, `v`.`CreatedAt`, `v`.`Description`, `v`.`FeaturesJson`, `v`.`FuelType`, `v`.`ImagesJson`, `v`.`IsAvailable`, `v`.`LicensePlate`, `v`.`Model`, `v`.`OwnerId`, `v`.`RestrictionsJson`, `v`.`Seats`, `v`.`Status`, `v`.`Transmission`, `v`.`UpdatedAt`, `v`.`Year`, `v`.`DailyPrice`, `v`.`DailyPriceCurrency`, `v`.`DepositAmount`, `v`.`DepositAmountCurrency`, `v`.`LocationAddress`, `v`.`LocationDistrict`, `v`.`LocationLat`, `v`.`LocationLng`
+      FROM `Vehicles` AS `v`
+info: 06/03/2026 15:56:47.912 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `v`.`Id`, `v`.`BodyType`, `v`.`Brand`, `v`.`Color`, `v`.`CreatedAt`, `v`.`Description`, `v`.`FeaturesJson`, `v`.`FuelType`, `v`.`ImagesJson`, `v`.`IsAvailable`, `v`.`LicensePlate`, `v`.`Model`, `v`.`OwnerId`, `v`.`RestrictionsJson`, `v`.`Seats`, `v`.`Status`, `v`.`Transmission`, `v`.`UpdatedAt`, `v`.`Year`, `v`.`DailyPrice`, `v`.`DailyPriceCurrency`, `v`.`DepositAmount`, `v`.`DepositAmountCurrency`, `v`.`LocationAddress`, `v`.`LocationDistrict`, `v`.`LocationLat`, `v`.`LocationLng`
+      FROM `Vehicles` AS `v`
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `v`.`Id`, `v`.`BodyType`, `v`.`Brand`, `v`.`Color`, `v`.`CreatedAt`, `v`.`Description`, `v`.`FeaturesJson`, `v`.`FuelType`, `v`.`ImagesJson`, `v`.`IsAvailable`, `v`.`LicensePlate`, `v`.`Model`, `v`.`OwnerId`, `v`.`RestrictionsJson`, `v`.`Seats`, `v`.`Status`, `v`.`Transmission`, `v`.`UpdatedAt`, `v`.`Year`, `v`.`DailyPrice`, `v`.`DailyPriceCurrency`, `v`.`DepositAmount`, `v`.`DepositAmountCurrency`, `v`.`LocationAddress`, `v`.`LocationDistrict`, `v`.`LocationLat`, `v`.`LocationLng`
+      FROM `Vehicles` AS `v`
+info: 06/03/2026 15:56:49.800 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `v`.`Id`, `v`.`BodyType`, `v`.`Brand`, `v`.`Color`, `v`.`CreatedAt`, `v`.`Description`, `v`.`FeaturesJson`, `v`.`FuelType`, `v`.`ImagesJson`, `v`.`IsAvailable`, `v`.`LicensePlate`, `v`.`Model`, `v`.`OwnerId`, `v`.`RestrictionsJson`, `v`.`Seats`, `v`.`Status`, `v`.`Transmission`, `v`.`UpdatedAt`, `v`.`Year`, `v`.`DailyPrice`, `v`.`DailyPriceCurrency`, `v`.`DepositAmount`, `v`.`DepositAmountCurrency`, `v`.`LocationAddress`, `v`.`LocationDistrict`, `v`.`LocationLat`, `v`.`LocationLng`
+      FROM `Vehicles` AS `v`
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (151ms) [Parameters=[@__ToLower_0='rosa@moveo.com' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, `u`.`ActiveRentals`, `u`.`Address`, `u`.`AutoAcceptRentals`, `u`.`Avatar`, `u`.`BankAccountNumber`, `u`.`BankAccountType`, `u`.`BankAccountVerified`, `u`.`BankName`, `u`.`CanceledRentals`, `u`.`CompletedRentals`, `u`.`CreatedAt`, `u`.`Dni`, `u`.`DniVerified`, `u`.`Email`, `u`.`EmailNotifications`, `u`.`EmailVerified`, `u`.`FirstName`, `u`.`InstantBooking`, `u`.`LastName`, `u`.`LicenseNumber`, `u`.`LicenseVerified`, `u`.`MinimumRentalDays`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`PhoneVerified`, `u`.`PreferredLanguage`, `u`.`PushNotifications`, `u`.`Role`, `u`.`SmsNotifications`, `u`.`TotalEarned`, `u`.`TotalRentals`, `u`.`TotalSpent`, `u`.`UpdatedAt`
+      FROM `Users` AS `u`
+      WHERE LOWER(`u`.`Email`) = @__ToLower_0
+      LIMIT 1
+info: 06/03/2026 15:58:27.711 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (151ms) [Parameters=[@__ToLower_0='rosa@moveo.com' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, `u`.`ActiveRentals`, `u`.`Address`, `u`.`AutoAcceptRentals`, `u`.`Avatar`, `u`.`BankAccountNumber`, `u`.`BankAccountType`, `u`.`BankAccountVerified`, `u`.`BankName`, `u`.`CanceledRentals`, `u`.`CompletedRentals`, `u`.`CreatedAt`, `u`.`Dni`, `u`.`DniVerified`, `u`.`Email`, `u`.`EmailNotifications`, `u`.`EmailVerified`, `u`.`FirstName`, `u`.`InstantBooking`, `u`.`LastName`, `u`.`LicenseNumber`, `u`.`LicenseVerified`, `u`.`MinimumRentalDays`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`PhoneVerified`, `u`.`PreferredLanguage`, `u`.`PushNotifications`, `u`.`Role`, `u`.`SmsNotifications`, `u`.`TotalEarned`, `u`.`TotalRentals`, `u`.`TotalSpent`, `u`.`UpdatedAt`
+      FROM `Users` AS `u`
+      WHERE LOWER(`u`.`Email`) = @__ToLower_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (22ms) [Parameters=[@p0='0', @p1='' (Nullable = false) (Size = 4000), @p2='False', @p3=NULL (Size = 4000), @p4=NULL (Size = 4000), @p5=NULL (Size = 4000), @p6='False', @p7=NULL (Size = 4000), @p8='0', @p9='0', @p10='2026-06-03T20:58:29.7266528Z' (DbType = DateTime), @p11='40000001' (Nullable = false) (Size = 4000), @p12='False', @p13='rosa@moveo.com' (Nullable = false) (Size = 4000), @p14='True', @p15='False', @p16='Rosa' (Nullable = false) (Size = 4000), @p17='False', @p18='Martinez' (Nullable = false) (Size = 4000), @p19='Q0000001' (Nullable = false) (Size = 4000), @p20='False', @p21='1', @p22='$2a$11$hYxc3Siz74VnfWuszc0u.Od0Hh/IuX4ZA.Z1/MRd1biYhXB7P08g2' (Nullable = false) (Size = 4000), @p23='+51980000001' (Nullable = false) (Size = 4000), @p24='False', @p25='es' (Nullable = false) (Size = 4000), @p26='True', @p27='owner' (Nullable = false) (Size = 4000), @p28='False', @p29='0', @p30='0', @p31='0', @p32='2026-06-03T20:58:29.7267584Z' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Users` (`ActiveRentals`, `Address`, `AutoAcceptRentals`, `Avatar`, `BankAccountNumber`, `BankAccountType`, `BankAccountVerified`, `BankName`, `CanceledRentals`, `CompletedRentals`, `CreatedAt`, `Dni`, `DniVerified`, `Email`, `EmailNotifications`, `EmailVerified`, `FirstName`, `InstantBooking`, `LastName`, `LicenseNumber`, `LicenseVerified`, `MinimumRentalDays`, `PasswordHash`, `Phone`, `PhoneVerified`, `PreferredLanguage`, `PushNotifications`, `Role`, `SmsNotifications`, `TotalEarned`, `TotalRentals`, `TotalSpent`, `UpdatedAt`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32);
+      SELECT `Id`
+      FROM `Users`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: 06/03/2026 15:58:30.625 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (22ms) [Parameters=[@p0='0', @p1='' (Nullable = false) (Size = 4000), @p2='False', @p3=NULL (Size = 4000), @p4=NULL (Size = 4000), @p5=NULL (Size = 4000), @p6='False', @p7=NULL (Size = 4000), @p8='0', @p9='0', @p10='2026-06-03T20:58:29.7266528Z' (DbType = DateTime), @p11='40000001' (Nullable = false) (Size = 4000), @p12='False', @p13='rosa@moveo.com' (Nullable = false) (Size = 4000), @p14='True', @p15='False', @p16='Rosa' (Nullable = false) (Size = 4000), @p17='False', @p18='Martinez' (Nullable = false) (Size = 4000), @p19='Q0000001' (Nullable = false) (Size = 4000), @p20='False', @p21='1', @p22='$2a$11$hYxc3Siz74VnfWuszc0u.Od0Hh/IuX4ZA.Z1/MRd1biYhXB7P08g2' (Nullable = false) (Size = 4000), @p23='+51980000001' (Nullable = false) (Size = 4000), @p24='False', @p25='es' (Nullable = false) (Size = 4000), @p26='True', @p27='owner' (Nullable = false) (Size = 4000), @p28='False', @p29='0', @p30='0', @p31='0', @p32='2026-06-03T20:58:29.7267584Z' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Users` (`ActiveRentals`, `Address`, `AutoAcceptRentals`, `Avatar`, `BankAccountNumber`, `BankAccountType`, `BankAccountVerified`, `BankName`, `CanceledRentals`, `CompletedRentals`, `CreatedAt`, `Dni`, `DniVerified`, `Email`, `EmailNotifications`, `EmailVerified`, `FirstName`, `InstantBooking`, `LastName`, `LicenseNumber`, `LicenseVerified`, `MinimumRentalDays`, `PasswordHash`, `Phone`, `PhoneVerified`, `PreferredLanguage`, `PushNotifications`, `Role`, `SmsNotifications`, `TotalEarned`, `TotalRentals`, `TotalSpent`, `UpdatedAt`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32);
+      SELECT `Id`
+      FROM `Users`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, `u`.`ActiveRentals`, `u`.`Address`, `u`.`AutoAcceptRentals`, `u`.`Avatar`, `u`.`BankAccountNumber`, `u`.`BankAccountType`, `u`.`BankAccountVerified`, `u`.`BankName`, `u`.`CanceledRentals`, `u`.`CompletedRentals`, `u`.`CreatedAt`, `u`.`Dni`, `u`.`DniVerified`, `u`.`Email`, `u`.`EmailNotifications`, `u`.`EmailVerified`, `u`.`FirstName`, `u`.`InstantBooking`, `u`.`LastName`, `u`.`LicenseNumber`, `u`.`LicenseVerified`, `u`.`MinimumRentalDays`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`PhoneVerified`, `u`.`PreferredLanguage`, `u`.`PushNotifications`, `u`.`Role`, `u`.`SmsNotifications`, `u`.`TotalEarned`, `u`.`TotalRentals`, `u`.`TotalSpent`, `u`.`UpdatedAt`
+      FROM `Users` AS `u`
+info: 06/03/2026 15:59:33.560 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, `u`.`ActiveRentals`, `u`.`Address`, `u`.`AutoAcceptRentals`, `u`.`Avatar`, `u`.`BankAccountNumber`, `u`.`BankAccountType`, `u`.`BankAccountVerified`, `u`.`BankName`, `u`.`CanceledRentals`, `u`.`CompletedRentals`, `u`.`CreatedAt`, `u`.`Dni`, `u`.`DniVerified`, `u`.`Email`, `u`.`EmailNotifications`, `u`.`EmailVerified`, `u`.`FirstName`, `u`.`InstantBooking`, `u`.`LastName`, `u`.`LicenseNumber`, `u`.`LicenseVerified`, `u`.`MinimumRentalDays`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`PhoneVerified`, `u`.`PreferredLanguage`, `u`.`PushNotifications`, `u`.`Role`, `u`.`SmsNotifications`, `u`.`TotalEarned`, `u`.`TotalRentals`, `u`.`TotalSpent`, `u`.`UpdatedAt`
+      FROM `Users` AS `u`
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `v`.`Id`, `v`.`BodyType`, `v`.`Brand`, `v`.`Color`, `v`.`CreatedAt`, `v`.`Description`, `v`.`FeaturesJson`, `v`.`FuelType`, `v`.`ImagesJson`, `v`.`IsAvailable`, `v`.`LicensePlate`, `v`.`Model`, `v`.`OwnerId`, `v`.`RestrictionsJson`, `v`.`Seats`, `v`.`Status`, `v`.`Transmission`, `v`.`UpdatedAt`, `v`.`Year`, `v`.`DailyPrice`, `v`.`DailyPriceCurrency`, `v`.`DepositAmount`, `v`.`DepositAmountCurrency`, `v`.`LocationAddress`, `v`.`LocationDistrict`, `v`.`LocationLat`, `v`.`LocationLng`
+      FROM `Vehicles` AS `v`
+info: 06/03/2026 15:59:33.900 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `v`.`Id`, `v`.`BodyType`, `v`.`Brand`, `v`.`Color`, `v`.`CreatedAt`, `v`.`Description`, `v`.`FeaturesJson`, `v`.`FuelType`, `v`.`ImagesJson`, `v`.`IsAvailable`, `v`.`LicensePlate`, `v`.`Model`, `v`.`OwnerId`, `v`.`RestrictionsJson`, `v`.`Seats`, `v`.`Status`, `v`.`Transmission`, `v`.`UpdatedAt`, `v`.`Year`, `v`.`DailyPrice`, `v`.`DailyPriceCurrency`, `v`.`DepositAmount`, `v`.`DepositAmountCurrency`, `v`.`LocationAddress`, `v`.`LocationDistrict`, `v`.`LocationLat`, `v`.`LocationLng`
+      FROM `Vehicles` AS `v`
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@__ToLower_0='carlos@moveo.com' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, `u`.`ActiveRentals`, `u`.`Address`, `u`.`AutoAcceptRentals`, `u`.`Avatar`, `u`.`BankAccountNumber`, `u`.`BankAccountType`, `u`.`BankAccountVerified`, `u`.`BankName`, `u`.`CanceledRentals`, `u`.`CompletedRentals`, `u`.`CreatedAt`, `u`.`Dni`, `u`.`DniVerified`, `u`.`Email`, `u`.`EmailNotifications`, `u`.`EmailVerified`, `u`.`FirstName`, `u`.`InstantBooking`, `u`.`LastName`, `u`.`LicenseNumber`, `u`.`LicenseVerified`, `u`.`MinimumRentalDays`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`PhoneVerified`, `u`.`PreferredLanguage`, `u`.`PushNotifications`, `u`.`Role`, `u`.`SmsNotifications`, `u`.`TotalEarned`, `u`.`TotalRentals`, `u`.`TotalSpent`, `u`.`UpdatedAt`
+      FROM `Users` AS `u`
+      WHERE LOWER(`u`.`Email`) = @__ToLower_0
+      LIMIT 1
+info: 06/03/2026 16:00:57.983 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (2ms) [Parameters=[@__ToLower_0='carlos@moveo.com' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, `u`.`ActiveRentals`, `u`.`Address`, `u`.`AutoAcceptRentals`, `u`.`Avatar`, `u`.`BankAccountNumber`, `u`.`BankAccountType`, `u`.`BankAccountVerified`, `u`.`BankName`, `u`.`CanceledRentals`, `u`.`CompletedRentals`, `u`.`CreatedAt`, `u`.`Dni`, `u`.`DniVerified`, `u`.`Email`, `u`.`EmailNotifications`, `u`.`EmailVerified`, `u`.`FirstName`, `u`.`InstantBooking`, `u`.`LastName`, `u`.`LicenseNumber`, `u`.`LicenseVerified`, `u`.`MinimumRentalDays`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`PhoneVerified`, `u`.`PreferredLanguage`, `u`.`PushNotifications`, `u`.`Role`, `u`.`SmsNotifications`, `u`.`TotalEarned`, `u`.`TotalRentals`, `u`.`TotalSpent`, `u`.`UpdatedAt`
+      FROM `Users` AS `u`
+      WHERE LOWER(`u`.`Email`) = @__ToLower_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@p0='0', @p1='' (Nullable = false) (Size = 4000), @p2='False', @p3=NULL (Size = 4000), @p4=NULL (Size = 4000), @p5=NULL (Size = 4000), @p6='False', @p7=NULL (Size = 4000), @p8='0', @p9='0', @p10='2026-06-03T21:00:58.1231347Z' (DbType = DateTime), @p11='40000002' (Nullable = false) (Size = 4000), @p12='False', @p13='carlos@moveo.com' (Nullable = false) (Size = 4000), @p14='True', @p15='False', @p16='Carlos' (Nullable = false) (Size = 4000), @p17='False', @p18='Diaz' (Nullable = false) (Size = 4000), @p19='Q0000002' (Nullable = false) (Size = 4000), @p20='False', @p21='1', @p22='$2a$11$dK7M/.JFaEgSDspRNvw1LeLRl3/guAbNtVjhAp52gMo.YIWXf9.fu' (Nullable = false) (Size = 4000), @p23='+51980000002' (Nullable = false) (Size = 4000), @p24='False', @p25='es' (Nullable = false) (Size = 4000), @p26='True', @p27='owner' (Nullable = false) (Size = 4000), @p28='False', @p29='0', @p30='0', @p31='0', @p32='2026-06-03T21:00:58.1231347Z' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Users` (`ActiveRentals`, `Address`, `AutoAcceptRentals`, `Avatar`, `BankAccountNumber`, `BankAccountType`, `BankAccountVerified`, `BankName`, `CanceledRentals`, `CompletedRentals`, `CreatedAt`, `Dni`, `DniVerified`, `Email`, `EmailNotifications`, `EmailVerified`, `FirstName`, `InstantBooking`, `LastName`, `LicenseNumber`, `LicenseVerified`, `MinimumRentalDays`, `PasswordHash`, `Phone`, `PhoneVerified`, `PreferredLanguage`, `PushNotifications`, `Role`, `SmsNotifications`, `TotalEarned`, `TotalRentals`, `TotalSpent`, `UpdatedAt`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32);
+      SELECT `Id`
+      FROM `Users`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: 06/03/2026 16:00:58.128 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (2ms) [Parameters=[@p0='0', @p1='' (Nullable = false) (Size = 4000), @p2='False', @p3=NULL (Size = 4000), @p4=NULL (Size = 4000), @p5=NULL (Size = 4000), @p6='False', @p7=NULL (Size = 4000), @p8='0', @p9='0', @p10='2026-06-03T21:00:58.1231347Z' (DbType = DateTime), @p11='40000002' (Nullable = false) (Size = 4000), @p12='False', @p13='carlos@moveo.com' (Nullable = false) (Size = 4000), @p14='True', @p15='False', @p16='Carlos' (Nullable = false) (Size = 4000), @p17='False', @p18='Diaz' (Nullable = false) (Size = 4000), @p19='Q0000002' (Nullable = false) (Size = 4000), @p20='False', @p21='1', @p22='$2a$11$dK7M/.JFaEgSDspRNvw1LeLRl3/guAbNtVjhAp52gMo.YIWXf9.fu' (Nullable = false) (Size = 4000), @p23='+51980000002' (Nullable = false) (Size = 4000), @p24='False', @p25='es' (Nullable = false) (Size = 4000), @p26='True', @p27='owner' (Nullable = false) (Size = 4000), @p28='False', @p29='0', @p30='0', @p31='0', @p32='2026-06-03T21:00:58.1231347Z' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Users` (`ActiveRentals`, `Address`, `AutoAcceptRentals`, `Avatar`, `BankAccountNumber`, `BankAccountType`, `BankAccountVerified`, `BankName`, `CanceledRentals`, `CompletedRentals`, `CreatedAt`, `Dni`, `DniVerified`, `Email`, `EmailNotifications`, `EmailVerified`, `FirstName`, `InstantBooking`, `LastName`, `LicenseNumber`, `LicenseVerified`, `MinimumRentalDays`, `PasswordHash`, `Phone`, `PhoneVerified`, `PreferredLanguage`, `PushNotifications`, `Role`, `SmsNotifications`, `TotalEarned`, `TotalRentals`, `TotalSpent`, `UpdatedAt`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32);
+      SELECT `Id`
+      FROM `Users`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: 06/03/2026 16:00:58.172 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@__ToLower_0='juan@moveo.com' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, `u`.`ActiveRentals`, `u`.`Address`, `u`.`AutoAcceptRentals`, `u`.`Avatar`, `u`.`BankAccountNumber`, `u`.`BankAccountType`, `u`.`BankAccountVerified`, `u`.`BankName`, `u`.`CanceledRentals`, `u`.`CompletedRentals`, `u`.`CreatedAt`, `u`.`Dni`, `u`.`DniVerified`, `u`.`Email`, `u`.`EmailNotifications`, `u`.`EmailVerified`, `u`.`FirstName`, `u`.`InstantBooking`, `u`.`LastName`, `u`.`LicenseNumber`, `u`.`LicenseVerified`, `u`.`MinimumRentalDays`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`PhoneVerified`, `u`.`PreferredLanguage`, `u`.`PushNotifications`, `u`.`Role`, `u`.`SmsNotifications`, `u`.`TotalEarned`, `u`.`TotalRentals`, `u`.`TotalSpent`, `u`.`UpdatedAt`
+      FROM `Users` AS `u`
+      WHERE LOWER(`u`.`Email`) = @__ToLower_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__ToLower_0='juan@moveo.com' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, `u`.`ActiveRentals`, `u`.`Address`, `u`.`AutoAcceptRentals`, `u`.`Avatar`, `u`.`BankAccountNumber`, `u`.`BankAccountType`, `u`.`BankAccountVerified`, `u`.`BankName`, `u`.`CanceledRentals`, `u`.`CompletedRentals`, `u`.`CreatedAt`, `u`.`Dni`, `u`.`DniVerified`, `u`.`Email`, `u`.`EmailNotifications`, `u`.`EmailVerified`, `u`.`FirstName`, `u`.`InstantBooking`, `u`.`LastName`, `u`.`LicenseNumber`, `u`.`LicenseVerified`, `u`.`MinimumRentalDays`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`PhoneVerified`, `u`.`PreferredLanguage`, `u`.`PushNotifications`, `u`.`Role`, `u`.`SmsNotifications`, `u`.`TotalEarned`, `u`.`TotalRentals`, `u`.`TotalSpent`, `u`.`UpdatedAt`
+      FROM `Users` AS `u`
+      WHERE LOWER(`u`.`Email`) = @__ToLower_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='0', @p1='' (Nullable = false) (Size = 4000), @p2='False', @p3=NULL (Size = 4000), @p4=NULL (Size = 4000), @p5=NULL (Size = 4000), @p6='False', @p7=NULL (Size = 4000), @p8='0', @p9='0', @p10='2026-06-03T21:00:58.3133419Z' (DbType = DateTime), @p11='40000003' (Nullable = false) (Size = 4000), @p12='False', @p13='juan@moveo.com' (Nullable = false) (Size = 4000), @p14='True', @p15='False', @p16='Juan' (Nullable = false) (Size = 4000), @p17='False', @p18='Perez' (Nullable = false) (Size = 4000), @p19='Q0000003' (Nullable = false) (Size = 4000), @p20='False', @p21='1', @p22='$2a$11$Aywz76HzNUC3nvkFwGg6jev5iUl1tf2n/1aWvT/Ri6JBjSVvf7Eey' (Nullable = false) (Size = 4000), @p23='+51980000003' (Nullable = false) (Size = 4000), @p24='False', @p25='es' (Nullable = false) (Size = 4000), @p26='True', @p27='renter' (Nullable = false) (Size = 4000), @p28='False', @p29='0', @p30='0', @p31='0', @p32='2026-06-03T21:00:58.3133420Z' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Users` (`ActiveRentals`, `Address`, `AutoAcceptRentals`, `Avatar`, `BankAccountNumber`, `BankAccountType`, `BankAccountVerified`, `BankName`, `CanceledRentals`, `CompletedRentals`, `CreatedAt`, `Dni`, `DniVerified`, `Email`, `EmailNotifications`, `EmailVerified`, `FirstName`, `InstantBooking`, `LastName`, `LicenseNumber`, `LicenseVerified`, `MinimumRentalDays`, `PasswordHash`, `Phone`, `PhoneVerified`, `PreferredLanguage`, `PushNotifications`, `Role`, `SmsNotifications`, `TotalEarned`, `TotalRentals`, `TotalSpent`, `UpdatedAt`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32);
+      SELECT `Id`
+      FROM `Users`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: 06/03/2026 16:00:58.317 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@p0='0', @p1='' (Nullable = false) (Size = 4000), @p2='False', @p3=NULL (Size = 4000), @p4=NULL (Size = 4000), @p5=NULL (Size = 4000), @p6='False', @p7=NULL (Size = 4000), @p8='0', @p9='0', @p10='2026-06-03T21:00:58.3133419Z' (DbType = DateTime), @p11='40000003' (Nullable = false) (Size = 4000), @p12='False', @p13='juan@moveo.com' (Nullable = false) (Size = 4000), @p14='True', @p15='False', @p16='Juan' (Nullable = false) (Size = 4000), @p17='False', @p18='Perez' (Nullable = false) (Size = 4000), @p19='Q0000003' (Nullable = false) (Size = 4000), @p20='False', @p21='1', @p22='$2a$11$Aywz76HzNUC3nvkFwGg6jev5iUl1tf2n/1aWvT/Ri6JBjSVvf7Eey' (Nullable = false) (Size = 4000), @p23='+51980000003' (Nullable = false) (Size = 4000), @p24='False', @p25='es' (Nullable = false) (Size = 4000), @p26='True', @p27='renter' (Nullable = false) (Size = 4000), @p28='False', @p29='0', @p30='0', @p31='0', @p32='2026-06-03T21:00:58.3133420Z' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Users` (`ActiveRentals`, `Address`, `AutoAcceptRentals`, `Avatar`, `BankAccountNumber`, `BankAccountType`, `BankAccountVerified`, `BankName`, `CanceledRentals`, `CompletedRentals`, `CreatedAt`, `Dni`, `DniVerified`, `Email`, `EmailNotifications`, `EmailVerified`, `FirstName`, `InstantBooking`, `LastName`, `LicenseNumber`, `LicenseVerified`, `MinimumRentalDays`, `PasswordHash`, `Phone`, `PhoneVerified`, `PreferredLanguage`, `PushNotifications`, `Role`, `SmsNotifications`, `TotalEarned`, `TotalRentals`, `TotalSpent`, `UpdatedAt`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32);
+      SELECT `Id`
+      FROM `Users`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__ToLower_0='maria@moveo.com' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, `u`.`ActiveRentals`, `u`.`Address`, `u`.`AutoAcceptRentals`, `u`.`Avatar`, `u`.`BankAccountNumber`, `u`.`BankAccountType`, `u`.`BankAccountVerified`, `u`.`BankName`, `u`.`CanceledRentals`, `u`.`CompletedRentals`, `u`.`CreatedAt`, `u`.`Dni`, `u`.`DniVerified`, `u`.`Email`, `u`.`EmailNotifications`, `u`.`EmailVerified`, `u`.`FirstName`, `u`.`InstantBooking`, `u`.`LastName`, `u`.`LicenseNumber`, `u`.`LicenseVerified`, `u`.`MinimumRentalDays`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`PhoneVerified`, `u`.`PreferredLanguage`, `u`.`PushNotifications`, `u`.`Role`, `u`.`SmsNotifications`, `u`.`TotalEarned`, `u`.`TotalRentals`, `u`.`TotalSpent`, `u`.`UpdatedAt`
+      FROM `Users` AS `u`
+      WHERE LOWER(`u`.`Email`) = @__ToLower_0
+      LIMIT 1
+info: 06/03/2026 16:00:58.338 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@__ToLower_0='maria@moveo.com' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, `u`.`ActiveRentals`, `u`.`Address`, `u`.`AutoAcceptRentals`, `u`.`Avatar`, `u`.`BankAccountNumber`, `u`.`BankAccountType`, `u`.`BankAccountVerified`, `u`.`BankName`, `u`.`CanceledRentals`, `u`.`CompletedRentals`, `u`.`CreatedAt`, `u`.`Dni`, `u`.`DniVerified`, `u`.`Email`, `u`.`EmailNotifications`, `u`.`EmailVerified`, `u`.`FirstName`, `u`.`InstantBooking`, `u`.`LastName`, `u`.`LicenseNumber`, `u`.`LicenseVerified`, `u`.`MinimumRentalDays`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`PhoneVerified`, `u`.`PreferredLanguage`, `u`.`PushNotifications`, `u`.`Role`, `u`.`SmsNotifications`, `u`.`TotalEarned`, `u`.`TotalRentals`, `u`.`TotalSpent`, `u`.`UpdatedAt`
+      FROM `Users` AS `u`
+      WHERE LOWER(`u`.`Email`) = @__ToLower_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='0', @p1='' (Nullable = false) (Size = 4000), @p2='False', @p3=NULL (Size = 4000), @p4=NULL (Size = 4000), @p5=NULL (Size = 4000), @p6='False', @p7=NULL (Size = 4000), @p8='0', @p9='0', @p10='2026-06-03T21:00:58.4913353Z' (DbType = DateTime), @p11='40000004' (Nullable = false) (Size = 4000), @p12='False', @p13='maria@moveo.com' (Nullable = false) (Size = 4000), @p14='True', @p15='False', @p16='Maria' (Nullable = false) (Size = 4000), @p17='False', @p18='Lopez' (Nullable = false) (Size = 4000), @p19='Q0000004' (Nullable = false) (Size = 4000), @p20='False', @p21='1', @p22='$2a$11$agDtkbEJJ9A1eJnn1RakCejHxNGlzPwXakakcr3MVx3q47i9OAjLK' (Nullable = false) (Size = 4000), @p23='+51980000004' (Nullable = false) (Size = 4000), @p24='False', @p25='es' (Nullable = false) (Size = 4000), @p26='True', @p27='renter' (Nullable = false) (Size = 4000), @p28='False', @p29='0', @p30='0', @p31='0', @p32='2026-06-03T21:00:58.4913354Z' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Users` (`ActiveRentals`, `Address`, `AutoAcceptRentals`, `Avatar`, `BankAccountNumber`, `BankAccountType`, `BankAccountVerified`, `BankName`, `CanceledRentals`, `CompletedRentals`, `CreatedAt`, `Dni`, `DniVerified`, `Email`, `EmailNotifications`, `EmailVerified`, `FirstName`, `InstantBooking`, `LastName`, `LicenseNumber`, `LicenseVerified`, `MinimumRentalDays`, `PasswordHash`, `Phone`, `PhoneVerified`, `PreferredLanguage`, `PushNotifications`, `Role`, `SmsNotifications`, `TotalEarned`, `TotalRentals`, `TotalSpent`, `UpdatedAt`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32);
+      SELECT `Id`
+      FROM `Users`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: 06/03/2026 16:00:58.494 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@p0='0', @p1='' (Nullable = false) (Size = 4000), @p2='False', @p3=NULL (Size = 4000), @p4=NULL (Size = 4000), @p5=NULL (Size = 4000), @p6='False', @p7=NULL (Size = 4000), @p8='0', @p9='0', @p10='2026-06-03T21:00:58.4913353Z' (DbType = DateTime), @p11='40000004' (Nullable = false) (Size = 4000), @p12='False', @p13='maria@moveo.com' (Nullable = false) (Size = 4000), @p14='True', @p15='False', @p16='Maria' (Nullable = false) (Size = 4000), @p17='False', @p18='Lopez' (Nullable = false) (Size = 4000), @p19='Q0000004' (Nullable = false) (Size = 4000), @p20='False', @p21='1', @p22='$2a$11$agDtkbEJJ9A1eJnn1RakCejHxNGlzPwXakakcr3MVx3q47i9OAjLK' (Nullable = false) (Size = 4000), @p23='+51980000004' (Nullable = false) (Size = 4000), @p24='False', @p25='es' (Nullable = false) (Size = 4000), @p26='True', @p27='renter' (Nullable = false) (Size = 4000), @p28='False', @p29='0', @p30='0', @p31='0', @p32='2026-06-03T21:00:58.4913354Z' (DbType = DateTime)], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Users` (`ActiveRentals`, `Address`, `AutoAcceptRentals`, `Avatar`, `BankAccountNumber`, `BankAccountType`, `BankAccountVerified`, `BankName`, `CanceledRentals`, `CompletedRentals`, `CreatedAt`, `Dni`, `DniVerified`, `Email`, `EmailNotifications`, `EmailVerified`, `FirstName`, `InstantBooking`, `LastName`, `LicenseNumber`, `LicenseVerified`, `MinimumRentalDays`, `PasswordHash`, `Phone`, `PhoneVerified`, `PreferredLanguage`, `PushNotifications`, `Role`, `SmsNotifications`, `TotalEarned`, `TotalRentals`, `TotalSpent`, `UpdatedAt`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25, @p26, @p27, @p28, @p29, @p30, @p31, @p32);
+      SELECT `Id`
+      FROM `Users`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (5ms) [Parameters=[@p0='sedan' (Size = 4000), @p1='Toyota' (Nullable = false) (Size = 4000), @p2='Blanco' (Nullable = false) (Size = 4000), @p3='2026-06-03T21:00:58.5411191Z' (DbType = DateTime), @p4='Sedan comodo y economico' (Size = 4000), @p5='["Aire acondicionado","Bluetooth"]' (Nullable = false) (Size = 4000), @p6='gasoline' (Nullable = false) (Size = 4000), @p7='["https://picsum.photos/seed/corolla/600/400"]' (Nullable = false) (Size = 4000), @p8='True', @p9='ABC-101' (Nullable = false) (Size = 4000), @p10='Corolla' (Nullable = false) (Size = 4000), @p11='1', @p12='[]' (Nullable = false) (Size = 4000), @p13='5', @p14='active' (Nullable = false) (Size = 4000), @p15='automatic' (Nullable = false) (Size = 4000), @p16='2026-06-03T21:00:58.5411490Z' (DbType = DateTime), @p17='2022', @p18='120', @p19='USD' (Nullable = false) (Size = 4000), @p20='300', @p21='USD' (Nullable = false) (Size = 4000), @p22='Av. Larco 1000' (Nullable = false) (Size = 4000), @p23='Miraflores' (Nullable = false) (Size = 4000), @p24='-12.1211', @p25='-77.0297'], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Vehicles` (`BodyType`, `Brand`, `Color`, `CreatedAt`, `Description`, `FeaturesJson`, `FuelType`, `ImagesJson`, `IsAvailable`, `LicensePlate`, `Model`, `OwnerId`, `RestrictionsJson`, `Seats`, `Status`, `Transmission`, `UpdatedAt`, `Year`, `DailyPrice`, `DailyPriceCurrency`, `DepositAmount`, `DepositAmountCurrency`, `LocationAddress`, `LocationDistrict`, `LocationLat`, `LocationLng`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+      SELECT `Id`
+      FROM `Vehicles`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: 06/03/2026 16:00:58.659 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (5ms) [Parameters=[@p0='sedan' (Size = 4000), @p1='Toyota' (Nullable = false) (Size = 4000), @p2='Blanco' (Nullable = false) (Size = 4000), @p3='2026-06-03T21:00:58.5411191Z' (DbType = DateTime), @p4='Sedan comodo y economico' (Size = 4000), @p5='["Aire acondicionado","Bluetooth"]' (Nullable = false) (Size = 4000), @p6='gasoline' (Nullable = false) (Size = 4000), @p7='["https://picsum.photos/seed/corolla/600/400"]' (Nullable = false) (Size = 4000), @p8='True', @p9='ABC-101' (Nullable = false) (Size = 4000), @p10='Corolla' (Nullable = false) (Size = 4000), @p11='1', @p12='[]' (Nullable = false) (Size = 4000), @p13='5', @p14='active' (Nullable = false) (Size = 4000), @p15='automatic' (Nullable = false) (Size = 4000), @p16='2026-06-03T21:00:58.5411490Z' (DbType = DateTime), @p17='2022', @p18='120', @p19='USD' (Nullable = false) (Size = 4000), @p20='300', @p21='USD' (Nullable = false) (Size = 4000), @p22='Av. Larco 1000' (Nullable = false) (Size = 4000), @p23='Miraflores' (Nullable = false) (Size = 4000), @p24='-12.1211', @p25='-77.0297'], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Vehicles` (`BodyType`, `Brand`, `Color`, `CreatedAt`, `Description`, `FeaturesJson`, `FuelType`, `ImagesJson`, `IsAvailable`, `LicensePlate`, `Model`, `OwnerId`, `RestrictionsJson`, `Seats`, `Status`, `Transmission`, `UpdatedAt`, `Year`, `DailyPrice`, `DailyPriceCurrency`, `DepositAmount`, `DepositAmountCurrency`, `LocationAddress`, `LocationDistrict`, `LocationLat`, `LocationLng`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+      SELECT `Id`
+      FROM `Vehicles`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@__vehicle_OwnerId_0='1'], CommandType='Text', CommandTimeout='30']
+      SELECT CONCAT(CONCAT(`u`.`FirstName`, ' '), `u`.`LastName`)
+      FROM `Users` AS `u`
+      WHERE `u`.`Id` = @__vehicle_OwnerId_0
+      LIMIT 1
+info: 06/03/2026 16:00:58.693 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (2ms) [Parameters=[@__vehicle_OwnerId_0='1'], CommandType='Text', CommandTimeout='30']
+      SELECT CONCAT(CONCAT(`u`.`FirstName`, ' '), `u`.`LastName`)
+      FROM `Users` AS `u`
+      WHERE `u`.`Id` = @__vehicle_OwnerId_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__vehicle_Id_0='1' (Nullable = true)], CommandType='Text', CommandTimeout='30']
+      SELECT `r`.`Rating`
+      FROM `Reviews` AS `r`
+      WHERE `r`.`VehicleId` = @__vehicle_Id_0
+info: 06/03/2026 16:00:58.718 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@__vehicle_Id_0='1' (Nullable = true)], CommandType='Text', CommandTimeout='30']
+      SELECT `r`.`Rating`
+      FROM `Reviews` AS `r`
+      WHERE `r`.`VehicleId` = @__vehicle_Id_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='compact' (Size = 4000), @p1='Kia' (Nullable = false) (Size = 4000), @p2='Rojo' (Nullable = false) (Size = 4000), @p3='2026-06-03T21:00:58.7391351Z' (DbType = DateTime), @p4='Compacto ideal para ciudad' (Size = 4000), @p5='["USB","Camara de retroceso"]' (Nullable = false) (Size = 4000), @p6='gasoline' (Nullable = false) (Size = 4000), @p7='["https://picsum.photos/seed/kiario/600/400"]' (Nullable = false) (Size = 4000), @p8='True', @p9='ABC-102' (Nullable = false) (Size = 4000), @p10='Rio' (Nullable = false) (Size = 4000), @p11='2', @p12='[]' (Nullable = false) (Size = 4000), @p13='5', @p14='active' (Nullable = false) (Size = 4000), @p15='manual' (Nullable = false) (Size = 4000), @p16='2026-06-03T21:00:58.7391352Z' (DbType = DateTime), @p17='2021', @p18='90', @p19='USD' (Nullable = false) (Size = 4000), @p20='200', @p21='USD' (Nullable = false) (Size = 4000), @p22='Av. Javier Prado 200' (Nullable = false) (Size = 4000), @p23='San Isidro' (Nullable = false) (Size = 4000), @p24='-12.0931', @p25='-77.0465'], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Vehicles` (`BodyType`, `Brand`, `Color`, `CreatedAt`, `Description`, `FeaturesJson`, `FuelType`, `ImagesJson`, `IsAvailable`, `LicensePlate`, `Model`, `OwnerId`, `RestrictionsJson`, `Seats`, `Status`, `Transmission`, `UpdatedAt`, `Year`, `DailyPrice`, `DailyPriceCurrency`, `DepositAmount`, `DepositAmountCurrency`, `LocationAddress`, `LocationDistrict`, `LocationLat`, `LocationLng`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+      SELECT `Id`
+      FROM `Vehicles`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: 06/03/2026 16:00:58.743 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@p0='compact' (Size = 4000), @p1='Kia' (Nullable = false) (Size = 4000), @p2='Rojo' (Nullable = false) (Size = 4000), @p3='2026-06-03T21:00:58.7391351Z' (DbType = DateTime), @p4='Compacto ideal para ciudad' (Size = 4000), @p5='["USB","Camara de retroceso"]' (Nullable = false) (Size = 4000), @p6='gasoline' (Nullable = false) (Size = 4000), @p7='["https://picsum.photos/seed/kiario/600/400"]' (Nullable = false) (Size = 4000), @p8='True', @p9='ABC-102' (Nullable = false) (Size = 4000), @p10='Rio' (Nullable = false) (Size = 4000), @p11='2', @p12='[]' (Nullable = false) (Size = 4000), @p13='5', @p14='active' (Nullable = false) (Size = 4000), @p15='manual' (Nullable = false) (Size = 4000), @p16='2026-06-03T21:00:58.7391352Z' (DbType = DateTime), @p17='2021', @p18='90', @p19='USD' (Nullable = false) (Size = 4000), @p20='200', @p21='USD' (Nullable = false) (Size = 4000), @p22='Av. Javier Prado 200' (Nullable = false) (Size = 4000), @p23='San Isidro' (Nullable = false) (Size = 4000), @p24='-12.0931', @p25='-77.0465'], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Vehicles` (`BodyType`, `Brand`, `Color`, `CreatedAt`, `Description`, `FeaturesJson`, `FuelType`, `ImagesJson`, `IsAvailable`, `LicensePlate`, `Model`, `OwnerId`, `RestrictionsJson`, `Seats`, `Status`, `Transmission`, `UpdatedAt`, `Year`, `DailyPrice`, `DailyPriceCurrency`, `DepositAmount`, `DepositAmountCurrency`, `LocationAddress`, `LocationDistrict`, `LocationLat`, `LocationLng`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+      SELECT `Id`
+      FROM `Vehicles`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__vehicle_OwnerId_0='2'], CommandType='Text', CommandTimeout='30']
+      SELECT CONCAT(CONCAT(`u`.`FirstName`, ' '), `u`.`LastName`)
+      FROM `Users` AS `u`
+      WHERE `u`.`Id` = @__vehicle_OwnerId_0
+      LIMIT 1
+info: 06/03/2026 16:00:58.760 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@__vehicle_OwnerId_0='2'], CommandType='Text', CommandTimeout='30']
+      SELECT CONCAT(CONCAT(`u`.`FirstName`, ' '), `u`.`LastName`)
+      FROM `Users` AS `u`
+      WHERE `u`.`Id` = @__vehicle_OwnerId_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__vehicle_Id_0='2' (Nullable = true)], CommandType='Text', CommandTimeout='30']
+      SELECT `r`.`Rating`
+      FROM `Reviews` AS `r`
+      WHERE `r`.`VehicleId` = @__vehicle_Id_0
+info: 06/03/2026 16:00:58.765 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@__vehicle_Id_0='2' (Nullable = true)], CommandType='Text', CommandTimeout='30']
+      SELECT `r`.`Rating`
+      FROM `Reviews` AS `r`
+      WHERE `r`.`VehicleId` = @__vehicle_Id_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='suv' (Size = 4000), @p1='Hyundai' (Nullable = false) (Size = 4000), @p2='Gris' (Nullable = false) (Size = 4000), @p3='2026-06-03T21:00:58.7714079Z' (DbType = DateTime), @p4='SUV espaciosa para viajes' (Size = 4000), @p5='["4x4","GPS","Aire acondicionado"]' (Nullable = false) (Size = 4000), @p6='gasoline' (Nullable = false) (Size = 4000), @p7='["https://picsum.photos/seed/tucson/600/400"]' (Nullable = false) (Size = 4000), @p8='True', @p9='ABC-103' (Nullable = false) (Size = 4000), @p10='Tucson' (Nullable = false) (Size = 4000), @p11='3', @p12='[]' (Nullable = false) (Size = 4000), @p13='5', @p14='active' (Nullable = false) (Size = 4000), @p15='automatic' (Nullable = false) (Size = 4000), @p16='2026-06-03T21:00:58.7714080Z' (DbType = DateTime), @p17='2023', @p18='180', @p19='USD' (Nullable = false) (Size = 4000), @p20='500', @p21='USD' (Nullable = false) (Size = 4000), @p22='Av. Caminos del Inca 500' (Nullable = false) (Size = 4000), @p23='Surco' (Nullable = false) (Size = 4000), @p24='-12.145', @p25='-76.992'], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Vehicles` (`BodyType`, `Brand`, `Color`, `CreatedAt`, `Description`, `FeaturesJson`, `FuelType`, `ImagesJson`, `IsAvailable`, `LicensePlate`, `Model`, `OwnerId`, `RestrictionsJson`, `Seats`, `Status`, `Transmission`, `UpdatedAt`, `Year`, `DailyPrice`, `DailyPriceCurrency`, `DepositAmount`, `DepositAmountCurrency`, `LocationAddress`, `LocationDistrict`, `LocationLat`, `LocationLng`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+      SELECT `Id`
+      FROM `Vehicles`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: 06/03/2026 16:00:58.775 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@p0='suv' (Size = 4000), @p1='Hyundai' (Nullable = false) (Size = 4000), @p2='Gris' (Nullable = false) (Size = 4000), @p3='2026-06-03T21:00:58.7714079Z' (DbType = DateTime), @p4='SUV espaciosa para viajes' (Size = 4000), @p5='["4x4","GPS","Aire acondicionado"]' (Nullable = false) (Size = 4000), @p6='gasoline' (Nullable = false) (Size = 4000), @p7='["https://picsum.photos/seed/tucson/600/400"]' (Nullable = false) (Size = 4000), @p8='True', @p9='ABC-103' (Nullable = false) (Size = 4000), @p10='Tucson' (Nullable = false) (Size = 4000), @p11='3', @p12='[]' (Nullable = false) (Size = 4000), @p13='5', @p14='active' (Nullable = false) (Size = 4000), @p15='automatic' (Nullable = false) (Size = 4000), @p16='2026-06-03T21:00:58.7714080Z' (DbType = DateTime), @p17='2023', @p18='180', @p19='USD' (Nullable = false) (Size = 4000), @p20='500', @p21='USD' (Nullable = false) (Size = 4000), @p22='Av. Caminos del Inca 500' (Nullable = false) (Size = 4000), @p23='Surco' (Nullable = false) (Size = 4000), @p24='-12.145', @p25='-76.992'], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Vehicles` (`BodyType`, `Brand`, `Color`, `CreatedAt`, `Description`, `FeaturesJson`, `FuelType`, `ImagesJson`, `IsAvailable`, `LicensePlate`, `Model`, `OwnerId`, `RestrictionsJson`, `Seats`, `Status`, `Transmission`, `UpdatedAt`, `Year`, `DailyPrice`, `DailyPriceCurrency`, `DepositAmount`, `DepositAmountCurrency`, `LocationAddress`, `LocationDistrict`, `LocationLat`, `LocationLng`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+      SELECT `Id`
+      FROM `Vehicles`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__vehicle_OwnerId_0='3'], CommandType='Text', CommandTimeout='30']
+      SELECT CONCAT(CONCAT(`u`.`FirstName`, ' '), `u`.`LastName`)
+      FROM `Users` AS `u`
+      WHERE `u`.`Id` = @__vehicle_OwnerId_0
+      LIMIT 1
+info: 06/03/2026 16:00:58.792 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@__vehicle_OwnerId_0='3'], CommandType='Text', CommandTimeout='30']
+      SELECT CONCAT(CONCAT(`u`.`FirstName`, ' '), `u`.`LastName`)
+      FROM `Users` AS `u`
+      WHERE `u`.`Id` = @__vehicle_OwnerId_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__vehicle_Id_0='3' (Nullable = true)], CommandType='Text', CommandTimeout='30']
+      SELECT `r`.`Rating`
+      FROM `Reviews` AS `r`
+      WHERE `r`.`VehicleId` = @__vehicle_Id_0
+info: 06/03/2026 16:00:58.797 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@__vehicle_Id_0='3' (Nullable = true)], CommandType='Text', CommandTimeout='30']
+      SELECT `r`.`Rating`
+      FROM `Reviews` AS `r`
+      WHERE `r`.`VehicleId` = @__vehicle_Id_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p0='sedan' (Size = 4000), @p1='Nissan' (Nullable = false) (Size = 4000), @p2='Negro' (Nullable = false) (Size = 4000), @p3='2026-06-03T21:00:58.8029623Z' (DbType = DateTime), @p4='Sedan confiable' (Size = 4000), @p5='["Bluetooth"]' (Nullable = false) (Size = 4000), @p6='gasoline' (Nullable = false) (Size = 4000), @p7='["https://picsum.photos/seed/versa/600/400"]' (Nullable = false) (Size = 4000), @p8='True', @p9='ABC-104' (Nullable = false) (Size = 4000), @p10='Versa' (Nullable = false) (Size = 4000), @p11='4', @p12='[]' (Nullable = false) (Size = 4000), @p13='5', @p14='active' (Nullable = false) (Size = 4000), @p15='automatic' (Nullable = false) (Size = 4000), @p16='2026-06-03T21:00:58.8029624Z' (DbType = DateTime), @p17='2020', @p18='100', @p19='USD' (Nullable = false) (Size = 4000), @p20='250', @p21='USD' (Nullable = false) (Size = 4000), @p22='Av. Grau 300' (Nullable = false) (Size = 4000), @p23='Barranco' (Nullable = false) (Size = 4000), @p24='-12.149', @p25='-77.021'], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Vehicles` (`BodyType`, `Brand`, `Color`, `CreatedAt`, `Description`, `FeaturesJson`, `FuelType`, `ImagesJson`, `IsAvailable`, `LicensePlate`, `Model`, `OwnerId`, `RestrictionsJson`, `Seats`, `Status`, `Transmission`, `UpdatedAt`, `Year`, `DailyPrice`, `DailyPriceCurrency`, `DepositAmount`, `DepositAmountCurrency`, `LocationAddress`, `LocationDistrict`, `LocationLat`, `LocationLng`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+      SELECT `Id`
+      FROM `Vehicles`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: 06/03/2026 16:00:58.806 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@p0='sedan' (Size = 4000), @p1='Nissan' (Nullable = false) (Size = 4000), @p2='Negro' (Nullable = false) (Size = 4000), @p3='2026-06-03T21:00:58.8029623Z' (DbType = DateTime), @p4='Sedan confiable' (Size = 4000), @p5='["Bluetooth"]' (Nullable = false) (Size = 4000), @p6='gasoline' (Nullable = false) (Size = 4000), @p7='["https://picsum.photos/seed/versa/600/400"]' (Nullable = false) (Size = 4000), @p8='True', @p9='ABC-104' (Nullable = false) (Size = 4000), @p10='Versa' (Nullable = false) (Size = 4000), @p11='4', @p12='[]' (Nullable = false) (Size = 4000), @p13='5', @p14='active' (Nullable = false) (Size = 4000), @p15='automatic' (Nullable = false) (Size = 4000), @p16='2026-06-03T21:00:58.8029624Z' (DbType = DateTime), @p17='2020', @p18='100', @p19='USD' (Nullable = false) (Size = 4000), @p20='250', @p21='USD' (Nullable = false) (Size = 4000), @p22='Av. Grau 300' (Nullable = false) (Size = 4000), @p23='Barranco' (Nullable = false) (Size = 4000), @p24='-12.149', @p25='-77.021'], CommandType='Text', CommandTimeout='30']
+      INSERT INTO `Vehicles` (`BodyType`, `Brand`, `Color`, `CreatedAt`, `Description`, `FeaturesJson`, `FuelType`, `ImagesJson`, `IsAvailable`, `LicensePlate`, `Model`, `OwnerId`, `RestrictionsJson`, `Seats`, `Status`, `Transmission`, `UpdatedAt`, `Year`, `DailyPrice`, `DailyPriceCurrency`, `DepositAmount`, `DepositAmountCurrency`, `LocationAddress`, `LocationDistrict`, `LocationLat`, `LocationLng`)
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18, @p19, @p20, @p21, @p22, @p23, @p24, @p25);
+      SELECT `Id`
+      FROM `Vehicles`
+      WHERE ROW_COUNT() = 1 AND `Id` = LAST_INSERT_ID();
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__vehicle_OwnerId_0='4'], CommandType='Text', CommandTimeout='30']
+      SELECT CONCAT(CONCAT(`u`.`FirstName`, ' '), `u`.`LastName`)
+      FROM `Users` AS `u`
+      WHERE `u`.`Id` = @__vehicle_OwnerId_0
+      LIMIT 1
+info: 06/03/2026 16:00:58.823 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@__vehicle_OwnerId_0='4'], CommandType='Text', CommandTimeout='30']
+      SELECT CONCAT(CONCAT(`u`.`FirstName`, ' '), `u`.`LastName`)
+      FROM `Users` AS `u`
+      WHERE `u`.`Id` = @__vehicle_OwnerId_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__vehicle_Id_0='4' (Nullable = true)], CommandType='Text', CommandTimeout='30']
+      SELECT `r`.`Rating`
+      FROM `Reviews` AS `r`
+      WHERE `r`.`VehicleId` = @__vehicle_Id_0
+info: 06/03/2026 16:00:58.829 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@__vehicle_Id_0='4' (Nullable = true)], CommandType='Text', CommandTimeout='30']
+      SELECT `r`.`Rating`
+      FROM `Reviews` AS `r`
+      WHERE `r`.`VehicleId` = @__vehicle_Id_0
+info: 06/03/2026 16:01:13.288 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `v`.`Id`, `v`.`BodyType`, `v`.`Brand`, `v`.`Color`, `v`.`CreatedAt`, `v`.`Description`, `v`.`FeaturesJson`, `v`.`FuelType`, `v`.`ImagesJson`, `v`.`IsAvailable`, `v`.`LicensePlate`, `v`.`Model`, `v`.`OwnerId`, `v`.`RestrictionsJson`, `v`.`Seats`, `v`.`Status`, `v`.`Transmission`, `v`.`UpdatedAt`, `v`.`Year`, `v`.`DailyPrice`, `v`.`DailyPriceCurrency`, `v`.`DepositAmount`, `v`.`DepositAmountCurrency`, `v`.`LocationAddress`, `v`.`LocationDistrict`, `v`.`LocationLat`, `v`.`LocationLng`
+      FROM `Vehicles` AS `v`
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `v`.`Id`, `v`.`BodyType`, `v`.`Brand`, `v`.`Color`, `v`.`CreatedAt`, `v`.`Description`, `v`.`FeaturesJson`, `v`.`FuelType`, `v`.`ImagesJson`, `v`.`IsAvailable`, `v`.`LicensePlate`, `v`.`Model`, `v`.`OwnerId`, `v`.`RestrictionsJson`, `v`.`Seats`, `v`.`Status`, `v`.`Transmission`, `v`.`UpdatedAt`, `v`.`Year`, `v`.`DailyPrice`, `v`.`DailyPriceCurrency`, `v`.`DepositAmount`, `v`.`DepositAmountCurrency`, `v`.`LocationAddress`, `v`.`LocationDistrict`, `v`.`LocationLat`, `v`.`LocationLng`
+      FROM `Vehicles` AS `v`
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, CONCAT(CONCAT(`u`.`FirstName`, ' '), `u`.`LastName`) AS `Name`
+      FROM `Users` AS `u`
+      WHERE `u`.`Id` IN (1, 2, 3, 4)
+info: 06/03/2026 16:01:13.332 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, CONCAT(CONCAT(`u`.`FirstName`, ' '), `u`.`LastName`) AS `Name`
+      FROM `Users` AS `u`
+      WHERE `u`.`Id` IN (1, 2, 3, 4)
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `r`.`VehicleId`, `r`.`Rating`
+      FROM `Reviews` AS `r`
+      WHERE `r`.`VehicleId` IS NOT NULL AND `r`.`VehicleId` IN (1, 2, 3, 4)
+info: 06/03/2026 16:01:13.353 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `r`.`VehicleId`, `r`.`Rating`
+      FROM `Reviews` AS `r`
+      WHERE `r`.`VehicleId` IS NOT NULL AND `r`.`VehicleId` IN (1, 2, 3, 4)
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__bodyType_0='suv' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT `v`.`Id`, `v`.`BodyType`, `v`.`Brand`, `v`.`Color`, `v`.`CreatedAt`, `v`.`Description`, `v`.`FeaturesJson`, `v`.`FuelType`, `v`.`ImagesJson`, `v`.`IsAvailable`, `v`.`LicensePlate`, `v`.`Model`, `v`.`OwnerId`, `v`.`RestrictionsJson`, `v`.`Seats`, `v`.`Status`, `v`.`Transmission`, `v`.`UpdatedAt`, `v`.`Year`, `v`.`DailyPrice`, `v`.`DailyPriceCurrency`, `v`.`DepositAmount`, `v`.`DepositAmountCurrency`, `v`.`LocationAddress`, `v`.`LocationDistrict`, `v`.`LocationLat`, `v`.`LocationLng`
+      FROM `Vehicles` AS `v`
+      WHERE `v`.`BodyType` = @__bodyType_0
+info: 06/03/2026 16:01:13.455 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@__bodyType_0='suv' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT `v`.`Id`, `v`.`BodyType`, `v`.`Brand`, `v`.`Color`, `v`.`CreatedAt`, `v`.`Description`, `v`.`FeaturesJson`, `v`.`FuelType`, `v`.`ImagesJson`, `v`.`IsAvailable`, `v`.`LicensePlate`, `v`.`Model`, `v`.`OwnerId`, `v`.`RestrictionsJson`, `v`.`Seats`, `v`.`Status`, `v`.`Transmission`, `v`.`UpdatedAt`, `v`.`Year`, `v`.`DailyPrice`, `v`.`DailyPriceCurrency`, `v`.`DepositAmount`, `v`.`DepositAmountCurrency`, `v`.`LocationAddress`, `v`.`LocationDistrict`, `v`.`LocationLat`, `v`.`LocationLng`
+      FROM `Vehicles` AS `v`
+      WHERE `v`.`BodyType` = @__bodyType_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, CONCAT(CONCAT(`u`.`FirstName`, ' '), `u`.`LastName`) AS `Name`
+      FROM `Users` AS `u`
+      WHERE `u`.`Id` = 3
+info: 06/03/2026 16:01:13.460 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, CONCAT(CONCAT(`u`.`FirstName`, ' '), `u`.`LastName`) AS `Name`
+      FROM `Users` AS `u`
+      WHERE `u`.`Id` = 3
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `r`.`VehicleId`, `r`.`Rating`
+      FROM `Reviews` AS `r`
+      WHERE `r`.`VehicleId` IS NOT NULL AND (`r`.`VehicleId` = 3)
+info: 06/03/2026 16:01:13.464 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `r`.`VehicleId`, `r`.`Rating`
+      FROM `Reviews` AS `r`
+      WHERE `r`.`VehicleId` IS NOT NULL AND (`r`.`VehicleId` = 3)
+info: 06/03/2026 16:01:13.503 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[@__ToLower_0='rosa@moveo.com' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, `u`.`ActiveRentals`, `u`.`Address`, `u`.`AutoAcceptRentals`, `u`.`Avatar`, `u`.`BankAccountNumber`, `u`.`BankAccountType`, `u`.`BankAccountVerified`, `u`.`BankName`, `u`.`CanceledRentals`, `u`.`CompletedRentals`, `u`.`CreatedAt`, `u`.`Dni`, `u`.`DniVerified`, `u`.`Email`, `u`.`EmailNotifications`, `u`.`EmailVerified`, `u`.`FirstName`, `u`.`InstantBooking`, `u`.`LastName`, `u`.`LicenseNumber`, `u`.`LicenseVerified`, `u`.`MinimumRentalDays`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`PhoneVerified`, `u`.`PreferredLanguage`, `u`.`PushNotifications`, `u`.`Role`, `u`.`SmsNotifications`, `u`.`TotalEarned`, `u`.`TotalRentals`, `u`.`TotalSpent`, `u`.`UpdatedAt`
+      FROM `Users` AS `u`
+      WHERE LOWER(`u`.`Email`) = @__ToLower_0
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@__ToLower_0='rosa@moveo.com' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, `u`.`ActiveRentals`, `u`.`Address`, `u`.`AutoAcceptRentals`, `u`.`Avatar`, `u`.`BankAccountNumber`, `u`.`BankAccountType`, `u`.`BankAccountVerified`, `u`.`BankName`, `u`.`CanceledRentals`, `u`.`CompletedRentals`, `u`.`CreatedAt`, `u`.`Dni`, `u`.`DniVerified`, `u`.`Email`, `u`.`EmailNotifications`, `u`.`EmailVerified`, `u`.`FirstName`, `u`.`InstantBooking`, `u`.`LastName`, `u`.`LicenseNumber`, `u`.`LicenseVerified`, `u`.`MinimumRentalDays`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`PhoneVerified`, `u`.`PreferredLanguage`, `u`.`PushNotifications`, `u`.`Role`, `u`.`SmsNotifications`, `u`.`TotalEarned`, `u`.`TotalRentals`, `u`.`TotalSpent`, `u`.`UpdatedAt`
+      FROM `Users` AS `u`
+      WHERE LOWER(`u`.`Email`) = @__ToLower_0
+      LIMIT 1
+info: 06/03/2026 17:05:12.187 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, `u`.`ActiveRentals`, `u`.`Address`, `u`.`AutoAcceptRentals`, `u`.`Avatar`, `u`.`BankAccountNumber`, `u`.`BankAccountType`, `u`.`BankAccountVerified`, `u`.`BankName`, `u`.`CanceledRentals`, `u`.`CompletedRentals`, `u`.`CreatedAt`, `u`.`Dni`, `u`.`DniVerified`, `u`.`Email`, `u`.`EmailNotifications`, `u`.`EmailVerified`, `u`.`FirstName`, `u`.`InstantBooking`, `u`.`LastName`, `u`.`LicenseNumber`, `u`.`LicenseVerified`, `u`.`MinimumRentalDays`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`PhoneVerified`, `u`.`PreferredLanguage`, `u`.`PushNotifications`, `u`.`Role`, `u`.`SmsNotifications`, `u`.`TotalEarned`, `u`.`TotalRentals`, `u`.`TotalSpent`, `u`.`UpdatedAt`
+      FROM `Users` AS `u`
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (12ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, `u`.`ActiveRentals`, `u`.`Address`, `u`.`AutoAcceptRentals`, `u`.`Avatar`, `u`.`BankAccountNumber`, `u`.`BankAccountType`, `u`.`BankAccountVerified`, `u`.`BankName`, `u`.`CanceledRentals`, `u`.`CompletedRentals`, `u`.`CreatedAt`, `u`.`Dni`, `u`.`DniVerified`, `u`.`Email`, `u`.`EmailNotifications`, `u`.`EmailVerified`, `u`.`FirstName`, `u`.`InstantBooking`, `u`.`LastName`, `u`.`LicenseNumber`, `u`.`LicenseVerified`, `u`.`MinimumRentalDays`, `u`.`PasswordHash`, `u`.`Phone`, `u`.`PhoneVerified`, `u`.`PreferredLanguage`, `u`.`PushNotifications`, `u`.`Role`, `u`.`SmsNotifications`, `u`.`TotalEarned`, `u`.`TotalRentals`, `u`.`TotalSpent`, `u`.`UpdatedAt`
+      FROM `Users` AS `u`
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `v`.`Id`, `v`.`BodyType`, `v`.`Brand`, `v`.`Color`, `v`.`CreatedAt`, `v`.`Description`, `v`.`FeaturesJson`, `v`.`FuelType`, `v`.`ImagesJson`, `v`.`IsAvailable`, `v`.`LicensePlate`, `v`.`Model`, `v`.`OwnerId`, `v`.`RestrictionsJson`, `v`.`Seats`, `v`.`Status`, `v`.`Transmission`, `v`.`UpdatedAt`, `v`.`Year`, `v`.`DailyPrice`, `v`.`DailyPriceCurrency`, `v`.`DepositAmount`, `v`.`DepositAmountCurrency`, `v`.`LocationAddress`, `v`.`LocationDistrict`, `v`.`LocationLat`, `v`.`LocationLng`
+      FROM `Vehicles` AS `v`
+info: 06/03/2026 17:05:12.256 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `v`.`Id`, `v`.`BodyType`, `v`.`Brand`, `v`.`Color`, `v`.`CreatedAt`, `v`.`Description`, `v`.`FeaturesJson`, `v`.`FuelType`, `v`.`ImagesJson`, `v`.`IsAvailable`, `v`.`LicensePlate`, `v`.`Model`, `v`.`OwnerId`, `v`.`RestrictionsJson`, `v`.`Seats`, `v`.`Status`, `v`.`Transmission`, `v`.`UpdatedAt`, `v`.`Year`, `v`.`DailyPrice`, `v`.`DailyPriceCurrency`, `v`.`DepositAmount`, `v`.`DepositAmountCurrency`, `v`.`LocationAddress`, `v`.`LocationDistrict`, `v`.`LocationLat`, `v`.`LocationLng`
+      FROM `Vehicles` AS `v`
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, CONCAT(CONCAT(`u`.`FirstName`, ' '), `u`.`LastName`) AS `Name`
+      FROM `Users` AS `u`
+      WHERE `u`.`Id` IN (1, 2, 3, 4)
+info: 06/03/2026 17:05:12.261 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `u`.`Id`, CONCAT(CONCAT(`u`.`FirstName`, ' '), `u`.`LastName`) AS `Name`
+      FROM `Users` AS `u`
+      WHERE `u`.`Id` IN (1, 2, 3, 4)
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `r`.`VehicleId`, `r`.`Rating`
+      FROM `Reviews` AS `r`
+      WHERE `r`.`VehicleId` IS NOT NULL AND `r`.`VehicleId` IN (1, 2, 3, 4)
+info: 06/03/2026 17:05:12.264 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT `r`.`VehicleId`, `r`.`Rating`
+      FROM `Reviews` AS `r`
+      WHERE `r`.`VehicleId` IS NOT NULL AND `r`.`VehicleId` IN (1, 2, 3, 4)

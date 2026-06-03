@@ -31,6 +31,8 @@ public class Vehicle
 
     public string Status { get; private set; } = "active";
     public string? Description { get; private set; }
+    // Tipo de carrocería para filtrar el catálogo desde la app: "compact" | "sedan" | "suv" | "pickup" | etc.
+    public string? BodyType { get; private set; }
     public bool IsAvailable { get; set; } = true;
 
     public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
@@ -69,6 +71,7 @@ public class Vehicle
         Money dailyPrice,
         Money depositAmount,
         Location location,
+        string? bodyType = null,
         string? description = null,
         IEnumerable<string>? features = null,
         IEnumerable<string>? restrictions = null,
@@ -86,6 +89,7 @@ public class Vehicle
         DailyPrice = dailyPrice;
         DepositAmount = depositAmount;
         Location = location;
+        BodyType = bodyType;
         Description = description;
         Features = features?.ToList() ?? new List<string>();
         Restrictions = restrictions?.ToList() ?? new List<string>();
@@ -111,6 +115,7 @@ public class Vehicle
         Money depositAmount,
         Location location,
         string status,
+        string? bodyType,
         string? description,
         IEnumerable<string>? features,
         IEnumerable<string>? restrictions,
@@ -129,6 +134,7 @@ public class Vehicle
         DepositAmount = depositAmount;
         Location = location;
         Status = status;
+        BodyType = bodyType;
         Description = description;
         Features = features?.ToList() ?? new List<string>();
         Restrictions = restrictions?.ToList() ?? new List<string>();
@@ -139,6 +145,7 @@ public class Vehicle
     public void PartialUpdate(
         decimal? dailyPrice = null,
         string? status = null,
+        string? bodyType = null,
         string? description = null,
         IEnumerable<string>? features = null,
         IEnumerable<string>? restrictions = null,
@@ -146,6 +153,7 @@ public class Vehicle
     {
         if (dailyPrice.HasValue) DailyPrice = new Money(dailyPrice.Value);
         if (status != null) Status = status;
+        if (bodyType != null) BodyType = bodyType;
         if (description != null) Description = description;
         if (features != null) Features = features.ToList();
         if (restrictions != null) Restrictions = restrictions.ToList();

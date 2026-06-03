@@ -32,20 +32,23 @@ public class VehicleRepository : IVehicleRepository
         string? status = null,
         decimal? minPrice = null,
         decimal? maxPrice = null,
-        string? district = null)
+        string? district = null,
+        string? bodyType = null)
     {
         var query = _context.Vehicles.AsQueryable();
 
-        if (ownerId.HasValue) 
+        if (ownerId.HasValue)
             query = query.Where(v => v.OwnerId == ownerId.Value);
-        if (!string.IsNullOrEmpty(status)) 
+        if (!string.IsNullOrEmpty(status))
             query = query.Where(v => v.Status == status);
-        if (minPrice.HasValue) 
+        if (minPrice.HasValue)
             query = query.Where(v => v.DailyPrice.Amount >= minPrice.Value);
-        if (maxPrice.HasValue) 
+        if (maxPrice.HasValue)
             query = query.Where(v => v.DailyPrice.Amount <= maxPrice.Value);
-        if (!string.IsNullOrEmpty(district)) 
+        if (!string.IsNullOrEmpty(district))
             query = query.Where(v => v.Location.District.Contains(district));
+        if (!string.IsNullOrEmpty(bodyType))
+            query = query.Where(v => v.BodyType == bodyType);
 
         return await query.AsNoTracking().ToListAsync();
     }

@@ -1,4 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Moveo_backend.Shared.Infrastructure.Persistence.EFC.Configuration;
@@ -147,18 +150,46 @@ var app = builder.Build();
 
 app.UseDeveloperExceptionPage();
 
-// ------------------------- Ensure Database Created -------------------------
+// ------------------------- Apply EF Core Migrations -------------------------
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     try
     {
-        await db.Database.EnsureCreatedAsync();
-        Console.WriteLine("✅ Base de datos y tablas creadas correctamente (si no existían).");
+        // Transición segura EnsureCreated -> Migraciones:
+        // Si la BD ya tiene tablas (creada antes con EnsureCreated) pero NO tiene
+        // historial de migraciones, hacemos un "baseline": marcamos como aplicadas
+        // todas las migraciones previas a esta sesión y solo aplicamos las nuevas,
+        // sin recrear tablas ni perder datos.
+        var creator = db.GetService<IRelationalDatabaseCreator>();
+        var historyRepo = db.GetService<IHistoryRepository>();
+
+        var dbExists = await creator.ExistsAsync();
+        var hasTables = dbExists && await creator.HasTablesAsync();
+        var historyExists = dbExists && await historyRepo.ExistsAsync();
+
+        if (hasTables && !historyExists)
+        {
+            var allMigrations = db.Database.GetMigrations().ToList();
+            // El esquema de EnsureCreated refleja todas las migraciones excepto la nueva
+            // (la última generada en esta sesión). Marcamos las previas como aplicadas.
+            var baseline = allMigrations.Take(allMigrations.Count - 1).ToList();
+
+            await db.Database.ExecuteSqlRawAsync(historyRepo.GetCreateIfNotExistsScript());
+            foreach (var migrationId in baseline)
+            {
+                var row = new HistoryRow(migrationId, ProductInfo.GetVersion());
+                await db.Database.ExecuteSqlRawAsync(historyRepo.GetInsertScript(row));
+            }
+            Console.WriteLine($"ℹ️  Baseline de migraciones aplicado ({baseline.Count} previas marcadas como ya aplicadas).");
+        }
+
+        await db.Database.MigrateAsync();
+        Console.WriteLine("✅ Migraciones aplicadas correctamente (esquema actualizado sin perder datos).");
     }
     catch (Exception ex)
     {
-        Console.WriteLine("❌ Error al crear la base de datos o las tablas:");
+        Console.WriteLine("❌ Error al aplicar las migraciones de la base de datos:");
         Console.WriteLine(ex.Message);
         if (ex.InnerException != null)
             Console.WriteLine($"InnerException: {ex.InnerException.Message}");

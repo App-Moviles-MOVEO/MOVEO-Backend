@@ -13,7 +13,8 @@ public interface IVehicleService
         string? status = null,
         decimal? minPrice = null,
         decimal? maxPrice = null,
-        string? district = null);
+        string? district = null,
+        string? bodyType = null);
     Task<IEnumerable<Vehicle>> GetByOwnerIdAsync(int ownerId);
 
     // Commands

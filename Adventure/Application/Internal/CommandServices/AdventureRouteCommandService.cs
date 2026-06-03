@@ -32,6 +32,17 @@ public class AdventureRouteCommandService(
         return adventureRoute;
     }
 
+    public async Task<AdventureRoute?> Handle(BookAdventureRouteSeatCommand command)
+    {
+        var adventureRoute = await adventureRouteRepository.FindByIdAsync(command.Id);
+        if (adventureRoute is null) return null;
+
+        adventureRoute.BookSeats(command.Seats);
+        adventureRouteRepository.Update(adventureRoute);
+        await unitOfWork.CompleteAsync();
+        return adventureRoute;
+    }
+
     public async Task<bool> Handle(DeleteAdventureRouteCommand command)
     {
         var adventureRoute = await adventureRouteRepository.FindByIdAsync(command.Id);

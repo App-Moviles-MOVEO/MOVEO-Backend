@@ -22,7 +22,17 @@ public static class UpdateAdventureRouteCommandFromResourceAssembler
             resource.ImageUrl,
             resource.Tags,
             resource.Featured,
-            resource.MaxCapacity
+            resource.MaxCapacity,
+            resource.DepartureDate,
+            resource.DepartureTime,
+            resource.SeatsTotal,
+            resource.SeatsAvailable,
+            resource.PricePerSeat,
+            resource.OnlyWomen,
+            resource.Community,
+            resource.Lat,
+            resource.Lng,
+            resource.Status
         );
     }
 }

@@ -15,5 +15,15 @@ public record CreateAdventureRouteResource(
     string? ImageUrl = null,
     List<string>? Tags = null,
     bool Featured = false,
-    int? MaxCapacity = null
+    int? MaxCapacity = null,
+    // Carpool (opcional)
+    DateTime? DepartureDate = null,
+    string? DepartureTime = null,
+    int? SeatsTotal = null,
+    int? SeatsAvailable = null,
+    decimal? PricePerSeat = null,
+    bool OnlyWomen = false,
+    string? Community = null,
+    double? Lat = null,
+    double? Lng = null
 );

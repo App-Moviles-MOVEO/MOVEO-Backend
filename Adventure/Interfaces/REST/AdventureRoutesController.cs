@@ -44,7 +44,8 @@ public class AdventureRoutesController(
         [FromQuery] int? ownerId = null,
         [FromQuery] string? type = null,
         [FromQuery] string? difficulty = null,
-        [FromQuery] bool? featured = null)
+        [FromQuery] bool? featured = null,
+        [FromQuery] bool? onlyWomen = null)
     {
         IEnumerable<Domain.Model.Aggregate.AdventureRoute> routes;
 
@@ -69,8 +70,42 @@ public class AdventureRoutesController(
             routes = await adventureRouteQueryService.Handle(new GetAllAdventureRoutesQuery());
         }
 
+        // Filtro de carpool: solo mujeres
+        if (onlyWomen == true)
+        {
+            routes = routes.Where(r => r.OnlyWomen);
+        }
+
         var resources = routes.Select(AdventureRouteResourceFromEntityAssembler.ToResourceFromEntity);
         return Ok(resources);
+    }
+
+    [HttpPost("{routeId:int}/book")]
+    [SwaggerOperation(
+        Summary = "Book carpool seats",
+        Description = "Reserva asientos de carpool en una ruta (descuenta SeatsAvailable)",
+        OperationId = "BookAdventureRouteSeat"
+    )]
+    [SwaggerResponse(StatusCodes.Status200OK, "Asientos reservados", typeof(AdventureRouteResource))]
+    [SwaggerResponse(StatusCodes.Status400BadRequest, "No hay asientos disponibles")]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "Ruta no encontrada")]
+    public async Task<IActionResult> BookSeat([FromRoute] int routeId, [FromBody] BookSeatResource resource)
+    {
+        try
+        {
+            var route = await adventureRouteCommandService.Handle(
+                new BookAdventureRouteSeatCommand(routeId, resource?.Seats ?? 1));
+            if (route is null) return NotFound();
+            return Ok(AdventureRouteResourceFromEntityAssembler.ToResourceFromEntity(route));
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
     }
 
     [HttpPost]

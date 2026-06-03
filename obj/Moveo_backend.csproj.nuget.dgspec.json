@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Desarrollo\\pc1-matricula\\PFLAVOR-Backend\\Moveo_backend\\Moveo_backend.csproj": {}
+    "C:\\Desarrollo\\cosas xd\\MOVEO-Backend\\Moveo_backend.csproj": {}
   },
   "projects": {
-    "C:\\Desarrollo\\pc1-matricula\\PFLAVOR-Backend\\Moveo_backend\\Moveo_backend.csproj": {
+    "C:\\Desarrollo\\cosas xd\\MOVEO-Backend\\Moveo_backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Desarrollo\\pc1-matricula\\PFLAVOR-Backend\\Moveo_backend\\Moveo_backend.csproj",
+        "projectUniqueName": "C:\\Desarrollo\\cosas xd\\MOVEO-Backend\\Moveo_backend.csproj",
         "projectName": "Moveo_backend",
-        "projectPath": "C:\\Desarrollo\\pc1-matricula\\PFLAVOR-Backend\\Moveo_backend\\Moveo_backend.csproj",
+        "projectPath": "C:\\Desarrollo\\cosas xd\\MOVEO-Backend\\Moveo_backend.csproj",
         "packagesPath": "C:\\Users\\goku6\\.nuget\\packages\\",
-        "outputPath": "C:\\Desarrollo\\pc1-matricula\\PFLAVOR-Backend\\Moveo_backend\\obj\\",
+        "outputPath": "C:\\Desarrollo\\cosas xd\\MOVEO-Backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

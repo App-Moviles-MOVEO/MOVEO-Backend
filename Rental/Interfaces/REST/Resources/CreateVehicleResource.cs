@@ -23,5 +23,6 @@ public record CreateVehicleResource(
     string? Description,
     List<string>? Images,
     List<string>? Features,
-    List<string>? Restrictions
+    List<string>? Restrictions,
+    string? BodyType = null
 );

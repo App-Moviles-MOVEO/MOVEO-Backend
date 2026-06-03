@@ -8,5 +8,6 @@ public record UserReviewResource(
     int Rating,
     string Comment,
     string Type,
-    DateTime CreatedAt
+    DateTime CreatedAt,
+    string? ReviewerName = null
 );

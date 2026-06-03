@@ -26,6 +26,21 @@ public class AdventureRoute
     public int? MaxCapacity { get; private set; }
     public double Rating { get; private set; }
     public int ReviewsCount { get; private set; }
+
+    // -------------------- Campos de Carpooling (reuso de esta tabla, opción B) --------------------
+    // Esta entidad sirve tanto para "rutas de aventura" como para "viajes compartidos (carpool)".
+    // Origin/Destination de carpool ≈ StartLocation/EndLocation. PricePerSeat ≈ por asiento.
+    public DateTime? DepartureDate { get; private set; }      // fecha del viaje
+    public string? DepartureTime { get; private set; }        // hora "HH:mm"
+    public int? SeatsTotal { get; private set; }              // asientos ofrecidos
+    public int? SeatsAvailable { get; private set; }          // asientos libres restantes
+    public decimal? PricePerSeat { get; private set; }        // precio por asiento
+    public bool OnlyWomen { get; private set; }               // viaje solo para mujeres
+    public string? Community { get; private set; }            // comunidad/grupo
+    public double? Lat { get; private set; }                  // punto de partida (lat)
+    public double? Lng { get; private set; }                  // punto de partida (lng)
+    public string Status { get; private set; } = "active";    // "active" | "full" | "cancelled" | "completed"
+
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
 
@@ -104,6 +119,17 @@ public class AdventureRoute
         MaxCapacity = command.MaxCapacity;
         Rating = 0;
         ReviewsCount = 0;
+        // Carpool
+        DepartureDate = command.DepartureDate;
+        DepartureTime = command.DepartureTime;
+        SeatsTotal = command.SeatsTotal;
+        SeatsAvailable = command.SeatsAvailable ?? command.SeatsTotal;
+        PricePerSeat = command.PricePerSeat;
+        OnlyWomen = command.OnlyWomen;
+        Community = command.Community;
+        Lat = command.Lat;
+        Lng = command.Lng;
+        Status = "active";
     }
 
     public void Update(UpdateAdventureRouteCommand command)
@@ -122,6 +148,17 @@ public class AdventureRoute
         Tags = command.Tags ?? new List<string>();
         Featured = command.Featured;
         MaxCapacity = command.MaxCapacity;
+        // Carpool
+        DepartureDate = command.DepartureDate;
+        DepartureTime = command.DepartureTime;
+        SeatsTotal = command.SeatsTotal;
+        SeatsAvailable = command.SeatsAvailable ?? command.SeatsTotal;
+        PricePerSeat = command.PricePerSeat;
+        OnlyWomen = command.OnlyWomen;
+        Community = command.Community;
+        Lat = command.Lat;
+        Lng = command.Lng;
+        if (!string.IsNullOrEmpty(command.Status)) Status = command.Status!;
         UpdatedAt = DateTime.UtcNow;
     }
 
@@ -129,6 +166,23 @@ public class AdventureRoute
     {
         Rating = newRating;
         ReviewsCount = newReviewsCount;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    /// <summary>
+    /// Reserva una cantidad de asientos de carpool (descuenta de SeatsAvailable).
+    /// Lanza si no hay asientos suficientes.
+    /// </summary>
+    public void BookSeats(int seats)
+    {
+        if (seats < 1) throw new ArgumentException("Debe reservar al menos 1 asiento");
+        if (SeatsAvailable is null)
+            throw new InvalidOperationException("Esta ruta no maneja asientos de carpool");
+        if (SeatsAvailable < seats)
+            throw new InvalidOperationException("No hay asientos disponibles suficientes");
+
+        SeatsAvailable -= seats;
+        if (SeatsAvailable <= 0) Status = "full";
         UpdatedAt = DateTime.UtcNow;
     }
 }

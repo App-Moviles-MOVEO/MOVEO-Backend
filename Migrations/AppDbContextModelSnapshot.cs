@@ -30,8 +30,17 @@ namespace Moveo_backend.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Community")
+                        .HasColumnType("longtext");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DepartureDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("DepartureTime")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -57,6 +66,12 @@ namespace Moveo_backend.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("longtext");
 
+                    b.Property<double?>("Lat")
+                        .HasColumnType("double");
+
+                    b.Property<double?>("Lng")
+                        .HasColumnType("double");
+
                     b.Property<int?>("MaxCapacity")
                         .HasColumnType("int");
 
@@ -64,8 +79,14 @@ namespace Moveo_backend.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<bool>("OnlyWomen")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int>("OwnerId")
                         .HasColumnType("int");
+
+                    b.Property<decimal?>("PricePerSeat")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<double>("Rating")
                         .HasColumnType("double");
@@ -73,7 +94,17 @@ namespace Moveo_backend.Migrations
                     b.Property<int>("ReviewsCount")
                         .HasColumnType("int");
 
+                    b.Property<int?>("SeatsAvailable")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SeatsTotal")
+                        .HasColumnType("int");
+
                     b.Property<string>("StartLocation")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -102,6 +133,40 @@ namespace Moveo_backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AdventureRoutes");
+                });
+
+            modelBuilder.Entity("Moveo_backend.Chat.Domain.Model.Aggregate.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("Read")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("ReadAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("ReceiverId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SenderId", "ReceiverId");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("Moveo_backend.Notification.Domain.Model.Aggregate.Notification", b =>
@@ -328,6 +393,9 @@ namespace Moveo_backend.Migrations
                         .HasColumnType("int");
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("BodyType")
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Brand")
                         .IsRequired()

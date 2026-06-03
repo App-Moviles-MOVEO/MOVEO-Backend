@@ -18,4 +18,5 @@ public record CreateVehicleCommand(
     string? Description,
     List<string> Features,
     List<string> Restrictions,
-    List<string> Images);
+    List<string> Images,
+    string? BodyType = null);

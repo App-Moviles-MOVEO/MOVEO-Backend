@@ -1,11 +1,14 @@
 using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Moveo_backend.UserReview.Domain.Model.Commands;
 using Moveo_backend.UserReview.Domain.Model.Queries;
 using Moveo_backend.UserReview.Domain.Services;
 using Moveo_backend.UserReview.Interfaces.REST.Resources;
 using Moveo_backend.UserReview.Interfaces.REST.Transform;
+using Moveo_backend.Shared.Infrastructure.Persistence.EFC.Configuration;
 using Swashbuckle.AspNetCore.Annotations;
+using UserReviewEntity = Moveo_backend.UserReview.Domain.Model.Aggregate.UserReview;
 
 namespace Moveo_backend.UserReview.Interfaces.REST;
 
@@ -13,10 +16,22 @@ namespace Moveo_backend.UserReview.Interfaces.REST;
 [Route("api/v1/user-reviews")]
 [Produces(MediaTypeNames.Application.Json)]
 [SwaggerTag("User Reviews - Ratings between users (owner ↔ renter)")]
-public class UserReviewsController(
-    IUserReviewCommandService userReviewCommandService,
-    IUserReviewQueryService userReviewQueryService) : ControllerBase
+public class UserReviewsController : ControllerBase
 {
+    private readonly IUserReviewCommandService _userReviewCommandService;
+    private readonly IUserReviewQueryService _userReviewQueryService;
+    private readonly AppDbContext _context;
+
+    public UserReviewsController(
+        IUserReviewCommandService userReviewCommandService,
+        IUserReviewQueryService userReviewQueryService,
+        AppDbContext context)
+    {
+        _userReviewCommandService = userReviewCommandService;
+        _userReviewQueryService = userReviewQueryService;
+        _context = context;
+    }
+
     [HttpGet]
     [SwaggerOperation(
         Summary = "Get all user reviews",
@@ -30,31 +45,30 @@ public class UserReviewsController(
         [FromQuery] int? rentalId = null,
         [FromQuery] string? type = null)
     {
-        IEnumerable<Domain.Model.Aggregate.UserReview> reviews;
+        IEnumerable<UserReviewEntity> reviews;
 
         if (reviewedUserId.HasValue)
         {
             var query = new GetUserReviewsByReviewedUserIdQuery(reviewedUserId.Value, type);
-            reviews = await userReviewQueryService.Handle(query);
+            reviews = await _userReviewQueryService.Handle(query);
         }
         else if (reviewerId.HasValue)
         {
             var query = new GetUserReviewsByReviewerIdQuery(reviewerId.Value);
-            reviews = await userReviewQueryService.Handle(query);
+            reviews = await _userReviewQueryService.Handle(query);
         }
         else if (rentalId.HasValue)
         {
             var query = new GetUserReviewsByRentalIdQuery(rentalId.Value);
-            reviews = await userReviewQueryService.Handle(query);
+            reviews = await _userReviewQueryService.Handle(query);
         }
         else
         {
             var query = new GetAllUserReviewsQuery();
-            reviews = await userReviewQueryService.Handle(query);
+            reviews = await _userReviewQueryService.Handle(query);
         }
 
-        var resources = reviews.Select(UserReviewResourceFromEntityAssembler.ToResourceFromEntity);
-        return Ok(resources);
+        return Ok(await MapManyAsync(reviews.ToList()));
     }
 
     [HttpGet("{id:int}")]
@@ -68,10 +82,9 @@ public class UserReviewsController(
     public async Task<IActionResult> GetUserReviewById([FromRoute] int id)
     {
         var query = new GetUserReviewByIdQuery(id);
-        var review = await userReviewQueryService.Handle(query);
+        var review = await _userReviewQueryService.Handle(query);
         if (review is null) return NotFound();
-        var resource = UserReviewResourceFromEntityAssembler.ToResourceFromEntity(review);
-        return Ok(resource);
+        return Ok(await MapOneAsync(review));
     }
 
     [HttpPost]
@@ -85,9 +98,9 @@ public class UserReviewsController(
     public async Task<IActionResult> CreateUserReview([FromBody] CreateUserReviewResource resource)
     {
         var command = CreateUserReviewCommandFromResourceAssembler.ToCommandFromResource(resource);
-        var review = await userReviewCommandService.Handle(command);
+        var review = await _userReviewCommandService.Handle(command);
         if (review is null) return BadRequest();
-        var reviewResource = UserReviewResourceFromEntityAssembler.ToResourceFromEntity(review);
+        var reviewResource = await MapOneAsync(review);
         return CreatedAtAction(nameof(GetUserReviewById), new { id = review.Id }, reviewResource);
     }
 
@@ -102,10 +115,9 @@ public class UserReviewsController(
     public async Task<IActionResult> UpdateUserReview([FromRoute] int id, [FromBody] UpdateUserReviewResource resource)
     {
         var command = UpdateUserReviewCommandFromResourceAssembler.ToCommandFromResource(id, resource);
-        var review = await userReviewCommandService.Handle(command);
+        var review = await _userReviewCommandService.Handle(command);
         if (review is null) return NotFound();
-        var reviewResource = UserReviewResourceFromEntityAssembler.ToResourceFromEntity(review);
-        return Ok(reviewResource);
+        return Ok(await MapOneAsync(review));
     }
 
     [HttpDelete("{id:int}")]
@@ -119,8 +131,36 @@ public class UserReviewsController(
     public async Task<IActionResult> DeleteUserReview([FromRoute] int id)
     {
         var command = new DeleteUserReviewCommand(id);
-        var deleted = await userReviewCommandService.Handle(command);
+        var deleted = await _userReviewCommandService.Handle(command);
         if (!deleted) return NotFound();
         return NoContent();
+    }
+
+    // -------------------- Enriquecimiento (reviewerName) --------------------
+
+    private async Task<UserReviewResource> MapOneAsync(UserReviewEntity review)
+    {
+        var name = await _context.Users
+            .Where(u => u.Id == review.ReviewerId)
+            .Select(u => u.FirstName + " " + u.LastName)
+            .FirstOrDefaultAsync();
+        return UserReviewResourceFromEntityAssembler.ToResourceFromEntity(review, name);
+    }
+
+    private async Task<List<UserReviewResource>> MapManyAsync(List<UserReviewEntity> reviews)
+    {
+        if (reviews.Count == 0) return new List<UserReviewResource>();
+
+        var reviewerIds = reviews.Select(r => r.ReviewerId).Distinct().ToList();
+        var names = await _context.Users
+            .Where(u => reviewerIds.Contains(u.Id))
+            .Select(u => new { u.Id, Name = u.FirstName + " " + u.LastName })
+            .ToDictionaryAsync(x => x.Id, x => x.Name);
+
+        return reviews.Select(r =>
+        {
+            names.TryGetValue(r.ReviewerId, out var name);
+            return UserReviewResourceFromEntityAssembler.ToResourceFromEntity(r, name);
+        }).ToList();
     }
 }

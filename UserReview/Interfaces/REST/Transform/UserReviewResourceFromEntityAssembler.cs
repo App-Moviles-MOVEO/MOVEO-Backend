@@ -5,7 +5,7 @@ namespace Moveo_backend.UserReview.Interfaces.REST.Transform;
 
 public static class UserReviewResourceFromEntityAssembler
 {
-    public static UserReviewResource ToResourceFromEntity(UserReviewEntity entity)
+    public static UserReviewResource ToResourceFromEntity(UserReviewEntity entity, string? reviewerName = null)
     {
         return new UserReviewResource(
             entity.Id,
@@ -15,7 +15,8 @@ public static class UserReviewResourceFromEntityAssembler
             entity.Rating,
             entity.Comment,
             entity.Type,
-            entity.CreatedAt
+            entity.CreatedAt,
+            reviewerName
         );
     }
 }

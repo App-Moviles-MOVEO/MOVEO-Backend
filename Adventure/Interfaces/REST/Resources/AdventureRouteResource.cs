@@ -20,5 +20,16 @@ public record AdventureRouteResource(
     double Rating,
     int ReviewsCount,
     DateTime CreatedAt,
-    DateTime UpdatedAt
+    DateTime UpdatedAt,
+    // Carpool
+    DateTime? DepartureDate = null,
+    string? DepartureTime = null,
+    int? SeatsTotal = null,
+    int? SeatsAvailable = null,
+    decimal? PricePerSeat = null,
+    bool OnlyWomen = false,
+    string? Community = null,
+    double? Lat = null,
+    double? Lng = null,
+    string Status = "active"
 );

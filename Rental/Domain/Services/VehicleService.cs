@@ -20,9 +20,10 @@ public class VehicleService : IVehicleService
         string? status = null,
         decimal? minPrice = null,
         decimal? maxPrice = null,
-        string? district = null)
+        string? district = null,
+        string? bodyType = null)
     {
-        return _vehicleRepository.GetFilteredAsync(ownerId, status, minPrice, maxPrice, district);
+        return _vehicleRepository.GetFilteredAsync(ownerId, status, minPrice, maxPrice, district, bodyType);
     }
 
     public Task<Vehicle?> GetByIdAsync(int id) => _vehicleRepository.GetByIdAsync(id);
@@ -45,6 +46,7 @@ public class VehicleService : IVehicleService
             command.DailyPrice,
             command.DepositAmount,
             command.Location,
+            command.BodyType,
             command.Description,
             command.Features,
             command.Restrictions,
@@ -74,6 +76,7 @@ public class VehicleService : IVehicleService
             command.DepositAmount,
             command.Location,
             command.Status,
+            command.BodyType,
             command.Description,
             command.Features,
             command.Restrictions,
@@ -92,6 +95,7 @@ public class VehicleService : IVehicleService
         vehicle.PartialUpdate(
             command.DailyPrice?.Amount,
             command.Status,
+            command.BodyType,
             command.Description,
             command.Features,
             command.Restrictions,

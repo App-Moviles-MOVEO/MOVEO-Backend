@@ -20,5 +20,10 @@ public record VehicleResource(
     List<string>? Features,
     List<string>? Restrictions,
     DateTime CreatedAt,
-    DateTime UpdatedAt
+    DateTime UpdatedAt,
+    // Campos enriquecidos vía JOIN/cálculo para la app móvil
+    string? BodyType = null,
+    string? OwnerName = null,
+    double Rating = 0,
+    int ReviewsCount = 0
 );

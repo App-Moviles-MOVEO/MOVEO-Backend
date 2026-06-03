@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Moveo_backend.Rental.Domain.Model.Aggregates;
 using Moveo_backend.Rental.Domain.Model.Commands;
 using Moveo_backend.Rental.Domain.Model.Queries;
 using Moveo_backend.Rental.Domain.Services;
 using Moveo_backend.Rental.Interfaces.REST.Resources;
 using Moveo_backend.Rental.Interfaces.REST.Transform;
+using Moveo_backend.Shared.Infrastructure.Persistence.EFC.Configuration;
 
 namespace Moveo_backend.Rental.Interfaces.REST;
 
@@ -13,13 +16,16 @@ public class ReviewsController : ControllerBase
 {
     private readonly IReviewCommandService _reviewCommandService;
     private readonly IReviewQueryService _reviewQueryService;
+    private readonly AppDbContext _context;
 
     public ReviewsController(
         IReviewCommandService reviewCommandService,
-        IReviewQueryService reviewQueryService)
+        IReviewQueryService reviewQueryService,
+        AppDbContext context)
     {
         _reviewCommandService = reviewCommandService;
         _reviewQueryService = reviewQueryService;
+        _context = context;
     }
 
     [HttpGet]
@@ -29,8 +35,8 @@ public class ReviewsController : ControllerBase
         [FromQuery] int? reviewerId = null,
         [FromQuery] int? revieweeId = null)
     {
-        IEnumerable<Domain.Model.Aggregates.Review> reviews;
-        
+        IEnumerable<Review> reviews;
+
         if (rentalId.HasValue)
         {
             var query = new GetReviewsByRentalIdQuery(rentalId.Value);
@@ -51,15 +57,14 @@ public class ReviewsController : ControllerBase
             var query = new GetAllReviewsQuery();
             reviews = await _reviewQueryService.Handle(query);
         }
-        
+
         // Filter by vehicleId if provided
         if (vehicleId.HasValue)
         {
             reviews = reviews.Where(r => r.VehicleId == vehicleId.Value);
         }
-        
-        var resources = reviews.Select(ReviewResourceFromEntityAssembler.ToResourceFromEntity);
-        return Ok(resources);
+
+        return Ok(await MapManyAsync(reviews.ToList()));
     }
 
     [HttpGet("{id:int}")]
@@ -68,8 +73,7 @@ public class ReviewsController : ControllerBase
         var query = new GetReviewByIdQuery(id);
         var review = await _reviewQueryService.Handle(query);
         if (review == null) return NotFound();
-        var resource = ReviewResourceFromEntityAssembler.ToResourceFromEntity(review);
-        return Ok(resource);
+        return Ok(await MapOneAsync(review));
     }
 
     [HttpGet("rental/{rentalId:int}")]
@@ -77,8 +81,7 @@ public class ReviewsController : ControllerBase
     {
         var query = new GetReviewsByRentalIdQuery(rentalId);
         var reviews = await _reviewQueryService.Handle(query);
-        var resources = reviews.Select(ReviewResourceFromEntityAssembler.ToResourceFromEntity);
-        return Ok(resources);
+        return Ok(await MapManyAsync(reviews.ToList()));
     }
 
     [HttpGet("reviewer/{reviewerId:int}")]
@@ -86,8 +89,7 @@ public class ReviewsController : ControllerBase
     {
         var query = new GetReviewsByReviewerIdQuery(reviewerId);
         var reviews = await _reviewQueryService.Handle(query);
-        var resources = reviews.Select(ReviewResourceFromEntityAssembler.ToResourceFromEntity);
-        return Ok(resources);
+        return Ok(await MapManyAsync(reviews.ToList()));
     }
 
     [HttpGet("reviewee/{revieweeId:int}")]
@@ -95,8 +97,7 @@ public class ReviewsController : ControllerBase
     {
         var query = new GetReviewsByRevieweeIdQuery(revieweeId);
         var reviews = await _reviewQueryService.Handle(query);
-        var resources = reviews.Select(ReviewResourceFromEntityAssembler.ToResourceFromEntity);
-        return Ok(resources);
+        return Ok(await MapManyAsync(reviews.ToList()));
     }
 
     [HttpPost]
@@ -105,7 +106,7 @@ public class ReviewsController : ControllerBase
         var command = CreateReviewCommandFromResourceAssembler.ToCommandFromResource(resource);
         var review = await _reviewCommandService.Handle(command);
         if (review == null) return BadRequest();
-        var reviewResource = ReviewResourceFromEntityAssembler.ToResourceFromEntity(review);
+        var reviewResource = await MapOneAsync(review);
         return CreatedAtAction(nameof(GetReviewById), new { id = review.Id }, reviewResource);
     }
 
@@ -115,8 +116,7 @@ public class ReviewsController : ControllerBase
         var command = UpdateReviewCommandFromResourceAssembler.ToCommandFromResource(id, resource);
         var review = await _reviewCommandService.Handle(command);
         if (review == null) return NotFound();
-        var reviewResource = ReviewResourceFromEntityAssembler.ToResourceFromEntity(review);
-        return Ok(reviewResource);
+        return Ok(await MapOneAsync(review));
     }
 
     [HttpDelete("{id:int}")]
@@ -126,5 +126,33 @@ public class ReviewsController : ControllerBase
         var result = await _reviewCommandService.Handle(command);
         if (!result) return NotFound();
         return NoContent();
+    }
+
+    // -------------------- Enriquecimiento (reviewerName) --------------------
+
+    private async Task<ReviewResource> MapOneAsync(Review review)
+    {
+        var name = await _context.Users
+            .Where(u => u.Id == review.ReviewerId)
+            .Select(u => u.FirstName + " " + u.LastName)
+            .FirstOrDefaultAsync();
+        return ReviewResourceFromEntityAssembler.ToResourceFromEntity(review, name);
+    }
+
+    private async Task<List<ReviewResource>> MapManyAsync(List<Review> reviews)
+    {
+        if (reviews.Count == 0) return new List<ReviewResource>();
+
+        var reviewerIds = reviews.Select(r => r.ReviewerId).Distinct().ToList();
+        var names = await _context.Users
+            .Where(u => reviewerIds.Contains(u.Id))
+            .Select(u => new { u.Id, Name = u.FirstName + " " + u.LastName })
+            .ToDictionaryAsync(x => x.Id, x => x.Name);
+
+        return reviews.Select(r =>
+        {
+            names.TryGetValue(r.ReviewerId, out var name);
+            return ReviewResourceFromEntityAssembler.ToResourceFromEntity(r, name);
+        }).ToList();
     }
 }

@@ -7,5 +7,6 @@ public interface IAdventureRouteCommandService
 {
     Task<AdventureRoute?> Handle(CreateAdventureRouteCommand command);
     Task<AdventureRoute?> Handle(UpdateAdventureRouteCommand command);
+    Task<AdventureRoute?> Handle(BookAdventureRouteSeatCommand command);
     Task<bool> Handle(DeleteAdventureRouteCommand command);
 }

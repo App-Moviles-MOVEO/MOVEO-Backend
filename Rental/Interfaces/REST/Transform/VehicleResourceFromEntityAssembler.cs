@@ -5,7 +5,11 @@ namespace Moveo_backend.Rental.Interfaces.REST.Transform;
 
 public static class VehicleResourceFromEntityAssembler
 {
-    public static VehicleResource ToResourceFromEntity(Vehicle vehicle)
+    public static VehicleResource ToResourceFromEntity(
+        Vehicle vehicle,
+        string? ownerName = null,
+        double rating = 0,
+        int reviewsCount = 0)
     {
         return new VehicleResource(
             vehicle.Id,
@@ -28,11 +32,15 @@ public static class VehicleResourceFromEntityAssembler
             vehicle.DepositAmount?.Amount,
             vehicle.Status,
             vehicle.Description,
-            vehicle.Images,
-            vehicle.Features,
-            vehicle.Restrictions,
+            vehicle.Images ?? new List<string>(),
+            vehicle.Features ?? new List<string>(),
+            vehicle.Restrictions ?? new List<string>(),
             vehicle.CreatedAt,
-            vehicle.UpdatedAt
+            vehicle.UpdatedAt,
+            vehicle.BodyType,
+            ownerName,
+            rating,
+            reviewsCount
         );
     }
 }

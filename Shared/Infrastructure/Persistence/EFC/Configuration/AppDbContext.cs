@@ -2,6 +2,7 @@ using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Moveo_backend.Adventure.Domain.Model.Aggregate;
+using Moveo_backend.Chat.Domain.Model.Aggregate;
 using Moveo_backend.Notification.Domain.Model.Aggregate;
 using Moveo_backend.Rental.Domain.Model.Aggregates;
 using Moveo_backend.Rental.Domain.Model.ValueObjects;
@@ -29,6 +30,7 @@ public class AppDbContext : DbContext
     public DbSet<TicketMessage> TicketMessages { get; set; } = null!;
     public DbSet<Review> Reviews { get; set; } = null!;
     public DbSet<UserReviewEntity> UserReviews { get; set; } = null!;
+    public DbSet<Message> Messages { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -150,6 +152,8 @@ public class AppDbContext : DbContext
             entity.Property(a => a.Type).IsRequired();
             entity.Property(a => a.Difficulty).IsRequired();
             entity.Property(a => a.EstimatedCost).HasColumnType("decimal(18,2)");
+            entity.Property(a => a.PricePerSeat).HasColumnType("decimal(18,2)");
+            entity.Property(a => a.Status);
             entity.Property(a => a.Tags).HasColumnType("json");
         });
 
@@ -221,6 +225,20 @@ public class AppDbContext : DbContext
             entity.Property(r => r.Comment).IsRequired();
             entity.Property(r => r.Type).IsRequired();
             entity.Property(r => r.CreatedAt).IsRequired();
+        });
+
+        // -------------------- MESSAGE (Chat) --------------------
+        modelBuilder.Entity<Message>(entity =>
+        {
+            entity.HasKey(m => m.Id);
+            entity.Property(m => m.Id).ValueGeneratedOnAdd();
+            entity.Property(m => m.SenderId).IsRequired();
+            entity.Property(m => m.ReceiverId).IsRequired();
+            entity.Property(m => m.Content).IsRequired();
+            entity.Property(m => m.Read);
+            entity.Property(m => m.CreatedAt);
+            entity.Property(m => m.ReadAt);
+            entity.HasIndex(m => new { m.SenderId, m.ReceiverId });
         });
     }
 }

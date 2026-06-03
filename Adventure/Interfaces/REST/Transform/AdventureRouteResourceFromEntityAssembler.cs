@@ -27,7 +27,17 @@ public static class AdventureRouteResourceFromEntityAssembler
             entity.Rating,
             entity.ReviewsCount,
             entity.CreatedAt,
-            entity.UpdatedAt
+            entity.UpdatedAt,
+            entity.DepartureDate,
+            entity.DepartureTime,
+            entity.SeatsTotal,
+            entity.SeatsAvailable,
+            entity.PricePerSeat,
+            entity.OnlyWomen,
+            entity.Community,
+            entity.Lat,
+            entity.Lng,
+            entity.Status
         );
     }
 }

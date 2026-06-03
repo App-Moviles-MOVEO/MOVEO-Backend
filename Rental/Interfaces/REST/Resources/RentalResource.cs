@@ -17,5 +17,8 @@ public record RentalResource(
     int? VehicleRating,
     DateTime CreatedAt,
     DateTime? AcceptedAt,
-    DateTime? CompletedAt
+    DateTime? CompletedAt,
+    // Campos enriquecidos vía JOIN con Vehicles para la app móvil
+    string? VehicleName = null,
+    string? VehicleImage = null
 );
