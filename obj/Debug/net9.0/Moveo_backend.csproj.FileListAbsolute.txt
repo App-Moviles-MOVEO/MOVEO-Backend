@@ -1,0 +1,549 @@
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.csproj.AssemblyReference.cache
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.GeneratedMSBuildEditorConfig.editorconfig
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.AssemblyInfoInputs.cache
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.AssemblyInfo.cs
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.csproj.CoreCompileInputs.cache
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.MvcApplicationPartsAssemblyInfo.cs
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.MvcApplicationPartsAssemblyInfo.cache
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.sourcelink.json
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\appsettings.Development.json
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\appsettings.json
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.staticwebassets.endpoints.json
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.exe
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.deps.json
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.runtimeconfig.json
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.pdb
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\BCrypt.Net-Next.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Cortex.Mediator.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\EntityFrameworkCore.CreatedUpdatedDate.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Google.Protobuf.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Humanizer.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\K4os.Compression.LZ4.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\K4os.Compression.LZ4.Streams.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\K4os.Hash.xxHash.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.OpenApi.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\MySql.Data.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\MySql.EntityFrameworkCore.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Scrutor.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.Security.Permissions.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.Windows.Extensions.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ZstdSharp.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\af\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ar\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\az\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\bg\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\bn-BD\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\cs\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\da\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\de\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\el\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\es\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\fa\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\fi-FI\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\fr\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\fr-BE\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\he\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\hr\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\hu\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\hy\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\id\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\is\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\it\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ja\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ko-KR\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ku\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\lv\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ms-MY\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\mt\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\nb\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\nb-NO\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\nl\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\pl\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\pt\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ro\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ru\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\sk\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\sl\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\sr\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\sr-Latn\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\sv\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\th-TH\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\tr\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\uk\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\uz-Cyrl-UZ\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\uz-Latn-UZ\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\vi\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-CN\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-Hans\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-Hant\Humanizer.resources.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\comerr64.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\gssapi64.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\k5sprt64.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\krb5_64.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\krbcc64.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\rjimswa.dswa.cache.json
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\scopedcss\bundle\Moveo_backend.styles.css
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\staticwebassets.build.json
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\staticwebassets.build.json.cache
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\staticwebassets.development.json
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_ba.19272614.Up2Date
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\refint\Moveo_backend.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.pdb
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.genruntimeconfig.cache
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\ref\Moveo_backend.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\MySqlConnector.dll
+C:\UNI\2025-20\Apps Web\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\appsettings.Development.json
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\appsettings.json
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\appsettings.Production.json
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.staticwebassets.endpoints.json
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.exe
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.deps.json
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.runtimeconfig.json
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.pdb
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\BCrypt.Net-Next.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Cortex.Mediator.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\EntityFrameworkCore.CreatedUpdatedDate.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Google.Protobuf.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Humanizer.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\K4os.Compression.LZ4.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\K4os.Compression.LZ4.Streams.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\K4os.Hash.xxHash.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.OpenApi.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\MySql.Data.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\MySql.EntityFrameworkCore.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\MySqlConnector.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Scrutor.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.Security.Permissions.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.Windows.Extensions.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ZstdSharp.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\af\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ar\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\az\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\bg\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\bn-BD\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\cs\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\da\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\de\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\el\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\es\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\fa\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\fi-FI\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\fr\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\fr-BE\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\he\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\hr\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\hu\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\hy\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\id\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\is\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\it\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ja\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ko-KR\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ku\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\lv\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ms-MY\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\mt\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\nb\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\nb-NO\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\nl\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\pl\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\pt\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ro\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ru\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\sk\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\sl\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\sr\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\sr-Latn\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\sv\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\th-TH\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\tr\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\uk\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\uz-Cyrl-UZ\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\uz-Latn-UZ\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\vi\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-CN\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-Hans\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-Hant\Humanizer.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\comerr64.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\gssapi64.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\k5sprt64.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\krb5_64.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\krbcc64.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.csproj.AssemblyReference.cache
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.AssemblyInfoInputs.cache
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.AssemblyInfo.cs
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.csproj.CoreCompileInputs.cache
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.sourcelink.json
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\rjimswa.dswa.cache.json
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\scopedcss\bundle\Moveo_backend.styles.css
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\staticwebassets.build.json
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\staticwebassets.build.json.cache
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\staticwebassets.development.json
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_ba.19272614.Up2Date
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\refint\Moveo_backend.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.pdb
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.genruntimeconfig.cache
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\obj\Debug\net9.0\ref\Moveo_backend.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\Mono.TextTemplating.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.CodeDom.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.Composition.Convention.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.Composition.Hosting.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.Composition.Runtime.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\System.Composition.TypedParts.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\goku6\OneDrive\Documentos\Development\Codigo\MOVEO-backend\Moveo_backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\appsettings.Development.json
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.staticwebassets.endpoints.json
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\appsettings.json
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\appsettings.Production.json
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.exe
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.deps.json
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.runtimeconfig.json
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Moveo_backend.pdb
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\BCrypt.Net-Next.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Cortex.Mediator.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\EntityFrameworkCore.CreatedUpdatedDate.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Google.Protobuf.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Humanizer.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\K4os.Compression.LZ4.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\K4os.Compression.LZ4.Streams.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\K4os.Hash.xxHash.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Build.Locator.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.DependencyModel.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Logging.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Microsoft.OpenApi.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Mono.TextTemplating.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\MySql.Data.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\MySql.EntityFrameworkCore.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\MySqlConnector.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Scrutor.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.Annotations.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\System.CodeDom.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\System.Composition.AttributedModel.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\System.Composition.Convention.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\System.Composition.Hosting.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\System.Composition.Runtime.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\System.Composition.TypedParts.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\System.Configuration.ConfigurationManager.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\System.Security.Permissions.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\System.Windows.Extensions.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ZstdSharp.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\af\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ar\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\az\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\bg\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\bn-BD\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\cs\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\da\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\de\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\el\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\es\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\fa\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\fi-FI\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\fr\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\fr-BE\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\he\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\hr\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\hu\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\hy\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\id\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\is\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\it\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ja\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ko-KR\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ku\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\lv\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ms-MY\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\mt\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\nb\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\nb-NO\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\nl\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\pl\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\pt\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ro\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ru\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\sk\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\sl\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\sr\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\sr-Latn\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\sv\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\th-TH\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\tr\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\uk\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\uz-Cyrl-UZ\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\uz-Latn-UZ\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\vi\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\zh-CN\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\zh-Hans\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\zh-Hant\Humanizer.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\comerr64.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\gssapi64.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\k5sprt64.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\krb5_64.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\runtimes\win-x64\native\krbcc64.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\bin\Debug\net9.0\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.csproj.AssemblyReference.cache
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.GeneratedMSBuildEditorConfig.editorconfig
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.AssemblyInfoInputs.cache
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.AssemblyInfo.cs
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.csproj.CoreCompileInputs.cache
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.MvcApplicationPartsAssemblyInfo.cs
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.MvcApplicationPartsAssemblyInfo.cache
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.sourcelink.json
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\rjimswa.dswa.cache.json
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\scopedcss\bundle\Moveo_backend.styles.css
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\staticwebassets.build.json
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\staticwebassets.build.json.cache
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\staticwebassets.development.json
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\Moveo_ba.19272614.Up2Date
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\refint\Moveo_backend.dll
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.pdb
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\Moveo_backend.genruntimeconfig.cache
+C:\Desarrollo\pc1-matricula\PFLAVOR-Backend\Moveo_backend\obj\Debug\net9.0\ref\Moveo_backend.dll
