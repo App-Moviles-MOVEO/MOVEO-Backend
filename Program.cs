@@ -95,7 +95,7 @@ builder.Services.AddCors(options =>
 });
 
 // ------------------------- DbContext & MySQL -------------------------
-builder.Services.AddAppDbContext(builder.Configuration);
+builder.Services.AddAppDbContext(builder.Configuration, builder.Environment.IsProduction());
 
 // ------------------------- Shared Dependencies -------------------------
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
