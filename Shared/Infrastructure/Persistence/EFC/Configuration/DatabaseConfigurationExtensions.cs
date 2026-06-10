@@ -7,7 +7,7 @@ namespace Moveo_backend.Shared.Infrastructure.Persistence.EFC.Configuration;
 
 public static class DatabaseConfigurationExtensions
 {
-    public static IServiceCollection AddAppDbContext(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddAppDbContext(this IServiceCollection services, IConfiguration configuration, bool isProduction = false)
     {
         var connectionString = ResolveConnectionString(configuration);
         if (string.IsNullOrWhiteSpace(connectionString))
@@ -24,10 +24,14 @@ public static class DatabaseConfigurationExtensions
                                      maxRetryCount: 5,
                                      maxRetryDelay: TimeSpan.FromSeconds(10),
                                      errorNumbersToAdd: null);
-                             })
-                   .LogTo(Console.WriteLine, LogLevel.Information)
-                   .EnableSensitiveDataLogging()
-                   .EnableDetailedErrors();
+                             });
+
+            if (!isProduction)
+            {
+                options.LogTo(Console.WriteLine, LogLevel.Information)
+                       .EnableSensitiveDataLogging()
+                       .EnableDetailedErrors();
+            }
         });
 
         return services;
