@@ -39,10 +39,8 @@ public static class DatabaseConfigurationExtensions
 
     private static string? ResolveConnectionString(IConfiguration configuration)
     {
-        var connectionString = configuration.GetConnectionString("DefaultConnection");
-        if (!string.IsNullOrWhiteSpace(connectionString))
-            return connectionString;
-
+        // Las variables de entorno (Railway) tienen prioridad sobre appsettings
+        // para que las credenciales rotadas por la plataforma siempre ganen.
         var mysqlUrl = Environment.GetEnvironmentVariable("MYSQL_URL")
             ?? Environment.GetEnvironmentVariable("DATABASE_URL");
         if (!string.IsNullOrWhiteSpace(mysqlUrl) && TryBuildMySqlConnectionString(mysqlUrl, out var urlConnectionString))
@@ -60,7 +58,7 @@ public static class DatabaseConfigurationExtensions
             return $"Server={host};Port={portValue};Database={database};User={user};Password={password};";
         }
 
-        return null;
+        return configuration.GetConnectionString("DefaultConnection");
     }
 
     private static bool TryBuildMySqlConnectionString(string mysqlUrl, out string connectionString)
