@@ -1,4 +1,5 @@
 using Moveo_backend.Rental.Domain.Model.Commands;
+using Moveo_backend.Rental.Domain.Model.ValueObjects;
 
 namespace Moveo_backend.Rental.Domain.Services;
 
@@ -10,6 +11,10 @@ public interface IRentalService
     Task<IEnumerable<Model.Aggregates.Rental>> GetFilteredAsync(int? renterId, int? ownerId, int? vehicleId, string? status);
     Task<IEnumerable<Model.Aggregates.Rental>> GetByUserIdAsync(int userId);
     Task<IEnumerable<Model.Aggregates.Rental>> GetActiveAsync();
+
+    // Disponibilidad por fechas
+    Task<IReadOnlyList<BusyRange>> GetBusyRangesAsync(int vehicleId, DateTime from, DateTime to);
+    Task<HashSet<int>> GetBusyVehicleIdsAsync(IEnumerable<int> vehicleIds, DateTime start, DateTime end);
 
     // Commands
     Task<Model.Aggregates.Rental> CreateAsync(CreateRentalCommand command);

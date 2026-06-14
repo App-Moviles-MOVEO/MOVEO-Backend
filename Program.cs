@@ -24,6 +24,7 @@ using Moveo_backend.Rental.Infrastructure.Persistence.EFC.Repository;
 using Moveo_backend.Rental.Infrastructure.Persistence.EFC.Repositories;
 using Moveo_backend.Rental.Application.CommandServices;
 using Moveo_backend.Rental.Application.QueryServices;
+using Moveo_backend.Rental.Application.BackgroundServices;
 // Adventure
 using Moveo_backend.Adventure.Domain.Repositories;
 using Moveo_backend.Adventure.Domain.Services;
@@ -86,6 +87,10 @@ builder.Services.AddCors(options =>
                       return true;
                   if (origin.StartsWith("http://localhost:", StringComparison.OrdinalIgnoreCase))
                       return true;
+                  // Apps móviles híbridas (Ionic/Capacitor) corren en un WebView
+                  // cuyo origen no es http(s); las apps nativas no envían Origin.
+                  if (origin == "capacitor://localhost" || origin == "ionic://localhost" || origin == "http://localhost" || origin == "https://localhost")
+                      return true;
                   return origin.EndsWith(".vercel.app", StringComparison.OrdinalIgnoreCase);
               })
               .AllowAnyHeader()
@@ -117,6 +122,9 @@ builder.Services.AddScoped<IRentalService, RentalService>();
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 builder.Services.AddScoped<IReviewCommandService, ReviewCommandService>();
 builder.Services.AddScoped<IReviewQueryService, ReviewQueryService>();
+
+// P5 — Job que expira reservas pending sin pagar (libera fechas bloqueadas)
+builder.Services.AddHostedService<PendingRentalCleanupService>();
 
 // ------------------------- Adventure Dependencies -------------------------
 builder.Services.AddScoped<IAdventureRouteRepository, AdventureRouteRepository>();

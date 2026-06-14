@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Moveo_backend.Rental.Domain;
+using Moveo_backend.Rental.Domain.Model.ValueObjects;
 using Moveo_backend.Rental.Domain.Repositories;
 using Moveo_backend.Shared.Infrastructure.Persistence.EFC.Configuration;
 
@@ -81,5 +83,53 @@ public class RentalRepository : IRentalRepository
     public async Task<bool> IsVehicleCurrentlyRentedAsync(int vehicleId)
     {
         return await _context.Rentals.AnyAsync(r => r.VehicleId == vehicleId && r.Status == "active");
+    }
+
+    public async Task<IReadOnlyList<BusyRange>> GetOverlappingRangesAsync(
+        int vehicleId, DateTime start, DateTime end, int? excludeRentalId = null)
+    {
+        // Solapamiento estándar con rangos [start, end): start < existente.End AND existente.Start < end
+        var query = _context.Rentals.AsNoTracking()
+            .Where(r => r.VehicleId == vehicleId
+                        && RentalStatuses.Blocking.Contains(r.Status)
+                        && start < r.EndDate
+                        && r.StartDate < end);
+
+        if (excludeRentalId.HasValue)
+            query = query.Where(r => r.Id != excludeRentalId.Value);
+
+        return await query
+            .OrderBy(r => r.StartDate)
+            .Select(r => new BusyRange(r.StartDate, r.EndDate))
+            .ToListAsync();
+    }
+
+    public async Task<IReadOnlyList<BusyRange>> GetBusyRangesAsync(int vehicleId, DateTime from, DateTime to)
+    {
+        return await _context.Rentals.AsNoTracking()
+            .Where(r => r.VehicleId == vehicleId
+                        && RentalStatuses.Blocking.Contains(r.Status)
+                        && r.EndDate > from
+                        && r.StartDate < to)
+            .OrderBy(r => r.StartDate)
+            .Select(r => new BusyRange(r.StartDate, r.EndDate))
+            .ToListAsync();
+    }
+
+    public async Task<HashSet<int>> GetBusyVehicleIdsAsync(IEnumerable<int> vehicleIds, DateTime start, DateTime end)
+    {
+        var ids = vehicleIds.ToList();
+        if (ids.Count == 0) return new HashSet<int>();
+
+        var busy = await _context.Rentals.AsNoTracking()
+            .Where(r => ids.Contains(r.VehicleId)
+                        && RentalStatuses.Blocking.Contains(r.Status)
+                        && start < r.EndDate
+                        && r.StartDate < end)
+            .Select(r => r.VehicleId)
+            .Distinct()
+            .ToListAsync();
+
+        return busy.ToHashSet();
     }
 }

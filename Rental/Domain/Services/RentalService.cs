@@ -1,4 +1,6 @@
+using Moveo_backend.Rental.Domain.Exceptions;
 using Moveo_backend.Rental.Domain.Model.Commands;
+using Moveo_backend.Rental.Domain.Model.ValueObjects;
 using Moveo_backend.Rental.Domain.Repositories;
 
 namespace Moveo_backend.Rental.Domain.Services;
@@ -33,12 +35,38 @@ public class RentalService : IRentalService
     public Task<bool> IsVehicleCurrentlyRentedAsync(int vehicleId) =>
         _rentalRepository.IsVehicleCurrentlyRentedAsync(vehicleId);
 
+    // Disponibilidad por fechas
+    public Task<IReadOnlyList<BusyRange>> GetBusyRangesAsync(int vehicleId, DateTime from, DateTime to) =>
+        _rentalRepository.GetBusyRangesAsync(vehicleId, from, to);
+
+    public Task<HashSet<int>> GetBusyVehicleIdsAsync(IEnumerable<int> vehicleIds, DateTime start, DateTime end) =>
+        _rentalRepository.GetBusyVehicleIdsAsync(vehicleIds, start, end);
+
     // Commands
     public async Task<Model.Aggregates.Rental> CreateAsync(CreateRentalCommand command)
     {
+        // --- Validaciones de fechas y reglas de negocio (P1) ---
+        if (command.EndDate <= command.StartDate)
+            throw new RentalValidationException("endDate debe ser posterior a startDate");
+
+        if (command.StartDate < DateTime.UtcNow.Date)
+            throw new RentalValidationException("startDate no puede estar en el pasado");
+
+        if (command.RenterId == command.OwnerId)
+            throw new RentalValidationException("El dueño no puede reservar su propio vehículo");
+
         var vehicle = await _vehicleRepository.GetByIdAsync(command.VehicleId);
         if (vehicle == null)
-            throw new InvalidOperationException("Vehicle not found");
+            throw new VehicleNotFoundException();
+
+        if (vehicle.Status != RentalStatuses.Active)
+            throw new VehicleNotActiveException();
+
+        // --- Verificación de solapamiento de fechas (la única protección real ante carreras) ---
+        var conflicts = await _rentalRepository.GetOverlappingRangesAsync(
+            command.VehicleId, command.StartDate, command.EndDate);
+        if (conflicts.Count > 0)
+            throw new VehicleNotAvailableException(conflicts);
 
         var rental = new Model.Aggregates.Rental(
             command.VehicleId,

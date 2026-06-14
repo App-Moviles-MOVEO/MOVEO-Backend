@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Moveo_backend.Rental.Domain.Exceptions;
 using Moveo_backend.Rental.Domain.Model.Commands;
 using Moveo_backend.Rental.Domain.Services;
 using Moveo_backend.Rental.Interfaces.REST.Resources;
@@ -66,9 +67,33 @@ public class RentalsController : ControllerBase
             resource.AdventureRouteId
         );
 
-        var rental = await _rentalService.CreateAsync(command);
-        var rentalResource = await ToResourceAsync(rental);
-        return CreatedAtAction(nameof(GetRentalById), new { id = rental.Id }, rentalResource);
+        try
+        {
+            var rental = await _rentalService.CreateAsync(command);
+            var rentalResource = await ToResourceAsync(rental);
+            return CreatedAtAction(nameof(GetRentalById), new { id = rental.Id }, rentalResource);
+        }
+        catch (RentalValidationException ex)
+        {
+            return BadRequest(new { error = "invalid_request", message = ex.Message });
+        }
+        catch (VehicleNotFoundException ex)
+        {
+            return NotFound(new { error = "vehicle_not_found", message = ex.Message });
+        }
+        catch (VehicleNotActiveException ex)
+        {
+            return Conflict(new { error = "vehicle_not_active", message = ex.Message });
+        }
+        catch (VehicleNotAvailableException ex)
+        {
+            return Conflict(new
+            {
+                error = "vehicle_not_available",
+                message = ex.Message,
+                conflictingRanges = ex.ConflictingRanges
+            });
+        }
     }
 
     // PUT /api/v1/rentals/{id}

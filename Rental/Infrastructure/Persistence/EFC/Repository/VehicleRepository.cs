@@ -33,7 +33,9 @@ public class VehicleRepository : IVehicleRepository
         decimal? minPrice = null,
         decimal? maxPrice = null,
         string? district = null,
-        string? bodyType = null)
+        string? bodyType = null,
+        string? transmission = null,
+        string? fuelType = null)
     {
         var query = _context.Vehicles.AsQueryable();
 
@@ -49,6 +51,10 @@ public class VehicleRepository : IVehicleRepository
             query = query.Where(v => v.Location.District.Contains(district));
         if (!string.IsNullOrEmpty(bodyType))
             query = query.Where(v => v.BodyType == bodyType);
+        if (!string.IsNullOrEmpty(transmission))
+            query = query.Where(v => v.Transmission == transmission);
+        if (!string.IsNullOrEmpty(fuelType))
+            query = query.Where(v => v.FuelType == fuelType);
 
         return await query.AsNoTracking().ToListAsync();
     }

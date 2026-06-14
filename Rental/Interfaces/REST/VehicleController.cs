@@ -19,11 +19,13 @@ namespace Moveo_backend.Rental.Interfaces.REST;
 public class VehiclesController : ControllerBase
 {
     private readonly IVehicleService _vehicleService;
+    private readonly IRentalService _rentalService;
     private readonly AppDbContext _context;
 
-    public VehiclesController(IVehicleService vehicleService, AppDbContext context)
+    public VehiclesController(IVehicleService vehicleService, IRentalService rentalService, AppDbContext context)
     {
         _vehicleService = vehicleService;
+        _rentalService = rentalService;
         _context = context;
     }
 
@@ -33,7 +35,9 @@ public class VehiclesController : ControllerBase
     [HttpGet]
     [SwaggerOperation(
         Summary = "Get all vehicles",
-        Description = "Retrieves all vehicles with optional filtering by ownerId, status, price range, district and bodyType",
+        Description = "Retrieves all vehicles with optional filtering by ownerId, status, price range, district, bodyType, " +
+                      "transmission and fuelType. Si se envían startDate y endDate, excluye vehículos con reservas " +
+                      "(pending/accepted/active) que se solapen con ese rango. Soporta orden por distancia (lat/lng/sort) y paginación.",
         OperationId = "GetAllVehicles"
     )]
     [SwaggerResponse(StatusCodes.Status200OK, "Vehicles retrieved successfully", typeof(IEnumerable<VehicleResource>))]
@@ -43,11 +47,100 @@ public class VehiclesController : ControllerBase
         [FromQuery] decimal? minPrice,
         [FromQuery] decimal? maxPrice,
         [FromQuery] string? district,
-        [FromQuery] string? bodyType)
+        [FromQuery] string? bodyType,
+        [FromQuery] string? transmission,
+        [FromQuery] string? fuelType,
+        [FromQuery] DateTime? startDate,
+        [FromQuery] DateTime? endDate,
+        [FromQuery] double? lat,
+        [FromQuery] double? lng,
+        [FromQuery] string? sort,
+        [FromQuery] int? page,
+        [FromQuery] int? pageSize)
     {
-        var vehicles = (await _vehicleService.GetFilteredAsync(ownerId, status, minPrice, maxPrice, district, bodyType)).ToList();
+        var vehicles = (await _vehicleService.GetFilteredAsync(
+            ownerId, status, minPrice, maxPrice, district, bodyType, transmission, fuelType)).ToList();
+
+        // P3 — Filtro por disponibilidad en el rango [startDate, endDate)
+        if (startDate.HasValue && endDate.HasValue)
+        {
+            var start = ToUtc(startDate.Value);
+            var end = ToUtc(endDate.Value);
+            if (end <= start)
+                return BadRequest(new { error = "invalid_request", message = "endDate debe ser posterior a startDate" });
+
+            var busyIds = await _rentalService.GetBusyVehicleIdsAsync(vehicles.Select(v => v.Id), start, end);
+            if (busyIds.Count > 0)
+                vehicles = vehicles.Where(v => !busyIds.Contains(v.Id)).ToList();
+        }
+
+        // P6.1 — Orden por cercanía usando el lat/lng de cada vehículo
+        if (lat.HasValue && lng.HasValue && string.Equals(sort, "distance", StringComparison.OrdinalIgnoreCase))
+        {
+            vehicles = vehicles
+                .OrderBy(v => HaversineKm(lat.Value, lng.Value, v.Location.Lat, v.Location.Lng))
+                .ToList();
+        }
+
+        // P6.3 — Paginación opcional (si no se envía, devuelve todo como antes)
+        if (page.HasValue || pageSize.HasValue)
+        {
+            var p = page.GetValueOrDefault(1) < 1 ? 1 : page.GetValueOrDefault(1);
+            var size = pageSize.GetValueOrDefault(20);
+            if (size < 1) size = 20;
+            vehicles = vehicles.Skip((p - 1) * size).Take(size).ToList();
+        }
+
         var resources = await EnrichManyAsync(vehicles);
         return Ok(resources);
+    }
+
+    /// <summary>
+    /// Disponibilidad de un vehículo: rangos ocupados para pintar el calendario (P2).
+    /// </summary>
+    [HttpGet("{id:int}/availability")]
+    [SwaggerOperation(
+        Summary = "Get vehicle availability",
+        Description = "Devuelve los rangos ocupados (busyRanges) del vehículo en la ventana [from, to). " +
+                      "Default: desde hoy hasta +3 meses. Solo cuentan reservas pending/accepted/active.",
+        OperationId = "GetVehicleAvailability"
+    )]
+    [SwaggerResponse(StatusCodes.Status200OK, "Availability retrieved successfully")]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "Vehicle not found")]
+    public async Task<IActionResult> GetAvailability(
+        int id,
+        [FromQuery] DateTime? from,
+        [FromQuery] DateTime? to)
+    {
+        var vehicle = await _vehicleService.GetByIdAsync(id);
+        if (vehicle == null)
+            return NotFound(new { error = new { code = "NOT_FOUND", message = "Vehículo no encontrado" } });
+
+        var fromDate = from.HasValue ? ToUtc(from.Value) : DateTime.UtcNow.Date;
+        var toDate = to.HasValue ? ToUtc(to.Value) : fromDate.AddMonths(3);
+        if (toDate <= fromDate)
+            return BadRequest(new { error = "invalid_request", message = "to debe ser posterior a from" });
+
+        var busyRanges = await _rentalService.GetBusyRangesAsync(id, fromDate, toDate);
+        return Ok(new { vehicleId = id, busyRanges });
+    }
+
+    // Interpreta fechas entrantes (sin zona) como UTC; respeta las que ya traen zona.
+    private static DateTime ToUtc(DateTime value) =>
+        value.Kind == DateTimeKind.Unspecified
+            ? DateTime.SpecifyKind(value, DateTimeKind.Utc)
+            : value.ToUniversalTime();
+
+    // Distancia en km entre dos coordenadas (fórmula de Haversine).
+    private static double HaversineKm(double lat1, double lng1, double lat2, double lng2)
+    {
+        const double earthRadiusKm = 6371.0;
+        double dLat = (lat2 - lat1) * Math.PI / 180.0;
+        double dLng = (lng2 - lng1) * Math.PI / 180.0;
+        double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
+                   Math.Cos(lat1 * Math.PI / 180.0) * Math.Cos(lat2 * Math.PI / 180.0) *
+                   Math.Sin(dLng / 2) * Math.Sin(dLng / 2);
+        return earthRadiusKm * 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
     }
 
     /// <summary>

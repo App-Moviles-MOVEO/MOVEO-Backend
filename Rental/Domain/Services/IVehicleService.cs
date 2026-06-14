@@ -14,7 +14,9 @@ public interface IVehicleService
         decimal? minPrice = null,
         decimal? maxPrice = null,
         string? district = null,
-        string? bodyType = null);
+        string? bodyType = null,
+        string? transmission = null,
+        string? fuelType = null);
     Task<IEnumerable<Vehicle>> GetByOwnerIdAsync(int ownerId);
 
     // Commands

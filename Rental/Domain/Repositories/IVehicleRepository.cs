@@ -13,7 +13,9 @@ public interface IVehicleRepository
         decimal? minPrice = null,
         decimal? maxPrice = null,
         string? district = null,
-        string? bodyType = null);
+        string? bodyType = null,
+        string? transmission = null,
+        string? fuelType = null);
 
     Task AddAsync(Vehicle vehicle);
     Task UpdateAsync(Vehicle vehicle);

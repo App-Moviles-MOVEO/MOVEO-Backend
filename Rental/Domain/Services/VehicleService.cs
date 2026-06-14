@@ -21,9 +21,11 @@ public class VehicleService : IVehicleService
         decimal? minPrice = null,
         decimal? maxPrice = null,
         string? district = null,
-        string? bodyType = null)
+        string? bodyType = null,
+        string? transmission = null,
+        string? fuelType = null)
     {
-        return _vehicleRepository.GetFilteredAsync(ownerId, status, minPrice, maxPrice, district, bodyType);
+        return _vehicleRepository.GetFilteredAsync(ownerId, status, minPrice, maxPrice, district, bodyType, transmission, fuelType);
     }
 
     public Task<Vehicle?> GetByIdAsync(int id) => _vehicleRepository.GetByIdAsync(id);
