@@ -13,13 +13,16 @@ public class AuthService : IAuthService
 {
     private readonly AppDbContext _context;
     private readonly IHashingService _hashingService;
+    private readonly IWebHostEnvironment _environment;
 
     public AuthService(
         AppDbContext context,
-        IHashingService hashingService)
+        IHashingService hashingService,
+        IWebHostEnvironment environment)
     {
         _context = context;
         _hashingService = hashingService;
+        _environment = environment;
     }
 
     public async Task<AuthenticatedUserResource?> LoginAsync(LoginCommand command)
@@ -88,6 +91,53 @@ public class AuthService : IAuthService
         return true;
     }
 
+    public async Task<string?> ForgotPasswordAsync(ForgotPasswordCommand command)
+    {
+        var user = await _context.Users
+            .FirstOrDefaultAsync(u => u.Email.ToLower() == command.Email.ToLower());
+
+        // No revelar si el email existe: si no hay usuario, no generamos token.
+        if (user == null)
+            return null;
+
+        var token = Guid.NewGuid().ToString("N");
+        user.SetPasswordResetToken(token, DateTime.UtcNow.AddMinutes(30));
+        await _context.SaveChangesAsync();
+
+        // TODO: enviar el token por correo. Mientras no haya servidor de mail,
+        // en desarrollo lo devolvemos para poder probar el flujo end-to-end.
+        return _environment.IsProduction() ? null : token;
+    }
+
+    public async Task<bool> ResetPasswordAsync(ResetPasswordCommand command)
+    {
+        if (string.IsNullOrWhiteSpace(command.Token) || string.IsNullOrWhiteSpace(command.NewPassword))
+            return false;
+
+        var user = await _context.Users
+            .FirstOrDefaultAsync(u => u.PasswordResetToken == command.Token);
+
+        if (user == null || !user.IsPasswordResetTokenValid(command.Token))
+            return false;
+
+        user.ResetPassword(_hashingService.HashPassword(command.NewPassword));
+        await _context.SaveChangesAsync();
+
+        return true;
+    }
+
+    public async Task<string?> SubmitKycAsync(int userId, string? dniFrontUrl, string? dniBackUrl, string? selfieUrl)
+    {
+        var user = await _context.Users.FindAsync(userId);
+        if (user == null)
+            return null;
+
+        user.SubmitKyc(dniFrontUrl, dniBackUrl, selfieUrl);
+        await _context.SaveChangesAsync();
+
+        return user.KycStatus;
+    }
+
     private static AuthenticatedUserResource MapToAuthenticatedUser(User user)
     {
         return new AuthenticatedUserResource
@@ -100,7 +150,8 @@ public class AuthService : IAuthService
             Dni = user.Dni,
             LicenseNumber = user.LicenseNumber,
             Role = user.RoleName,
-            Address = user.Address
+            Address = user.Address,
+            KycStatus = user.KycStatus
         };
     }
 }

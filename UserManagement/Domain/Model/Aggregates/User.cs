@@ -27,6 +27,17 @@ public partial class User
     public bool PhoneVerified { get; private set; }
     public bool DniVerified { get; private set; }
     public bool LicenseVerified { get; private set; }
+
+    // Recuperación de contraseña (forgot/reset)
+    public string? PasswordResetToken { get; private set; }
+    public DateTime? PasswordResetTokenExpiresAt { get; private set; }
+
+    // KYC (verificación de identidad)
+    public string KycStatus { get; private set; } = "not_submitted"; // not_submitted | pending | approved | rejected
+    public string? KycDniFrontUrl { get; private set; }
+    public string? KycDniBackUrl { get; private set; }
+    public string? KycSelfieUrl { get; private set; }
+    public DateTime? KycSubmittedAt { get; private set; }
     
     // Estadísticas
     public int TotalRentals { get; private set; }
@@ -141,6 +152,53 @@ public partial class User
     public void ChangePassword(string newPassword)
     {
         PasswordHash = newPassword;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    // -------------------- Recuperación de contraseña --------------------
+    public void SetPasswordResetToken(string token, DateTime expiresAt)
+    {
+        PasswordResetToken = token;
+        PasswordResetTokenExpiresAt = expiresAt;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    public bool IsPasswordResetTokenValid(string token) =>
+        !string.IsNullOrEmpty(PasswordResetToken) &&
+        PasswordResetToken == token &&
+        PasswordResetTokenExpiresAt.HasValue &&
+        PasswordResetTokenExpiresAt.Value > DateTime.UtcNow;
+
+    public void ResetPassword(string newPasswordHash)
+    {
+        PasswordHash = newPasswordHash;
+        PasswordResetToken = null;
+        PasswordResetTokenExpiresAt = null;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    // -------------------- KYC --------------------
+    public void SubmitKyc(string? dniFrontUrl, string? dniBackUrl, string? selfieUrl)
+    {
+        KycDniFrontUrl = dniFrontUrl;
+        KycDniBackUrl = dniBackUrl;
+        KycSelfieUrl = selfieUrl;
+        KycStatus = "pending";
+        KycSubmittedAt = DateTime.UtcNow;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    public void ApproveKyc()
+    {
+        KycStatus = "approved";
+        DniVerified = true;
+        LicenseVerified = true;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    public void RejectKyc()
+    {
+        KycStatus = "rejected";
         UpdatedAt = DateTime.UtcNow;
     }
 

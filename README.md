@@ -1,4 +1,4 @@
-# MOVEO Backend — Documentación de la API para la App Móvil
+## MOVEO Backend — Documentación de la API para la App Móvil
 
 API REST para la plataforma de **alquiler de vehículos entre particulares** MOVEO.
 Este documento contiene **todo lo que la app móvil necesita** para conectarse: URL base, autenticación, todos los endpoints, los cuerpos de petición/respuesta exactos, los valores válidos de cada campo y **datos de prueba listos para usar**.

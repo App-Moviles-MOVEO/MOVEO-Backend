@@ -57,7 +57,8 @@ public class AdventureRoutesController(
         [FromQuery] string? type = null,
         [FromQuery] string? difficulty = null,
         [FromQuery] bool? featured = null,
-        [FromQuery] bool? onlyWomen = null)
+        [FromQuery] bool? onlyWomen = null,
+        [FromQuery] string? community = null)
     {
         IEnumerable<Domain.Model.Aggregate.AdventureRoute> routes;
 
@@ -86,6 +87,13 @@ public class AdventureRoutesController(
         if (onlyWomen == true)
         {
             routes = routes.Where(r => r.OnlyWomen);
+        }
+
+        // Filtro de carpool: comunidad/grupo
+        if (!string.IsNullOrWhiteSpace(community))
+        {
+            routes = routes.Where(r =>
+                string.Equals(r.Community, community, StringComparison.OrdinalIgnoreCase));
         }
 
         var resources = routes.Select(AdventureRouteResourceFromEntityAssembler.ToResourceFromEntity);

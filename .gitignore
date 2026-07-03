@@ -26,3 +26,7 @@ run_err.log
 # OS
 .DS_Store
 Thumbs.db
+
+# Archivos subidos en runtime (KYC, etc.) — no versionar los binarios, sí la carpeta
+wwwroot/uploads/**
+!wwwroot/uploads/.gitkeep

@@ -211,6 +211,8 @@ using (var scope = app.Services.CreateScope())
 
 // ------------------------- Middleware -------------------------
 app.UseCors("AllowMoveoFrontend");
+// Sirve archivos estáticos (p. ej. imágenes KYC subidas en wwwroot/uploads)
+app.UseStaticFiles();
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();

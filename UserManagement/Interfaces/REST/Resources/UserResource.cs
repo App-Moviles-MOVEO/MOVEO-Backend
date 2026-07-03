@@ -11,6 +11,7 @@ public class UserResource
     public string Dni { get; set; } = string.Empty;
     public string LicenseNumber { get; set; } = string.Empty;
     public string? Avatar { get; set; }
+    public string KycStatus { get; set; } = "not_submitted";
     public UserVerificationResource Verified { get; set; } = new();
     public UserStatsResource Stats { get; set; } = new();
     public UserPreferencesResource Preferences { get; set; } = new();
