@@ -130,6 +130,10 @@ builder.Services.AddHostedService<PendingRentalCleanupService>();
 builder.Services.AddScoped<IAdventureRouteRepository, AdventureRouteRepository>();
 builder.Services.AddScoped<IAdventureRouteCommandService, AdventureRouteCommandService>();
 builder.Services.AddScoped<IAdventureRouteQueryService, AdventureRouteQueryService>();
+// Carpooling — gestión de pasajeros (US16)
+builder.Services.AddScoped<IRoutePassengerRepository, RoutePassengerRepository>();
+builder.Services.AddScoped<IRoutePassengerCommandService, RoutePassengerCommandService>();
+builder.Services.AddScoped<IRoutePassengerQueryService, RoutePassengerQueryService>();
 
 // ------------------------- Payment Dependencies -------------------------
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();

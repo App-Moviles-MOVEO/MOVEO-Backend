@@ -185,4 +185,21 @@ public class AdventureRoute
         if (SeatsAvailable <= 0) Status = "full";
         UpdatedAt = DateTime.UtcNow;
     }
+
+    /// <summary>
+    /// Libera asientos previamente confirmados (al rechazar o quitar un pasajero confirmado).
+    /// Nunca excede SeatsTotal y reactiva la ruta si estaba "full".
+    /// </summary>
+    public void ReleaseSeats(int seats)
+    {
+        if (seats < 1) return;
+        if (SeatsAvailable is null) return;
+
+        SeatsAvailable += seats;
+        if (SeatsTotal.HasValue && SeatsAvailable > SeatsTotal.Value)
+            SeatsAvailable = SeatsTotal.Value;
+        if (Status == "full" && SeatsAvailable > 0)
+            Status = "active";
+        UpdatedAt = DateTime.UtcNow;
+    }
 }

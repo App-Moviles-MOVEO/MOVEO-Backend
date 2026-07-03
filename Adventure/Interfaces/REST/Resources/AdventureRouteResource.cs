@@ -31,5 +31,7 @@ public record AdventureRouteResource(
     string? Community = null,
     double? Lat = null,
     double? Lng = null,
-    string Status = "active"
+    string Status = "active",
+    // Pasajeros de carpool (US16). Solo se rellena en GET /adventure-routes/{id}; en listados va null.
+    List<RoutePassengerResource>? Passengers = null
 );

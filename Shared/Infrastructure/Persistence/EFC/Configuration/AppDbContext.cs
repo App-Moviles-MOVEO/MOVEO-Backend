@@ -24,6 +24,7 @@ public class AppDbContext : DbContext
     public DbSet<Vehicle> Vehicles { get; set; } = null!;
     public DbSet<Rental.Domain.Model.Aggregates.Rental> Rentals { get; set; } = null!;
     public DbSet<AdventureRoute> AdventureRoutes { get; set; } = null!;
+    public DbSet<RoutePassenger> RoutePassengers { get; set; } = null!;
     public DbSet<PaymentEntity> Payments { get; set; } = null!;
     public DbSet<NotificationEntity> Notifications { get; set; } = null!;
     public DbSet<SupportTicket> SupportTickets { get; set; } = null!;
@@ -155,6 +156,20 @@ public class AppDbContext : DbContext
             entity.Property(a => a.PricePerSeat).HasColumnType("decimal(18,2)");
             entity.Property(a => a.Status);
             entity.Property(a => a.Tags).HasColumnType("json");
+        });
+
+        // -------------------- ROUTE PASSENGER (Carpooling US16) --------------------
+        modelBuilder.Entity<RoutePassenger>(entity =>
+        {
+            entity.HasKey(p => p.Id);
+            entity.Property(p => p.Id).ValueGeneratedOnAdd();
+            entity.Property(p => p.RouteId).IsRequired();
+            entity.Property(p => p.PassengerId).IsRequired();
+            entity.Property(p => p.Status).IsRequired();
+            entity.Property(p => p.Seats).IsRequired();
+            entity.Property(p => p.RequestedAt);
+            entity.Property(p => p.UpdatedAt);
+            entity.HasIndex(p => new { p.RouteId, p.PassengerId });
         });
 
         // -------------------- PAYMENT --------------------
