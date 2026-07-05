@@ -39,7 +39,7 @@ public class AdventureRoute
     public string? Community { get; private set; }            // comunidad/grupo
     public double? Lat { get; private set; }                  // punto de partida (lat)
     public double? Lng { get; private set; }                  // punto de partida (lng)
-    public string Status { get; private set; } = "active";    // "active" | "full" | "cancelled" | "completed"
+    public string Status { get; private set; } = "active";    // "active" | "full" | "in_progress" | "cancelled" | "completed"
 
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
@@ -183,6 +183,36 @@ public class AdventureRoute
 
         SeatsAvailable -= seats;
         if (SeatsAvailable <= 0) Status = "full";
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    // -------------------- Transiciones de estado de la ruta (US-carpool) --------------------
+    private static readonly HashSet<string> StartableStatuses = new() { "active", "full" };
+
+    /// <summary>Inicia la ruta: solo desde active/full. Marca in_progress.</summary>
+    public void Start()
+    {
+        if (!StartableStatuses.Contains(Status))
+            throw new InvalidOperationException($"No se puede iniciar una ruta en estado '{Status}'");
+        Status = "in_progress";
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    /// <summary>Completa la ruta: solo desde in_progress.</summary>
+    public void CompleteRoute()
+    {
+        if (Status != "in_progress")
+            throw new InvalidOperationException($"Solo se puede completar una ruta en curso (estado actual: '{Status}')");
+        Status = "completed";
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    /// <summary>Cancela la ruta: desde cualquier estado no terminal.</summary>
+    public void CancelRoute()
+    {
+        if (Status is "completed" or "cancelled")
+            throw new InvalidOperationException($"No se puede cancelar una ruta en estado '{Status}'");
+        Status = "cancelled";
         UpdatedAt = DateTime.UtcNow;
     }
 

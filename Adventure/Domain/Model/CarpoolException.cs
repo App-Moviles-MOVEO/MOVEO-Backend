@@ -39,4 +39,12 @@ public class CarpoolException : Exception
 
     public static CarpoolException CommunityRestricted() =>
         new("community_restricted", "La ruta está restringida a una comunidad", 403);
+
+    public static CarpoolException NotInstitutionalOwner() =>
+        new("not_institutional_email",
+            $"Publicar rutas de carpool requiere un correo institucional (@{InstitutionalEmail.Domain})", 403);
+
+    public static CarpoolException NotInstitutionalPassenger() =>
+        new("not_institutional_email",
+            $"Unirse a una ruta de comunidad requiere un correo institucional (@{InstitutionalEmail.Domain})", 403);
 }

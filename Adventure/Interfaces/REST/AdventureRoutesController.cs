@@ -102,51 +102,40 @@ public class AdventureRoutesController(
 
     [HttpPost("{routeId:int}/book")]
     [SwaggerOperation(
-        Summary = "Book carpool seats / request a seat",
-        Description = "Si se envía passengerId (US16), crea una solicitud en PENDING (no descuenta cupo; " +
-                      "el descuento ocurre al aceptar). Si no, conserva el comportamiento legacy (descuenta SeatsAvailable).",
+        Summary = "Request a carpool seat (US16)",
+        Description = "Crea una solicitud de asiento en estado PENDING (retiene cupo). El descuento definitivo " +
+                      "ocurre al aceptar (accept). Requiere passengerId; el flujo legacy sin passengerId fue eliminado " +
+                      "porque corrompía el aforo (descontaba asientos sin registrar al pasajero).",
         OperationId = "BookAdventureRouteSeat"
     )]
-    [SwaggerResponse(StatusCodes.Status200OK, "Asientos reservados (modo legacy)", typeof(AdventureRouteResource))]
     [SwaggerResponse(StatusCodes.Status201Created, "Solicitud de asiento creada (PENDING)", typeof(RoutePassengerResource))]
-    [SwaggerResponse(StatusCodes.Status400BadRequest, "No hay asientos disponibles")]
+    [SwaggerResponse(StatusCodes.Status400BadRequest, "Falta passengerId")]
+    [SwaggerResponse(StatusCodes.Status403Forbidden, "No elegible (ruta solo mujeres / comunidad restringida)")]
     [SwaggerResponse(StatusCodes.Status404NotFound, "Ruta no encontrada")]
     [SwaggerResponse(StatusCodes.Status409Conflict, "Sin cupo / solicitud duplicada / ruta no activa")]
     public async Task<IActionResult> BookSeat([FromRoute] int routeId, [FromBody] BookSeatResource resource)
     {
-        var seats = (resource?.Seats ?? 1) < 1 ? 1 : (resource?.Seats ?? 1);
-
-        // US16 — nuevo flujo con aprobación: crea solicitud PENDING.
-        if (resource is { PassengerId: > 0 })
-        {
-            try
+        // A partir de US16 el passengerId es obligatorio: sin él no se puede aprobar ni mostrar
+        // al pasajero, y el flujo antiguo descontaba cupo dejando passengers vacío (bug reportado).
+        if (resource is not { PassengerId: > 0 })
+            return BadRequest(new
             {
-                var view = await routePassengerCommandService.Handle(
-                    new RequestRouteSeatCommand(routeId, resource.PassengerId, seats));
-                return StatusCode(StatusCodes.Status201Created,
-                    RoutePassengerResourceFromViewAssembler.ToResourceFromView(view));
-            }
-            catch (CarpoolException ex)
-            {
-                return StatusCode(ex.StatusCode, new { error = ex.Code, message = ex.Message });
-            }
-        }
+                error = "passenger_id_required",
+                message = "passengerId es obligatorio para reservar un asiento."
+            });
 
-        // Flujo legacy: descuenta cupo directamente.
+        var seats = resource.Seats < 1 ? 1 : resource.Seats;
+
         try
         {
-            var route = await adventureRouteCommandService.Handle(
-                new BookAdventureRouteSeatCommand(routeId, seats));
-            if (route is null) return NotFound();
-            return Ok(AdventureRouteResourceFromEntityAssembler.ToResourceFromEntity(route));
+            var view = await routePassengerCommandService.Handle(
+                new RequestRouteSeatCommand(routeId, resource.PassengerId, seats));
+            return StatusCode(StatusCodes.Status201Created,
+                RoutePassengerResourceFromViewAssembler.ToResourceFromView(view));
         }
-        catch (InvalidOperationException ex)
+        catch (CarpoolException ex)
         {
-            return BadRequest(new { message = ex.Message });
-        }
-        catch (ArgumentException ex)
-        {
-            return BadRequest(new { message = ex.Message });
+            return StatusCode(ex.StatusCode, new { error = ex.Code, message = ex.Message });
         }
     }
 
@@ -256,13 +245,21 @@ public class AdventureRoutesController(
     )]
     [SwaggerResponse(StatusCodes.Status201Created, "The adventure route was created", typeof(AdventureRouteResource))]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "The adventure route could not be created")]
+    [SwaggerResponse(StatusCodes.Status403Forbidden, "El owner no tiene correo institucional (rutas de carpool)")]
     public async Task<IActionResult> CreateAdventureRoute([FromBody] CreateAdventureRouteResource resource)
     {
         var command = CreateAdventureRouteCommandFromResourceAssembler.ToCommandFromResource(resource);
-        var adventureRoute = await adventureRouteCommandService.Handle(command);
-        if (adventureRoute is null) return BadRequest();
-        var adventureRouteResource = AdventureRouteResourceFromEntityAssembler.ToResourceFromEntity(adventureRoute);
-        return CreatedAtAction(nameof(GetAdventureRouteById), new { routeId = adventureRoute.Id }, adventureRouteResource);
+        try
+        {
+            var adventureRoute = await adventureRouteCommandService.Handle(command);
+            if (adventureRoute is null) return BadRequest();
+            var adventureRouteResource = AdventureRouteResourceFromEntityAssembler.ToResourceFromEntity(adventureRoute);
+            return CreatedAtAction(nameof(GetAdventureRouteById), new { routeId = adventureRoute.Id }, adventureRouteResource);
+        }
+        catch (CarpoolException ex)
+        {
+            return StatusCode(ex.StatusCode, new { error = ex.Code, message = ex.Message });
+        }
     }
 
     [HttpPut("{routeId:int}")]
@@ -280,6 +277,54 @@ public class AdventureRoutesController(
         if (adventureRoute is null) return NotFound();
         var adventureRouteResource = AdventureRouteResourceFromEntityAssembler.ToResourceFromEntity(adventureRoute);
         return Ok(adventureRouteResource);
+    }
+
+    [HttpPost("{routeId:int}/start")]
+    [SwaggerOperation(
+        Summary = "Start route",
+        Description = "Inicia la ruta (active/full -> in_progress). Requiere ownerId.",
+        OperationId = "StartAdventureRoute")]
+    [SwaggerResponse(StatusCodes.Status200OK, "Ruta iniciada", typeof(AdventureRouteResource))]
+    [SwaggerResponse(StatusCodes.Status409Conflict, "Transición ilegal")]
+    public async Task<IActionResult> StartRoute([FromRoute] int routeId, [FromQuery] int ownerId) =>
+        await RunTransition(() => adventureRouteCommandService.Handle(new StartAdventureRouteCommand(routeId, ownerId)));
+
+    [HttpPost("{routeId:int}/complete")]
+    [SwaggerOperation(
+        Summary = "Complete route",
+        Description = "Completa la ruta (in_progress -> completed). Requiere ownerId.",
+        OperationId = "CompleteAdventureRoute")]
+    [SwaggerResponse(StatusCodes.Status200OK, "Ruta completada", typeof(AdventureRouteResource))]
+    [SwaggerResponse(StatusCodes.Status409Conflict, "Transición ilegal")]
+    public async Task<IActionResult> CompleteRoute([FromRoute] int routeId, [FromQuery] int ownerId) =>
+        await RunTransition(() => adventureRouteCommandService.Handle(new CompleteAdventureRouteCommand(routeId, ownerId)));
+
+    [HttpPost("{routeId:int}/cancel")]
+    [SwaggerOperation(
+        Summary = "Cancel route",
+        Description = "Cancela la ruta, libera cupos y notifica a los pasajeros. Requiere ownerId.",
+        OperationId = "CancelAdventureRoute")]
+    [SwaggerResponse(StatusCodes.Status200OK, "Ruta cancelada", typeof(AdventureRouteResource))]
+    [SwaggerResponse(StatusCodes.Status409Conflict, "Transición ilegal")]
+    public async Task<IActionResult> CancelRoute([FromRoute] int routeId, [FromQuery] int ownerId) =>
+        await RunTransition(() => adventureRouteCommandService.Handle(new CancelAdventureRouteCommand(routeId, ownerId)));
+
+    // Ejecuta una transición de estado y traduce las excepciones a respuestas HTTP.
+    private async Task<IActionResult> RunTransition(Func<Task<Domain.Model.Aggregate.AdventureRoute>> action)
+    {
+        try
+        {
+            var route = await action();
+            return Ok(AdventureRouteResourceFromEntityAssembler.ToResourceFromEntity(route));
+        }
+        catch (CarpoolException ex)
+        {
+            return StatusCode(ex.StatusCode, new { error = ex.Code, message = ex.Message });
+        }
+        catch (InvalidOperationException ex)
+        {
+            return Conflict(new { error = "illegal_transition", message = ex.Message });
+        }
     }
 
     [HttpDelete("{routeId:int}")]

@@ -36,8 +36,15 @@ public class RoutePassengerCommandService(
         if (existing is not null)
             throw CarpoolException.AlreadyRequested();
 
-        // Nota: validaciones onlyWomen / community no se aplican porque el modelo User no
-        // guarda género ni pertenencia a comunidad (ver doc US14 — filtro institucional pendiente).
+        // US14 — si la ruta pertenece a una comunidad institucional, el pasajero también
+        // debe tener correo institucional. onlyWomen no se puede validar server-side porque
+        // el modelo User no almacena género (documentado como limitación).
+        if (!string.IsNullOrWhiteSpace(route.Community))
+        {
+            var passengerUser = await userRepository.FindByIdAsync(command.PassengerId);
+            if (!InstitutionalEmail.IsInstitutional(passengerUser?.Email))
+                throw CarpoolException.NotInstitutionalPassenger();
+        }
 
         var passenger = new RoutePassenger(command.RouteId, command.PassengerId, command.Seats);
         await passengerRepository.AddAsync(passenger);

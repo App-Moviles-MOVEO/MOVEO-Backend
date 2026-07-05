@@ -38,6 +38,8 @@ public partial class User
     public string? KycDniBackUrl { get; private set; }
     public string? KycSelfieUrl { get; private set; }
     public DateTime? KycSubmittedAt { get; private set; }
+    public string? KycRejectionReason { get; private set; }
+    public DateTime? KycReviewedAt { get; private set; }
     
     // Estadísticas
     public int TotalRentals { get; private set; }
@@ -185,6 +187,8 @@ public partial class User
         KycSelfieUrl = selfieUrl;
         KycStatus = "pending";
         KycSubmittedAt = DateTime.UtcNow;
+        KycRejectionReason = null;
+        KycReviewedAt = null;
         UpdatedAt = DateTime.UtcNow;
     }
 
@@ -193,12 +197,18 @@ public partial class User
         KycStatus = "approved";
         DniVerified = true;
         LicenseVerified = true;
+        KycRejectionReason = null;
+        KycReviewedAt = DateTime.UtcNow;
         UpdatedAt = DateTime.UtcNow;
     }
 
-    public void RejectKyc()
+    public void RejectKyc(string? reason = null)
     {
         KycStatus = "rejected";
+        DniVerified = false;
+        LicenseVerified = false;
+        KycRejectionReason = reason;
+        KycReviewedAt = DateTime.UtcNow;
         UpdatedAt = DateTime.UtcNow;
     }
 

@@ -21,7 +21,10 @@ public record UpdateVehicleCommand(
     List<string> Features,
     List<string> Restrictions,
     List<string> Images,
-    string? BodyType = null);
+    string? BodyType = null,
+    string? PropertyCardFront = null,
+    string? PropertyCardBack = null,
+    string? Soat = null);
 
 public record PatchVehicleCommand(
     int Id,
@@ -42,6 +45,9 @@ public record PatchVehicleCommand(
     List<string>? Features = null,
     List<string>? Restrictions = null,
     List<string>? Images = null,
-    string? BodyType = null);
+    string? BodyType = null,
+    string? PropertyCardFront = null,
+    string? PropertyCardBack = null,
+    string? Soat = null);
 
 public record DeleteVehicleCommand(int Id);

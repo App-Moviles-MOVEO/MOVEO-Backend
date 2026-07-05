@@ -19,6 +19,7 @@ public static class UserResourceFromEntityAssembler
             LicenseNumber = user.LicenseNumber,
             Avatar = user.Avatar,
             KycStatus = user.KycStatus,
+            KycRejectionReason = user.KycRejectionReason,
             Verified = new UserVerificationResource
             {
                 Email = user.EmailVerified,

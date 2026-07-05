@@ -8,6 +8,7 @@ using Moveo_backend.Rental.Domain.Model.Aggregates;
 using Moveo_backend.Rental.Domain.Model.ValueObjects;
 using Moveo_backend.Support.Domain.Model.Aggregate;
 using Moveo_backend.UserManagement.Domain.Model.Aggregates;
+using Moveo_backend.Payment.Domain.Model.Aggregate;
 using PaymentEntity = Moveo_backend.Payment.Domain.Model.Aggregate.Payment;
 using NotificationEntity = Moveo_backend.Notification.Domain.Model.Aggregate.Notification;
 using UserReviewEntity = Moveo_backend.UserReview.Domain.Model.Aggregate.UserReview;
@@ -23,10 +24,13 @@ public class AppDbContext : DbContext
     public DbSet<User> Users { get; set; } = null!;
     public DbSet<Vehicle> Vehicles { get; set; } = null!;
     public DbSet<Rental.Domain.Model.Aggregates.Rental> Rentals { get; set; } = null!;
+    public DbSet<RentalInspection> RentalInspections { get; set; } = null!;
     public DbSet<AdventureRoute> AdventureRoutes { get; set; } = null!;
     public DbSet<RoutePassenger> RoutePassengers { get; set; } = null!;
     public DbSet<PaymentEntity> Payments { get; set; } = null!;
+    public DbSet<Withdrawal> Withdrawals { get; set; } = null!;
     public DbSet<NotificationEntity> Notifications { get; set; } = null!;
+    public DbSet<DeviceToken> DeviceTokens { get; set; } = null!;
     public DbSet<SupportTicket> SupportTickets { get; set; } = null!;
     public DbSet<TicketMessage> TicketMessages { get; set; } = null!;
     public DbSet<Review> Reviews { get; set; } = null!;
@@ -144,6 +148,21 @@ public class AppDbContext : DbContext
             entity.Property(r => r.CompletedAt);
         });
 
+        // -------------------- RENTAL INSPECTION (US12) --------------------
+        modelBuilder.Entity<RentalInspection>(entity =>
+        {
+            entity.HasKey(i => i.Id);
+            entity.Property(i => i.Id).ValueGeneratedOnAdd();
+            entity.Property(i => i.RentalId).IsRequired();
+            entity.Property(i => i.Type).IsRequired();
+            entity.Property(i => i.PhotosJson).HasColumnType("json");
+            entity.Property(i => i.Notes);
+            entity.Property(i => i.CreatedById);
+            entity.Property(i => i.CreatedAt);
+            entity.Ignore(i => i.Photos);
+            entity.HasIndex(i => i.RentalId);
+        });
+
         // -------------------- ADVENTURE ROUTE --------------------
         modelBuilder.Entity<AdventureRoute>(entity =>
         {
@@ -183,6 +202,22 @@ public class AppDbContext : DbContext
             entity.Property(p => p.Type).IsRequired();
         });
 
+        // -------------------- WITHDRAWAL --------------------
+        modelBuilder.Entity<Withdrawal>(entity =>
+        {
+            entity.HasKey(w => w.Id);
+            entity.Property(w => w.Id).ValueGeneratedOnAdd();
+            entity.Property(w => w.UserId).IsRequired();
+            entity.Property(w => w.Amount).HasColumnType("decimal(18,2)").IsRequired();
+            entity.Property(w => w.Method).IsRequired();
+            entity.Property(w => w.Destination).IsRequired();
+            entity.Property(w => w.Status).IsRequired();
+            entity.Property(w => w.RejectionReason);
+            entity.Property(w => w.CreatedAt);
+            entity.Property(w => w.ProcessedAt);
+            entity.HasIndex(w => w.UserId);
+        });
+
         // -------------------- NOTIFICATION --------------------
         modelBuilder.Entity<NotificationEntity>(entity =>
         {
@@ -190,6 +225,21 @@ public class AppDbContext : DbContext
             entity.Property(n => n.Title).IsRequired();
             entity.Property(n => n.Body).IsRequired();
             entity.Property(n => n.Type).IsRequired();
+        });
+
+        // -------------------- DEVICE TOKEN (Push/FCM) --------------------
+        modelBuilder.Entity<DeviceToken>(entity =>
+        {
+            entity.HasKey(d => d.Id);
+            entity.Property(d => d.Id).ValueGeneratedOnAdd();
+            entity.Property(d => d.UserId).IsRequired();
+            entity.Property(d => d.Token).IsRequired();
+            entity.Property(d => d.Platform).IsRequired();
+            entity.Property(d => d.Active);
+            entity.Property(d => d.CreatedAt);
+            entity.Property(d => d.UpdatedAt);
+            entity.HasIndex(d => d.Token).IsUnique();
+            entity.HasIndex(d => d.UserId);
         });
 
         // -------------------- SUPPORT TICKET --------------------

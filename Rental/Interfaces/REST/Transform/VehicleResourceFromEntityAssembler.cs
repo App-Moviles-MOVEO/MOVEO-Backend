@@ -40,7 +40,14 @@ public static class VehicleResourceFromEntityAssembler
             vehicle.BodyType,
             ownerName,
             rating,
-            reviewsCount
+            reviewsCount,
+            new VehicleDocumentsResource(
+                vehicle.PropertyCardFrontUrl,
+                vehicle.PropertyCardBackUrl,
+                vehicle.SoatUrl
+            ),
+            vehicle.OwnershipStatus,
+            vehicle.OwnershipRejectionReason
         );
     }
 }

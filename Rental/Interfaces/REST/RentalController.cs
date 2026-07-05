@@ -207,6 +207,64 @@ public class RentalsController : ControllerBase
         return Ok(result);
     }
 
+    // GET /api/v1/rentals/{id}/invoice  -> comprobante con numeración correlativa oficial
+    [HttpGet("{id:int}/invoice")]
+    public async Task<IActionResult> GetInvoice(int id)
+    {
+        var rental = await _rentalService.GetByIdAsync(id);
+        if (rental == null) return NotFound(new { message = "Reserva no encontrada" });
+
+        // El comprobante se emite sobre el pago completado de la reserva.
+        var payment = await _context.Payments
+            .Where(p => p.RentalId == id && p.Status == "completed" && p.Type != "refund")
+            .OrderBy(p => p.Id)
+            .FirstOrDefaultAsync();
+        if (payment == null)
+            return UnprocessableEntity(new { error = "no_completed_payment", message = "La reserva no tiene un pago completado" });
+
+        // Numeración correlativa determinística: WPE-{año}-{id de pago con padding}.
+        var invoiceNumber = $"WPE-{payment.CreatedAt:yyyy}-{payment.Id:D6}";
+
+        var renter = await _context.Users.Where(u => u.Id == rental.RenterId)
+            .Select(u => new { u.FirstName, u.LastName, u.Dni, u.Email }).FirstOrDefaultAsync();
+        var vehicle = await _context.Vehicles.Where(v => v.Id == rental.VehicleId)
+            .Select(v => new { v.Brand, v.Model, v.LicensePlate }).FirstOrDefaultAsync();
+
+        var days = Math.Max(1, (int)Math.Ceiling((rental.EndDate - rental.StartDate).TotalDays));
+
+        return Ok(new
+        {
+            invoiceNumber,
+            issuedAt = payment.CompletedAt ?? payment.CreatedAt,
+            rentalId = rental.Id,
+            status = "issued",
+            customer = renter == null ? null : new
+            {
+                fullName = $"{renter.FirstName} {renter.LastName}".Trim(),
+                dni = renter.Dni,
+                email = renter.Email
+            },
+            vehicle = vehicle == null ? null : new
+            {
+                name = $"{vehicle.Brand} {vehicle.Model}",
+                licensePlate = vehicle.LicensePlate
+            },
+            period = new { start = rental.StartDate, end = rental.EndDate, days },
+            payment = new
+            {
+                id = payment.Id,
+                method = payment.Method,
+                currency = payment.Currency,
+                transactionId = payment.TransactionId
+            },
+            amount = new
+            {
+                total = payment.Amount,
+                currency = payment.Currency
+            }
+        });
+    }
+
     // -------------------- Mapeo + enriquecimiento (vehicleName/vehicleImage) --------------------
 
     private async Task<RentalResource> ToResourceAsync(Domain.Model.Aggregates.Rental rental)
@@ -219,7 +277,10 @@ public class RentalsController : ControllerBase
         string? vehicleName = vehicle != null ? $"{vehicle.Brand} {vehicle.Model}" : null;
         string? vehicleImage = vehicle != null ? FirstImage(vehicle.ImagesJson) : null;
 
-        return Map(rental, vehicleName, vehicleImage);
+        var renters = await LoadRentersAsync(new[] { rental.RenterId });
+        renters.TryGetValue(rental.RenterId, out var renter);
+
+        return Map(rental, vehicleName, vehicleImage, renter);
     }
 
     private async Task<List<RentalResource>> ToResourcesAsync(List<Domain.Model.Aggregates.Rental> rentals)
@@ -232,13 +293,45 @@ public class RentalsController : ControllerBase
             .Select(v => new { v.Id, v.Brand, v.Model, v.ImagesJson })
             .ToDictionaryAsync(v => v.Id);
 
+        var renters = await LoadRentersAsync(rentals.Select(r => r.RenterId).Distinct());
+
         return rentals.Select(r =>
         {
             vehicles.TryGetValue(r.VehicleId, out var v);
             string? name = v != null ? $"{v.Brand} {v.Model}" : null;
             string? image = v != null ? FirstImage(v.ImagesJson) : null;
-            return Map(r, name, image);
+            renters.TryGetValue(r.RenterId, out var renter);
+            return Map(r, name, image, renter);
         }).ToList();
+    }
+
+    // Carga el resumen (nombre, avatar, reputación, KYC) de los arrendatarios en una sola pasada.
+    private async Task<Dictionary<int, RenterSummaryResource>> LoadRentersAsync(IEnumerable<int> renterIds)
+    {
+        var ids = renterIds.Distinct().ToList();
+        if (ids.Count == 0) return new Dictionary<int, RenterSummaryResource>();
+
+        var users = await _context.Users
+            .Where(u => ids.Contains(u.Id))
+            .Select(u => new { u.Id, u.FirstName, u.LastName, u.Avatar, u.KycStatus })
+            .ToListAsync();
+
+        // Reputación = promedio de las reseñas recibidas como usuario.
+        var reputations = (await _context.UserReviews
+                .Where(r => ids.Contains(r.ReviewedUserId))
+                .Select(r => new { r.ReviewedUserId, r.Rating })
+                .ToListAsync())
+            .GroupBy(x => x.ReviewedUserId)
+            .ToDictionary(g => g.Key, g => Math.Round(g.Average(x => (double)x.Rating), 2));
+
+        return users.ToDictionary(
+            u => u.Id,
+            u => new RenterSummaryResource(
+                u.Id,
+                $"{u.FirstName} {u.LastName}".Trim(),
+                u.Avatar,
+                reputations.TryGetValue(u.Id, out var rep) ? rep : 0,
+                u.KycStatus));
     }
 
     private static string? FirstImage(string? imagesJson)
@@ -255,7 +348,11 @@ public class RentalsController : ControllerBase
         }
     }
 
-    private static RentalResource Map(Domain.Model.Aggregates.Rental rental, string? vehicleName, string? vehicleImage) =>
+    private static RentalResource Map(
+        Domain.Model.Aggregates.Rental rental,
+        string? vehicleName,
+        string? vehicleImage,
+        RenterSummaryResource? renter) =>
         new(
             rental.Id,
             rental.VehicleId,
@@ -275,6 +372,7 @@ public class RentalsController : ControllerBase
             rental.AcceptedAt,
             rental.CompletedAt,
             vehicleName,
-            vehicleImage
+            vehicleImage,
+            renter
         );
 }

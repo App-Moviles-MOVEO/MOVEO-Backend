@@ -26,4 +26,10 @@ public interface IAuthService
     /// Registra la subida de documentos KYC. Devuelve el nuevo estado ("pending") o null si el usuario no existe.
     /// </summary>
     Task<string?> SubmitKycAsync(int userId, string? dniFrontUrl, string? dniBackUrl, string? selfieUrl);
+
+    /// <summary>Lista las solicitudes KYC en revisión (estado "pending") para el panel admin.</summary>
+    Task<IEnumerable<KycReviewItemResource>> GetPendingKycAsync();
+
+    /// <summary>Resuelve una solicitud KYC: approve o reject (con motivo). Devuelve el nuevo estado o null.</summary>
+    Task<string?> ReviewKycAsync(int userId, bool approve, string? rejectionReason);
 }

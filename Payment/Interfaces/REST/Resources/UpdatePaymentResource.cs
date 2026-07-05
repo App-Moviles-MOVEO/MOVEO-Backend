@@ -38,3 +38,8 @@ public record PatchPaymentResource(
     string? Reason,
     DateTime? CompletedAt
 );
+
+/// <summary>Cuerpo opcional del reembolso (POST /payments/{id}/refund).</summary>
+public record RefundRequestResource(
+    string? Reason = null
+);

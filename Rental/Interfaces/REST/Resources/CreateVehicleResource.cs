@@ -24,5 +24,7 @@ public record CreateVehicleResource(
     List<string>? Images,
     List<string>? Features,
     List<string>? Restrictions,
-    string? BodyType = null
+    string? BodyType = null,
+    // US05 — la app puede mandar las URLs de los documentos ya subidos
+    VehicleDocumentsResource? Documents = null
 );

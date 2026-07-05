@@ -19,4 +19,8 @@ public record CreateVehicleCommand(
     List<string> Features,
     List<string> Restrictions,
     List<string> Images,
-    string? BodyType = null);
+    string? BodyType = null,
+    // US05 — documentos de propiedad (URLs ya subidas)
+    string? PropertyCardFront = null,
+    string? PropertyCardBack = null,
+    string? Soat = null);

@@ -30,6 +30,14 @@ public class Vehicle
     public string ImagesJson { get; private set; } = "[]";
 
     public string Status { get; private set; } = "active";
+
+    // Documentos de propiedad (US05): tarjeta de propiedad + SOAT, con estado de acreditación.
+    public string? PropertyCardFrontUrl { get; private set; }
+    public string? PropertyCardBackUrl { get; private set; }
+    public string? SoatUrl { get; private set; }
+    public string OwnershipStatus { get; private set; } = "not_submitted"; // not_submitted | pending | approved | rejected
+    public string? OwnershipRejectionReason { get; private set; }
+
     public string? Description { get; private set; }
     // Tipo de carrocería para filtrar el catálogo desde la app: "compact" | "sedan" | "suv" | "pickup" | etc.
     public string? BodyType { get; private set; }
@@ -164,6 +172,41 @@ public class Vehicle
     public void ChangeStatus(string status)
     {
         Status = status;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    /// <summary>Agrega URLs de imágenes ya subidas al final de la galería del vehículo.</summary>
+    public void AddImages(IEnumerable<string> urls)
+    {
+        var list = Images;
+        list.AddRange(urls);
+        Images = list;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    /// <summary>
+    /// Registra documentos de propiedad (solo pisa los que vienen no nulos) y pasa la
+    /// acreditación a "pending" para revisión de un admin.
+    /// </summary>
+    public void SubmitDocuments(string? propertyCardFront, string? propertyCardBack, string? soat)
+    {
+        if (propertyCardFront != null) PropertyCardFrontUrl = propertyCardFront;
+        if (propertyCardBack != null) PropertyCardBackUrl = propertyCardBack;
+        if (soat != null) SoatUrl = soat;
+
+        if (PropertyCardFrontUrl != null || PropertyCardBackUrl != null || SoatUrl != null)
+        {
+            OwnershipStatus = "pending";
+            OwnershipRejectionReason = null;
+        }
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    /// <summary>Resolución del admin sobre la acreditación de propiedad.</summary>
+    public void SetOwnershipStatus(string status, string? reason)
+    {
+        OwnershipStatus = status;
+        OwnershipRejectionReason = status == "rejected" ? reason : null;
         UpdatedAt = DateTime.UtcNow;
     }
 }
