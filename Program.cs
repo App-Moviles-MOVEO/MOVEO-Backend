@@ -104,6 +104,8 @@ builder.Services.AddAppDbContext(builder.Configuration, builder.Environment.IsPr
 
 // ------------------------- Shared Dependencies -------------------------
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<Moveo_backend.Shared.Infrastructure.Storage.IFileStorageService,
+    Moveo_backend.Shared.Infrastructure.Storage.LocalFileStorageService>();
 
 // ------------------------- IAM -------------------------
 builder.Services.AddScoped<IHashingService, BcryptHashingService>();

@@ -1,5 +1,14 @@
 namespace Moveo_backend.Rental.Interfaces.REST.Resources;
 
+/// <summary>Resumen del arrendatario embebido en las respuestas de /rentals (evita N+1 en la app).</summary>
+public record RenterSummaryResource(
+    int Id,
+    string FullName,
+    string? AvatarUrl,
+    double Reputation,
+    string KycStatus
+);
+
 public record RentalResource(
     int Id,
     int VehicleId,
@@ -20,5 +29,7 @@ public record RentalResource(
     DateTime? CompletedAt,
     // Campos enriquecidos vía JOIN con Vehicles para la app móvil
     string? VehicleName = null,
-    string? VehicleImage = null
+    string? VehicleImage = null,
+    // Resumen del arrendatario embebido (evita el GET /users/{id} extra)
+    RenterSummaryResource? Renter = null
 );

@@ -188,6 +188,34 @@ public class AuthController : ControllerBase
         return Ok(new { status });
     }
 
+    /// <summary>
+    /// Cola de revisión KYC: lista las solicitudes en estado "pending" (panel admin).
+    /// </summary>
+    [HttpGet("kyc/pending")]
+    public async Task<IActionResult> GetPendingKyc()
+    {
+        var items = await _authService.GetPendingKycAsync();
+        return Ok(items);
+    }
+
+    /// <summary>
+    /// Resuelve una solicitud KYC (admin): approve o reject con motivo.
+    /// </summary>
+    [HttpPost("kyc/{userId:int}/review")]
+    public async Task<IActionResult> ReviewKyc(int userId, [FromBody] ReviewKycRequest request)
+    {
+        if (userId <= 0)
+            return BadRequest(new { message = "userId is required" });
+        if (!request.Approve && string.IsNullOrWhiteSpace(request.RejectionReason))
+            return BadRequest(new { message = "rejectionReason es obligatorio al rechazar" });
+
+        var status = await _authService.ReviewKycAsync(userId, request.Approve, request.RejectionReason);
+        if (status == null)
+            return NotFound(new { message = "User not found" });
+
+        return Ok(new { userId, status, rejectionReason = request.Approve ? null : request.RejectionReason });
+    }
+
     // Guarda un archivo KYC en wwwroot/uploads/kyc/{userId}/ y devuelve su URL relativa.
     private async Task<string?> SaveKycFileAsync(int userId, string prefix, IFormFile? file)
     {

@@ -9,4 +9,9 @@ public interface IAdventureRouteCommandService
     Task<AdventureRoute?> Handle(UpdateAdventureRouteCommand command);
     Task<AdventureRoute?> Handle(BookAdventureRouteSeatCommand command);
     Task<bool> Handle(DeleteAdventureRouteCommand command);
+
+    // Transiciones de estado dedicadas (validan transiciones ilegales).
+    Task<AdventureRoute> Handle(StartAdventureRouteCommand command);
+    Task<AdventureRoute> Handle(CompleteAdventureRouteCommand command);
+    Task<AdventureRoute> Handle(CancelAdventureRouteCommand command);
 }

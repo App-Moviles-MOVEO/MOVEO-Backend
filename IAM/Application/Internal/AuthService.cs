@@ -138,6 +138,38 @@ public class AuthService : IAuthService
         return user.KycStatus;
     }
 
+    public async Task<IEnumerable<KycReviewItemResource>> GetPendingKycAsync()
+    {
+        return await _context.Users
+            .Where(u => u.KycStatus == "pending")
+            .OrderBy(u => u.KycSubmittedAt)
+            .Select(u => new KycReviewItemResource
+            {
+                UserId = u.Id,
+                FullName = u.FirstName + " " + u.LastName,
+                Email = u.Email,
+                Dni = u.Dni,
+                DniFrontUrl = u.KycDniFrontUrl,
+                DniBackUrl = u.KycDniBackUrl,
+                SelfieUrl = u.KycSelfieUrl,
+                SubmittedAt = u.KycSubmittedAt
+            })
+            .ToListAsync();
+    }
+
+    public async Task<string?> ReviewKycAsync(int userId, bool approve, string? rejectionReason)
+    {
+        var user = await _context.Users.FindAsync(userId);
+        if (user == null)
+            return null;
+
+        if (approve) user.ApproveKyc();
+        else user.RejectKyc(rejectionReason);
+
+        await _context.SaveChangesAsync();
+        return user.KycStatus;
+    }
+
     private static AuthenticatedUserResource MapToAuthenticatedUser(User user)
     {
         return new AuthenticatedUserResource

@@ -18,7 +18,8 @@ public record UpdateVehicleResource(
     List<string>? Images,
     List<string>? Features,
     List<string>? Restrictions,
-    string? BodyType = null
+    string? BodyType = null,
+    VehicleDocumentsResource? Documents = null
 );
 
 public record PatchVehicleResource(
@@ -39,5 +40,6 @@ public record PatchVehicleResource(
     List<string>? Images = null,
     List<string>? Features = null,
     List<string>? Restrictions = null,
-    string? BodyType = null
+    string? BodyType = null,
+    VehicleDocumentsResource? Documents = null
 );

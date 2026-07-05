@@ -1,5 +1,6 @@
 using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Annotations;
 using Moveo_backend.UserManagement.Application.CommandServices;
 using Moveo_backend.UserManagement.Application.QueryServices;
@@ -8,6 +9,7 @@ using Moveo_backend.UserManagement.Domain.Model.Queries;
 using Moveo_backend.UserManagement.Domain.Services;
 using Moveo_backend.UserManagement.Interfaces.REST.Resources;
 using Moveo_backend.UserManagement.Interfaces.REST.Transform;
+using Moveo_backend.Shared.Infrastructure.Persistence.EFC.Configuration;
 
 namespace Moveo_backend.UserManagement.Interfaces.REST;
 
@@ -17,7 +19,8 @@ namespace Moveo_backend.UserManagement.Interfaces.REST;
 [SwaggerTag("Available User Endpoints")]
 public class UsersController(
     IUserCommandService userCommandService,
-    IUserQueryService userQueryService) : ControllerBase
+    IUserQueryService userQueryService,
+    AppDbContext context) : ControllerBase
 {
     [HttpGet("{userId:int}")]
     [SwaggerOperation(
@@ -33,7 +36,48 @@ public class UsersController(
         var user = await userQueryService.Handle(getUserByIdQuery);
         if (user is null) return NotFound();
         var resource = UserResourceFromEntityAssembler.ToResourceFromEntity(user);
+        await EnrichStatsAsync(resource);
         return Ok(resource);
+    }
+
+    // US36 — calcula reputación, tasa de puntualidad y badges server-side.
+    private async Task EnrichStatsAsync(UserResource resource)
+    {
+        var userId = resource.Id;
+
+        var ratings = await context.UserReviews
+            .Where(r => r.ReviewedUserId == userId)
+            .Select(r => r.Rating)
+            .ToListAsync();
+        var reputation = ratings.Count > 0 ? Math.Round(ratings.Average(x => (double)x), 2) : 0;
+
+        // Puntualidad: alquileres completados que se cerraron dentro de la fecha pactada.
+        var completed = await context.Rentals
+            .Where(r => r.RenterId == userId && r.Status == "completed" && r.CompletedAt != null)
+            .Select(r => new { r.CompletedAt, r.EndDate })
+            .ToListAsync();
+        var onTimeRate = completed.Count > 0
+            ? Math.Round((double)completed.Count(r => r.CompletedAt <= r.EndDate.AddHours(2)) / completed.Count, 2)
+            : 0;
+
+        resource.Stats.Reputation = reputation;
+        resource.Stats.OnTimeRate = onTimeRate;
+        resource.Stats.Badges = BuildBadges(resource, reputation, onTimeRate, ratings.Count, completed.Count);
+    }
+
+    private static List<string> BuildBadges(
+        UserResource resource, double reputation, double onTimeRate, int reviewsCount, int completedCount)
+    {
+        var badges = new List<string>();
+        if (resource.KycStatus == "approved" || resource.Verified.Dni)
+            badges.Add("VERIFIED");
+        if (completedCount >= 3 && onTimeRate >= 0.9)
+            badges.Add("PUNCTUAL");
+        if (resource.Stats.CompletedRentals >= 10)
+            badges.Add("TOP_RENTER");
+        if (reviewsCount >= 3 && reputation >= 4.8)
+            badges.Add("FIVE_STARS");
+        return badges;
     }
     
     [HttpGet]

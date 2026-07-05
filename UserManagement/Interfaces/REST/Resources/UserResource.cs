@@ -12,6 +12,7 @@ public class UserResource
     public string LicenseNumber { get; set; } = string.Empty;
     public string? Avatar { get; set; }
     public string KycStatus { get; set; } = "not_submitted";
+    public string? KycRejectionReason { get; set; }
     public UserVerificationResource Verified { get; set; } = new();
     public UserStatsResource Stats { get; set; } = new();
     public UserPreferencesResource Preferences { get; set; } = new();
@@ -36,6 +37,10 @@ public class UserStatsResource
     public int ActiveRentals { get; set; } = 0;
     public int CompletedRentals { get; set; } = 0;
     public int CanceledRentals { get; set; } = 0;
+    // US36 — reputación y métricas de puntualidad calculadas server-side.
+    public double Reputation { get; set; } = 0;
+    public double OnTimeRate { get; set; } = 0;
+    public List<string> Badges { get; set; } = new();
 }
 
 public class UserPreferencesResource

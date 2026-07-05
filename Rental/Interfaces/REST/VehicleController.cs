@@ -9,6 +9,9 @@ using Moveo_backend.Rental.Interfaces.REST.Transform;
 using Moveo_backend.Rental.Domain.Model.ValueObjects;
 using Moveo_backend.Rental.Domain.Model.Commands;
 using Moveo_backend.Shared.Infrastructure.Persistence.EFC.Configuration;
+using Moveo_backend.Shared.Infrastructure.Storage;
+using Moveo_backend.Notification.Domain.Model.Commands;
+using Moveo_backend.Notification.Domain.Services;
 
 namespace Moveo_backend.Rental.Interfaces.REST;
 
@@ -21,12 +24,21 @@ public class VehiclesController : ControllerBase
     private readonly IVehicleService _vehicleService;
     private readonly IRentalService _rentalService;
     private readonly AppDbContext _context;
+    private readonly IFileStorageService _fileStorage;
+    private readonly INotificationCommandService _notificationCommandService;
 
-    public VehiclesController(IVehicleService vehicleService, IRentalService rentalService, AppDbContext context)
+    public VehiclesController(
+        IVehicleService vehicleService,
+        IRentalService rentalService,
+        AppDbContext context,
+        IFileStorageService fileStorage,
+        INotificationCommandService notificationCommandService)
     {
         _vehicleService = vehicleService;
         _rentalService = rentalService;
         _context = context;
+        _fileStorage = fileStorage;
+        _notificationCommandService = notificationCommandService;
     }
 
     /// <summary>
@@ -199,7 +211,10 @@ public class VehiclesController : ControllerBase
             resource.Features ?? new List<string>(),
             resource.Restrictions ?? new List<string>(),
             resource.Images ?? new List<string>(),
-            resource.BodyType
+            resource.BodyType,
+            resource.Documents?.PropertyCardFront,
+            resource.Documents?.PropertyCardBack,
+            resource.Documents?.Soat
         );
 
         var vehicle = await _vehicleService.CreateVehicleAsync(command);
@@ -244,7 +259,10 @@ public class VehiclesController : ControllerBase
             resource.Features ?? new List<string>(),
             resource.Restrictions ?? new List<string>(),
             resource.Images ?? new List<string>(),
-            resource.BodyType
+            resource.BodyType,
+            resource.Documents?.PropertyCardFront,
+            resource.Documents?.PropertyCardBack,
+            resource.Documents?.Soat
         );
 
         var vehicle = await _vehicleService.UpdateVehicleAsync(command);
@@ -292,7 +310,10 @@ public class VehiclesController : ControllerBase
             resource.Features,
             resource.Restrictions,
             resource.Images,
-            resource.BodyType
+            resource.BodyType,
+            resource.Documents?.PropertyCardFront,
+            resource.Documents?.PropertyCardBack,
+            resource.Documents?.Soat
         );
 
         var vehicle = await _vehicleService.PatchVehicleAsync(command);
@@ -322,6 +343,126 @@ public class VehiclesController : ControllerBase
             return NotFound(new { error = new { code = "NOT_FOUND", message = "Vehículo no encontrado" } });
         }
         return NoContent();
+    }
+
+    /// <summary>
+    /// Sube imágenes del vehículo (multipart/form-data, campo "files"), las agrega a la galería
+    /// y devuelve las URLs públicas resultantes. Reemplaza el envío de rutas locales/blob.
+    /// </summary>
+    [HttpPost("{id:int}/images")]
+    [Consumes("multipart/form-data")]
+    [RequestSizeLimit(60_000_000)]
+    [SwaggerOperation(
+        Summary = "Upload vehicle images",
+        Description = "Sube una o más imágenes del vehículo y devuelve sus URLs públicas.",
+        OperationId = "UploadVehicleImages")]
+    [SwaggerResponse(StatusCodes.Status201Created, "Imágenes subidas")]
+    [SwaggerResponse(StatusCodes.Status400BadRequest, "Sin archivos o archivo inválido")]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "Vehículo no encontrado")]
+    public async Task<IActionResult> UploadImages(int id)
+    {
+        var vehicle = await _vehicleService.GetByIdAsync(id);
+        if (vehicle == null)
+            return NotFound(new { error = new { code = "NOT_FOUND", message = "Vehículo no encontrado" } });
+
+        var files = Request.Form.Files;
+        if (files.Count == 0)
+            return BadRequest(new { error = "no_files", message = "Envíe al menos un archivo en el campo 'files'" });
+
+        var urls = new List<string>();
+        foreach (var file in files)
+        {
+            if (!_fileStorage.IsAllowedFile(file, out var error))
+                return BadRequest(new { error = "invalid_file", message = error });
+            urls.Add(await _fileStorage.SaveAsync(file, $"vehicles/{id}", "img"));
+        }
+
+        vehicle.AddImages(urls);
+        await _context.SaveChangesAsync();
+
+        return StatusCode(StatusCodes.Status201Created, new { urls, images = vehicle.Images });
+    }
+
+    /// <summary>
+    /// Sube documentos de propiedad (multipart/form-data): propertyCardFront, propertyCardBack, soat.
+    /// Persiste sus URLs y pasa la acreditación (ownershipStatus) a "pending".
+    /// </summary>
+    [HttpPost("{id:int}/documents")]
+    [Consumes("multipart/form-data")]
+    [RequestSizeLimit(40_000_000)]
+    [SwaggerOperation(
+        Summary = "Upload vehicle ownership documents (US05)",
+        Description = "Sube tarjeta de propiedad (frente/reverso) y SOAT; deja ownershipStatus en 'pending'.",
+        OperationId = "UploadVehicleDocuments")]
+    [SwaggerResponse(StatusCodes.Status200OK, "Documentos guardados", typeof(VehicleResource))]
+    [SwaggerResponse(StatusCodes.Status400BadRequest, "Ningún documento enviado o inválido")]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "Vehículo no encontrado")]
+    public async Task<IActionResult> UploadDocuments(
+        int id,
+        IFormFile? propertyCardFront,
+        IFormFile? propertyCardBack,
+        IFormFile? soat)
+    {
+        var vehicle = await _vehicleService.GetByIdAsync(id);
+        if (vehicle == null)
+            return NotFound(new { error = new { code = "NOT_FOUND", message = "Vehículo no encontrado" } });
+
+        if (propertyCardFront == null && propertyCardBack == null && soat == null)
+            return BadRequest(new { error = "no_files", message = "Envíe al menos un documento (propertyCardFront, propertyCardBack, soat)" });
+
+        var frontUrl = await SaveDocAsync(id, "property_front", propertyCardFront);
+        var backUrl = await SaveDocAsync(id, "property_back", propertyCardBack);
+        var soatUrl = await SaveDocAsync(id, "soat", soat);
+
+        vehicle.SubmitDocuments(frontUrl, backUrl, soatUrl);
+        await _context.SaveChangesAsync();
+
+        return Ok(await EnrichOneAsync(vehicle));
+    }
+
+    /// <summary>
+    /// Resolución del admin sobre la acreditación de propiedad: approved | rejected (con motivo).
+    /// </summary>
+    [HttpPatch("{id:int}/ownership-status")]
+    [SwaggerOperation(
+        Summary = "Set vehicle ownership status (admin, US05)",
+        Description = "Marca la acreditación como approved/rejected. Con rejected se guarda el motivo y se notifica al owner.",
+        OperationId = "SetVehicleOwnershipStatus")]
+    [SwaggerResponse(StatusCodes.Status200OK, "Estado actualizado", typeof(VehicleResource))]
+    [SwaggerResponse(StatusCodes.Status400BadRequest, "Estado inválido")]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "Vehículo no encontrado")]
+    public async Task<IActionResult> SetOwnershipStatus(int id, [FromBody] OwnershipStatusResource resource)
+    {
+        var allowed = new[] { "pending", "approved", "rejected" };
+        if (string.IsNullOrWhiteSpace(resource.Status) || !allowed.Contains(resource.Status))
+            return BadRequest(new { error = "invalid_status", message = "status debe ser pending, approved o rejected" });
+
+        var vehicle = await _vehicleService.GetByIdAsync(id);
+        if (vehicle == null)
+            return NotFound(new { error = new { code = "NOT_FOUND", message = "Vehículo no encontrado" } });
+
+        vehicle.SetOwnershipStatus(resource.Status, resource.RejectionReason);
+        await _context.SaveChangesAsync();
+
+        // Avisar al owner el resultado de la revisión.
+        var (title, body) = resource.Status == "approved"
+            ? ("Vehículo acreditado", "La propiedad de tu vehículo fue verificada correctamente.")
+            : resource.Status == "rejected"
+                ? ("Acreditación rechazada", $"La acreditación de tu vehículo fue rechazada. Motivo: {resource.RejectionReason ?? "no especificado"}.")
+                : ("Acreditación en revisión", "Tu vehículo está pendiente de acreditación.");
+        await _notificationCommandService.Handle(new CreateNotificationCommand(
+            vehicle.OwnerId, title, body, "vehicle", vehicle.Id, "vehicle", null, null, null));
+
+        return Ok(await EnrichOneAsync(vehicle));
+    }
+
+    // Guarda un documento del vehículo y devuelve su URL (o null si no se envió).
+    private async Task<string?> SaveDocAsync(int vehicleId, string prefix, IFormFile? file)
+    {
+        if (file == null || file.Length == 0) return null;
+        if (!_fileStorage.IsAllowedFile(file, out var error))
+            throw new InvalidOperationException(error);
+        return await _fileStorage.SaveAsync(file, $"vehicles/{vehicleId}/documents", prefix);
     }
 
     // -------------------- Enriquecimiento (ownerName, rating, reviewsCount) --------------------

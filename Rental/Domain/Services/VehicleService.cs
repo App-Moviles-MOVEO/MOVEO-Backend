@@ -55,6 +55,9 @@ public class VehicleService : IVehicleService
             command.Images
         );
 
+        if (command.PropertyCardFront != null || command.PropertyCardBack != null || command.Soat != null)
+            vehicle.SubmitDocuments(command.PropertyCardFront, command.PropertyCardBack, command.Soat);
+
         await _vehicleRepository.AddAsync(vehicle);
         return vehicle;
     }
@@ -85,6 +88,9 @@ public class VehicleService : IVehicleService
             command.Images
         );
 
+        if (command.PropertyCardFront != null || command.PropertyCardBack != null || command.Soat != null)
+            vehicle.SubmitDocuments(command.PropertyCardFront, command.PropertyCardBack, command.Soat);
+
         await _vehicleRepository.UpdateAsync(vehicle);
         return vehicle;
     }
@@ -103,6 +109,9 @@ public class VehicleService : IVehicleService
             command.Restrictions,
             command.Images
         );
+
+        if (command.PropertyCardFront != null || command.PropertyCardBack != null || command.Soat != null)
+            vehicle.SubmitDocuments(command.PropertyCardFront, command.PropertyCardBack, command.Soat);
 
         await _vehicleRepository.UpdateAsync(vehicle);
         return vehicle;
