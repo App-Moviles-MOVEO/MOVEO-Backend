@@ -136,6 +136,53 @@ public class UserReviewsController : ControllerBase
         return NoContent();
     }
 
+    /// <summary>
+    /// Disputa una reseña (US41). Mediación automática: si es un voto bajo (≤2), atípico respecto
+    /// al promedio del usuario (diferencia ≥1.5) y sin justificación, se excluye de la reputación;
+    /// en caso contrario queda marcada como "disputed" (sigue contando).
+    /// </summary>
+    [HttpPost("{id:int}/dispute")]
+    [SwaggerOperation(Summary = "Dispute a user review", OperationId = "DisputeUserReview")]
+    [SwaggerResponse(StatusCodes.Status200OK, "Disputa resuelta automáticamente")]
+    [SwaggerResponse(StatusCodes.Status404NotFound, "Reseña no encontrada")]
+    public async Task<IActionResult> DisputeUserReview([FromRoute] int id, [FromBody] DisputeReviewResource? resource)
+    {
+        var review = await _context.UserReviews.FirstOrDefaultAsync(r => r.Id == id);
+        if (review is null) return NotFound();
+
+        // Promedio de las demás reseñas del mismo usuario (excluyendo esta y las ya excluidas).
+        var others = await _context.UserReviews
+            .Where(r => r.ReviewedUserId == review.ReviewedUserId && r.Id != id && r.Status != "excluded")
+            .Select(r => r.Rating)
+            .ToListAsync();
+        var avgOthers = others.Count > 0 ? others.Average() : review.Rating;
+
+        var isLow = review.Rating <= 2;
+        var isOutlier = (avgOthers - review.Rating) >= 1.5;
+        var hasNoJustification = string.IsNullOrWhiteSpace(review.Comment) || review.Comment.Trim().Length < 10;
+
+        var excluded = isLow && isOutlier && hasNoJustification;
+        if (excluded) review.MarkExcluded(resource?.Reason);
+        else review.MarkDisputed(resource?.Reason);
+
+        await _context.SaveChangesAsync();
+
+        // Reputación ajustada tras la resolución.
+        var adjusted = await _context.UserReviews
+            .Where(r => r.ReviewedUserId == review.ReviewedUserId && r.Status != "excluded")
+            .Select(r => r.Rating)
+            .ToListAsync();
+        var adjustedReputation = adjusted.Count > 0 ? Math.Round(adjusted.Average(x => (double)x), 2) : 0;
+
+        return Ok(new
+        {
+            id = review.Id,
+            status = review.Status,
+            outcome = excluded ? "excluded" : "kept",
+            adjustedReputation
+        });
+    }
+
     // -------------------- Enriquecimiento (reviewerName) --------------------
 
     private async Task<UserReviewResource> MapOneAsync(UserReviewEntity review)
@@ -164,3 +211,5 @@ public class UserReviewsController : ControllerBase
         }).ToList();
     }
 }
+
+public record DisputeReviewResource(string? Reason = null);

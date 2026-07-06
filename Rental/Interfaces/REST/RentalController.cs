@@ -318,7 +318,7 @@ public class RentalsController : ControllerBase
 
         // Reputación = promedio de las reseñas recibidas como usuario.
         var reputations = (await _context.UserReviews
-                .Where(r => ids.Contains(r.ReviewedUserId))
+                .Where(r => ids.Contains(r.ReviewedUserId) && r.Status != "excluded")
                 .Select(r => new { r.ReviewedUserId, r.Rating })
                 .ToListAsync())
             .GroupBy(x => x.ReviewedUserId)

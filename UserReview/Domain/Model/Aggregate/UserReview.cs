@@ -16,6 +16,13 @@ public class UserReview
     public string Type { get; private set; } = string.Empty; // owner_to_renter | renter_to_owner
     public DateTime CreatedAt { get; private set; }
 
+    // US41 — disputa de reseña. "active"/"disputed" cuentan para la reputación; "excluded" no.
+    public string Status { get; private set; } = "active"; // active | disputed | excluded
+    public string? DisputeReason { get; private set; }
+    public DateTime? DisputedAt { get; private set; }
+
+    public bool CountsForReputation => Status != "excluded";
+
     protected UserReview() { }
 
     public UserReview(CreateUserReviewCommand command)
@@ -27,6 +34,7 @@ public class UserReview
         Comment = command.Comment ?? string.Empty;
         Type = command.Type;
         CreatedAt = DateTime.UtcNow;
+        Status = "active";
     }
 
     public void Update(int? rating, string? comment)
@@ -35,5 +43,19 @@ public class UserReview
             Rating = rating.Value;
         if (comment != null)
             Comment = comment;
+    }
+
+    public void MarkDisputed(string? reason)
+    {
+        Status = "disputed";
+        DisputeReason = reason;
+        DisputedAt = DateTime.UtcNow;
+    }
+
+    public void MarkExcluded(string? reason)
+    {
+        Status = "excluded";
+        DisputeReason = reason;
+        DisputedAt = DateTime.UtcNow;
     }
 }

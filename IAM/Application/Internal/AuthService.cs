@@ -58,7 +58,8 @@ public class AuthService : IAuthService
             Phone: command.Phone ?? string.Empty,
             Dni: command.Dni ?? string.Empty,
             LicenseNumber: command.LicenseNumber ?? string.Empty,
-            Role: command.Role
+            Role: command.Role,
+            Gender: command.Gender
         ));
 
         _context.Users.Add(user);
@@ -183,7 +184,8 @@ public class AuthService : IAuthService
             LicenseNumber = user.LicenseNumber,
             Role = user.RoleName,
             Address = user.Address,
-            KycStatus = user.KycStatus
+            KycStatus = user.KycStatus,
+            Gender = user.Gender
         };
     }
 }

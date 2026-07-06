@@ -12,4 +12,5 @@ public class AuthenticatedUserResource
     public string Role { get; set; } = "renter";
     public string Address { get; set; } = string.Empty;
     public string KycStatus { get; set; } = "not_submitted";
+    public string Gender { get; set; } = "unspecified";
 }

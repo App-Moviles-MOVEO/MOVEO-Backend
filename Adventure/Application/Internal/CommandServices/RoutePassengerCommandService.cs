@@ -5,6 +5,8 @@ using Moveo_backend.Adventure.Domain.Repositories;
 using Moveo_backend.Adventure.Domain.Services;
 using Moveo_backend.Notification.Domain.Model.Commands;
 using Moveo_backend.Notification.Domain.Services;
+using Moveo_backend.Payment.Domain.Model.Commands;
+using Moveo_backend.Payment.Domain.Services;
 using Moveo_backend.Shared.Domain.Repositories;
 using Moveo_backend.UserManagement.Domain.Repositories;
 using Moveo_backend.UserReview.Domain.Repositories;
@@ -17,6 +19,7 @@ public class RoutePassengerCommandService(
     IUserRepository userRepository,
     IUserReviewRepository userReviewRepository,
     INotificationCommandService notificationCommandService,
+    IPaymentCommandService paymentCommandService,
     IUnitOfWork unitOfWork) : IRoutePassengerCommandService
 {
     public async Task<RoutePassengerView> Handle(RequestRouteSeatCommand command)
@@ -36,14 +39,20 @@ public class RoutePassengerCommandService(
         if (existing is not null)
             throw CarpoolException.AlreadyRequested();
 
-        // US14 — si la ruta pertenece a una comunidad institucional, el pasajero también
-        // debe tener correo institucional. onlyWomen no se puede validar server-side porque
-        // el modelo User no almacena género (documentado como limitación).
-        if (!string.IsNullOrWhiteSpace(route.Community))
+        // US14/US11 — validaciones de elegibilidad que necesitan datos del usuario.
+        if (!string.IsNullOrWhiteSpace(route.Community) || route.OnlyWomen)
         {
             var passengerUser = await userRepository.FindByIdAsync(command.PassengerId);
-            if (!InstitutionalEmail.IsInstitutional(passengerUser?.Email))
+
+            // Comunidad institucional: el pasajero también debe tener correo institucional.
+            if (!string.IsNullOrWhiteSpace(route.Community)
+                && !InstitutionalEmail.IsInstitutional(passengerUser?.Email))
                 throw CarpoolException.NotInstitutionalPassenger();
+
+            // US11 — ruta solo para mujeres: el pasajero debe tener gender = female.
+            if (route.OnlyWomen
+                && !string.Equals(passengerUser?.Gender, "female", StringComparison.OrdinalIgnoreCase))
+                throw CarpoolException.WomenOnlyRoute();
         }
 
         var passenger = new RoutePassenger(command.RouteId, command.PassengerId, command.Seats);
@@ -76,6 +85,22 @@ public class RoutePassengerCommandService(
         routeRepository.Update(route);
         passengerRepository.Update(passenger);
         await unitOfWork.CompleteAsync();
+
+        // US23 — al confirmar, genera el cobro de la cuota del asiento (pendiente de pago).
+        // El pasajero luego lo completa con PATCH /payments/{id} (o el flujo de pago del cliente).
+        if (route.PricePerSeat is > 0)
+        {
+            var amount = route.PricePerSeat.Value * passenger.Seats;
+            await paymentCommandService.Handle(new CreatePaymentCommand(
+                PayerId: passenger.PassengerId,
+                RecipientId: route.OwnerId,
+                RentalId: 0,
+                Amount: amount,
+                Currency: "PEN",
+                Method: "yape",
+                Type: "carpool_seat",
+                Description: $"Cuota de asiento en ruta de carpool #{route.Id}"));
+        }
 
         await NotifyAsync(passenger.PassengerId, "Solicitud aceptada",
             "Tu solicitud de asiento fue aceptada por el conductor.", route.Id);
@@ -153,7 +178,9 @@ public class RoutePassengerCommandService(
 
     private async Task<double> ComputeReputationAsync(int userId)
     {
-        var reviews = (await userReviewRepository.FindByReviewedUserIdAsync(userId)).ToList();
+        var reviews = (await userReviewRepository.FindByReviewedUserIdAsync(userId))
+            .Where(r => r.CountsForReputation)
+            .ToList();
         if (reviews.Count == 0) return 0;
         return Math.Round(reviews.Average(r => r.Rating), 2);
     }

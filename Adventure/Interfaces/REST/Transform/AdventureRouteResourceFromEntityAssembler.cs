@@ -37,7 +37,8 @@ public static class AdventureRouteResourceFromEntityAssembler
             entity.Community,
             entity.Lat,
             entity.Lng,
-            entity.Status
+            entity.Status,
+            RecurrenceGroupId: entity.RecurrenceGroupId
         );
     }
 }

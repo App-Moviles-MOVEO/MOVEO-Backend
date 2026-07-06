@@ -46,7 +46,7 @@ public class UsersController(
         var userId = resource.Id;
 
         var ratings = await context.UserReviews
-            .Where(r => r.ReviewedUserId == userId)
+            .Where(r => r.ReviewedUserId == userId && r.Status != "excluded")
             .Select(r => r.Rating)
             .ToListAsync();
         var reputation = ratings.Count > 0 ? Math.Round(ratings.Average(x => (double)x), 2) : 0;

@@ -20,6 +20,7 @@ public class RegisterRequest
     public string? Address { get; set; }
     public string Role { get; set; } = "renter";
     public UserPreferences? Preferences { get; set; }
+    public string? Gender { get; set; }
 }
 
 public class ChangePasswordRequest

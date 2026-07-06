@@ -18,6 +18,7 @@ public static class UserResourceFromEntityAssembler
             Dni = user.Dni,
             LicenseNumber = user.LicenseNumber,
             Avatar = user.Avatar,
+            Gender = user.Gender,
             KycStatus = user.KycStatus,
             KycRejectionReason = user.KycRejectionReason,
             Verified = new UserVerificationResource

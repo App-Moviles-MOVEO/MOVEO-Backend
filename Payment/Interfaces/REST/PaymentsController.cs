@@ -34,6 +34,53 @@ public class PaymentsController(
         return Ok(resources);
     }
 
+    /// <summary>
+    /// Monitoreo automático de anomalías financieras (US40): montos atípicos (media+3σ),
+    /// cobros duplicados (mismo pagador/monto/día) y exceso de reembolsos. Si se pasa userId,
+    /// analiza los pagos donde participa; si no, barre todos.
+    /// </summary>
+    [HttpGet("anomalies")]
+    public async Task<IActionResult> GetAnomalies([FromQuery] int? userId)
+    {
+        var query = context.Payments.AsQueryable();
+        if (userId.HasValue)
+            query = query.Where(p => p.PayerId == userId.Value || p.RecipientId == userId.Value);
+
+        var payments = await query
+            .Select(p => new { p.Id, p.PayerId, p.RecipientId, p.Amount, p.Status, p.Type, p.CreatedAt })
+            .ToListAsync();
+
+        var anomalies = new List<object>();
+
+        // 1) Montos atípicos: por encima de media + 3σ de los pagos completados.
+        var completed = payments.Where(p => p.Status == "completed").Select(p => (double)p.Amount).ToList();
+        if (completed.Count >= 3)
+        {
+            var mean = completed.Average();
+            var std = Math.Sqrt(completed.Average(a => Math.Pow(a - mean, 2)));
+            var threshold = mean + 3 * std;
+            foreach (var p in payments.Where(p => p.Status == "completed" && (double)p.Amount > threshold))
+                anomalies.Add(new { paymentId = p.Id, type = "amount_outlier",
+                    detail = $"Monto {p.Amount} supera el umbral {Math.Round(threshold, 2)}", severity = "high" });
+        }
+
+        // 2) Cobros duplicados: mismo pagador + monto + día.
+        var duplicates = payments
+            .GroupBy(p => new { p.PayerId, p.Amount, Day = p.CreatedAt.Date })
+            .Where(g => g.Count() > 1);
+        foreach (var g in duplicates)
+            anomalies.Add(new { paymentIds = g.Select(x => x.Id).ToList(), type = "duplicate_charge",
+                detail = $"{g.Count()} cobros del pagador {g.Key.PayerId} por {g.Key.Amount} el mismo día", severity = "medium" });
+
+        // 3) Exceso de reembolsos: más del 30% de los pagos del usuario son refunds.
+        var refunds = payments.Count(p => p.Type == "refund" || p.Status == "refunded");
+        if (payments.Count >= 5 && refunds > payments.Count * 0.3)
+            anomalies.Add(new { type = "excess_refunds",
+                detail = $"{refunds} de {payments.Count} movimientos son reembolsos", severity = "medium" });
+
+        return Ok(new { userId, scanned = payments.Count, flagged = anomalies.Count, anomalies });
+    }
+
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetPaymentById(int id)
     {

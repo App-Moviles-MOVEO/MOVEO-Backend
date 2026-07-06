@@ -12,5 +12,6 @@ public record RegisterCommand(
     string? LicenseNumber = null,
     string? Address = null,
     string Role = "renter",
-    UserPreferences? Preferences = null
+    UserPreferences? Preferences = null,
+    string? Gender = null
 );

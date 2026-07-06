@@ -42,7 +42,9 @@ public class RoutePassengerQueryService(
             var user = await userRepository.FindByIdAsync(id);
             if (user is not null) userById[id] = user;
 
-            var reviews = (await userReviewRepository.FindByReviewedUserIdAsync(id)).ToList();
+            var reviews = (await userReviewRepository.FindByReviewedUserIdAsync(id))
+                .Where(r => r.CountsForReputation)
+                .ToList();
             reputationByUser[id] = reviews.Count == 0 ? 0 : Math.Round(reviews.Average(r => r.Rating), 2);
         }
 

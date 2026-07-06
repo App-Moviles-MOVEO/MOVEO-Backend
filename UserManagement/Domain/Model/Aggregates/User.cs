@@ -21,6 +21,8 @@ public partial class User
     public string LicenseNumber { get; private set; } = string.Empty;
     public string Address { get; private set; } = string.Empty;
     public string? Avatar { get; private set; }
+    // US11 — género para validar rutas "solo mujeres" server-side. "male" | "female" | "other" | "unspecified".
+    public string Gender { get; private set; } = "unspecified";
     
     // Verificación
     public bool EmailVerified { get; private set; }
@@ -96,6 +98,7 @@ public partial class User
         LicenseNumber = command.LicenseNumber;
         Address = string.Empty;
         Avatar = command.Avatar;
+        Gender = string.IsNullOrWhiteSpace(command.Gender) ? "unspecified" : command.Gender.ToLowerInvariant();
         
         // Verificación
         EmailVerified = command.VerifiedEmail;
@@ -228,6 +231,15 @@ public partial class User
     {
         Avatar = avatarUrl;
         UpdatedAt = DateTime.UtcNow;
+    }
+
+    public void SetGender(string gender)
+    {
+        if (!string.IsNullOrWhiteSpace(gender))
+        {
+            Gender = gender.ToLowerInvariant();
+            UpdatedAt = DateTime.UtcNow;
+        }
     }
     
     public void UpdateBankAccount(string bankName, string accountType, string accountNumber, bool verified)

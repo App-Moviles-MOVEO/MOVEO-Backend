@@ -148,17 +148,26 @@ public class AdventureRoutesController(
     [SwaggerResponse(StatusCodes.Status200OK, "Lista de pasajeros", typeof(RoutePassengersResponse))]
     [SwaggerResponse(StatusCodes.Status403Forbidden, "El ownerId no es dueño de la ruta")]
     [SwaggerResponse(StatusCodes.Status404NotFound, "Ruta no encontrada")]
-    public async Task<IActionResult> GetRoutePassengers([FromRoute] int routeId, [FromQuery] int ownerId)
+    public async Task<IActionResult> GetRoutePassengers(
+        [FromRoute] int routeId,
+        [FromQuery] int ownerId,
+        [FromQuery] double? minReputation = null)
     {
         try
         {
             var (route, passengers) = await routePassengerQueryService.Handle(
                 new GetRoutePassengersQuery(routeId, ownerId));
+
+            // US38 — filtro server-side por umbral de confianza (reputación mínima).
+            var filtered = minReputation.HasValue
+                ? passengers.Where(p => p.Reputation >= minReputation.Value).ToList()
+                : passengers;
+
             var response = new RoutePassengersResponse(
                 route.Id,
                 route.SeatsTotal,
                 route.SeatsAvailable,
-                passengers.Select(RoutePassengerResourceFromViewAssembler.ToResourceFromView).ToList());
+                filtered.Select(RoutePassengerResourceFromViewAssembler.ToResourceFromView).ToList());
             return Ok(response);
         }
         catch (CarpoolException ex)
@@ -260,6 +269,79 @@ public class AdventureRoutesController(
         {
             return StatusCode(ex.StatusCode, new { error = ex.Code, message = ex.Message });
         }
+    }
+
+    [HttpPost("recurring")]
+    [SwaggerOperation(
+        Summary = "Create recurring weekly routes (US17)",
+        Description = "Crea una ruta por cada ocurrencia según weekdays (1=Lun..7=Dom) y weeks. " +
+                      "Todas comparten un recurrenceGroupId. El nombre se sufija con la fecha para evitar colisiones.",
+        OperationId = "CreateRecurringAdventureRoutes")]
+    [SwaggerResponse(StatusCodes.Status201Created, "Rutas creadas")]
+    [SwaggerResponse(StatusCodes.Status400BadRequest, "weekdays/weeks inválidos")]
+    [SwaggerResponse(StatusCodes.Status403Forbidden, "El owner no tiene correo institucional")]
+    public async Task<IActionResult> CreateRecurringRoutes([FromBody] RecurringRouteResource resource)
+    {
+        if (resource.Weekdays is null || resource.Weekdays.Count == 0)
+            return BadRequest(new { error = "invalid_request", message = "weekdays es obligatorio (1=Lun..7=Dom)" });
+        if (resource.Weeks < 1)
+            return BadRequest(new { error = "invalid_request", message = "weeks debe ser >= 1" });
+
+        var startDate = (resource.Route.DepartureDate ?? DateTime.UtcNow).Date;
+        var occurrences = WeeklyOccurrences(startDate, resource.Weekdays, resource.Weeks);
+        if (occurrences.Count == 0)
+            return BadRequest(new { error = "no_occurrences", message = "La combinación no genera fechas" });
+
+        var groupId = Guid.NewGuid().ToString("N");
+        var created = new List<AdventureRouteResource>();
+
+        try
+        {
+            foreach (var date in occurrences)
+            {
+                var perOccurrence = resource.Route with
+                {
+                    Name = $"{resource.Route.Name} [{date:yyyy-MM-dd}]",
+                    DepartureDate = date,
+                    SeatsAvailable = resource.Route.SeatsAvailable ?? resource.Route.SeatsTotal
+                };
+                var command = CreateAdventureRouteCommandFromResourceAssembler.ToCommandFromResource(perOccurrence)
+                    with { RecurrenceGroupId = groupId };
+                var route = await adventureRouteCommandService.Handle(command);
+                if (route is not null)
+                    created.Add(AdventureRouteResourceFromEntityAssembler.ToResourceFromEntity(route));
+            }
+        }
+        catch (CarpoolException ex)
+        {
+            return StatusCode(ex.StatusCode, new { error = ex.Code, message = ex.Message });
+        }
+
+        return StatusCode(StatusCodes.Status201Created, new
+        {
+            recurrenceGroupId = groupId,
+            count = created.Count,
+            routes = created
+        });
+    }
+
+    // Genera las fechas de las próximas `weeks` semanas para los días indicados (1=Lun..7=Dom).
+    private static List<DateTime> WeeklyOccurrences(DateTime start, List<int> weekdays, int weeks)
+    {
+        var days = weekdays.Where(d => d is >= 1 and <= 7).Distinct().ToHashSet();
+        var result = new List<DateTime>();
+        // Lunes de la semana de `start` (ISO: Lunes=1).
+        int isoStart = start.DayOfWeek == DayOfWeek.Sunday ? 7 : (int)start.DayOfWeek;
+        var monday = start.AddDays(1 - isoStart);
+        for (var w = 0; w < weeks; w++)
+        {
+            foreach (var d in days.OrderBy(x => x))
+            {
+                var date = monday.AddDays(w * 7 + (d - 1));
+                if (date >= start) result.Add(date);
+            }
+        }
+        return result.OrderBy(x => x).ToList();
     }
 
     [HttpPut("{routeId:int}")]
