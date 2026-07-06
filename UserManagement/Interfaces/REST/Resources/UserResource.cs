@@ -11,6 +11,7 @@ public class UserResource
     public string Dni { get; set; } = string.Empty;
     public string LicenseNumber { get; set; } = string.Empty;
     public string? Avatar { get; set; }
+    public string Gender { get; set; } = "unspecified";
     public string KycStatus { get; set; } = "not_submitted";
     public string? KycRejectionReason { get; set; }
     public UserVerificationResource Verified { get; set; } = new();

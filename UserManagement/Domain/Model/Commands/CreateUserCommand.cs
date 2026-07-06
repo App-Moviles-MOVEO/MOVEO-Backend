@@ -27,4 +27,5 @@ public record CreateUserCommand(
     string? BankName = null,
     string? AccountType = null,
     string? AccountNumber = null,
-    bool BankAccountVerified = false);
+    bool BankAccountVerified = false,
+    string? Gender = null);

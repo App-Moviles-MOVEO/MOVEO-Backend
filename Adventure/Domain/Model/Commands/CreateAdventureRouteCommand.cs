@@ -25,5 +25,6 @@ public record CreateAdventureRouteCommand(
     bool OnlyWomen = false,
     string? Community = null,
     double? Lat = null,
-    double? Lng = null
+    double? Lng = null,
+    string? RecurrenceGroupId = null
 );

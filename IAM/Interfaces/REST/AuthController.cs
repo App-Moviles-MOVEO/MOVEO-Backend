@@ -60,7 +60,8 @@ public class AuthController : ControllerBase
             request.LicenseNumber,
             request.Address,
             request.Role,
-            request.Preferences
+            request.Preferences,
+            request.Gender
         );
 
         var user = await _authService.RegisterAsync(command);

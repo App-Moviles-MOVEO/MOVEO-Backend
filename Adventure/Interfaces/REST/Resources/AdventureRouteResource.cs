@@ -33,5 +33,17 @@ public record AdventureRouteResource(
     double? Lng = null,
     string Status = "active",
     // Pasajeros de carpool (US16). Solo se rellena en GET /adventure-routes/{id}; en listados va null.
-    List<RoutePassengerResource>? Passengers = null
+    List<RoutePassengerResource>? Passengers = null,
+    // US17 — agrupador de series recurrentes (null si la ruta no es recurrente).
+    string? RecurrenceGroupId = null
+);
+
+/// <summary>
+/// Cuerpo para crear una serie de rutas recurrentes semanales (US17).
+/// Weekdays usa 1=Lunes .. 7=Domingo. Weeks = número de semanas a generar.
+/// </summary>
+public record RecurringRouteResource(
+    CreateAdventureRouteResource Route,
+    List<int> Weekdays,
+    int Weeks
 );

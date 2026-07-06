@@ -9,5 +9,7 @@ public record UserReviewResource(
     string Comment,
     string Type,
     DateTime CreatedAt,
-    string? ReviewerName = null
+    string? ReviewerName = null,
+    string Status = "active",
+    string? DisputeReason = null
 );

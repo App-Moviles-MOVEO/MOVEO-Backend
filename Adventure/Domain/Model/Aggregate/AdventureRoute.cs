@@ -40,6 +40,7 @@ public class AdventureRoute
     public double? Lat { get; private set; }                  // punto de partida (lat)
     public double? Lng { get; private set; }                  // punto de partida (lng)
     public string Status { get; private set; } = "active";    // "active" | "full" | "in_progress" | "cancelled" | "completed"
+    public string? RecurrenceGroupId { get; private set; }     // US17 — agrupa las ocurrencias de una serie semanal
 
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
@@ -130,6 +131,7 @@ public class AdventureRoute
         Lat = command.Lat;
         Lng = command.Lng;
         Status = "active";
+        RecurrenceGroupId = command.RecurrenceGroupId;
     }
 
     public void Update(UpdateAdventureRouteCommand command)

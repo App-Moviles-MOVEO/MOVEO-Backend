@@ -29,13 +29,18 @@ public class AppDbContext : DbContext
     public DbSet<RoutePassenger> RoutePassengers { get; set; } = null!;
     public DbSet<PaymentEntity> Payments { get; set; } = null!;
     public DbSet<Withdrawal> Withdrawals { get; set; } = null!;
+    public DbSet<PaymentMethod> PaymentMethods { get; set; } = null!;
+    public DbSet<Promotion> Promotions { get; set; } = null!;
     public DbSet<NotificationEntity> Notifications { get; set; } = null!;
     public DbSet<DeviceToken> DeviceTokens { get; set; } = null!;
     public DbSet<SupportTicket> SupportTickets { get; set; } = null!;
     public DbSet<TicketMessage> TicketMessages { get; set; } = null!;
+    public DbSet<Partnership> Partnerships { get; set; } = null!;
     public DbSet<Review> Reviews { get; set; } = null!;
     public DbSet<UserReviewEntity> UserReviews { get; set; } = null!;
     public DbSet<Message> Messages { get; set; } = null!;
+    public DbSet<TrustedContact> TrustedContacts { get; set; } = null!;
+    public DbSet<TripLocation> TripLocations { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -218,6 +223,63 @@ public class AppDbContext : DbContext
             entity.HasIndex(w => w.UserId);
         });
 
+        // -------------------- PAYMENT METHOD (US21) --------------------
+        modelBuilder.Entity<PaymentMethod>(entity =>
+        {
+            entity.HasKey(m => m.Id);
+            entity.Property(m => m.Id).ValueGeneratedOnAdd();
+            entity.Property(m => m.UserId).IsRequired();
+            entity.Property(m => m.Category).IsRequired();
+            entity.Property(m => m.Type).IsRequired();
+            entity.Property(m => m.Label).IsRequired();
+            entity.HasIndex(m => new { m.UserId, m.Category });
+        });
+
+        // -------------------- PROMOTION (US27/US29/US34) --------------------
+        modelBuilder.Entity<Promotion>(entity =>
+        {
+            entity.HasKey(p => p.Id);
+            entity.Property(p => p.Id).ValueGeneratedOnAdd();
+            entity.Property(p => p.Code).IsRequired();
+            entity.Property(p => p.DiscountType).IsRequired();
+            entity.Property(p => p.DiscountValue).HasColumnType("decimal(18,2)");
+            entity.HasIndex(p => p.Code).IsUnique();
+        });
+
+        // -------------------- PARTNERSHIP (US46) --------------------
+        modelBuilder.Entity<Partnership>(entity =>
+        {
+            entity.HasKey(p => p.Id);
+            entity.Property(p => p.Id).ValueGeneratedOnAdd();
+            entity.Property(p => p.UserId).IsRequired();
+            entity.Property(p => p.CompanyName).IsRequired();
+            entity.Property(p => p.Ruc).IsRequired();
+            entity.Property(p => p.Status).IsRequired();
+            entity.HasIndex(p => p.UserId);
+        });
+
+        // -------------------- TRUSTED CONTACT (US10) --------------------
+        modelBuilder.Entity<TrustedContact>(entity =>
+        {
+            entity.HasKey(c => c.Id);
+            entity.Property(c => c.Id).ValueGeneratedOnAdd();
+            entity.Property(c => c.UserId).IsRequired();
+            entity.Property(c => c.Name).IsRequired();
+            entity.Property(c => c.Phone).IsRequired();
+            entity.HasIndex(c => c.UserId);
+        });
+
+        // -------------------- TRIP LOCATION (US06/US07) --------------------
+        modelBuilder.Entity<TripLocation>(entity =>
+        {
+            entity.HasKey(l => l.Id);
+            entity.Property(l => l.Id).ValueGeneratedOnAdd();
+            entity.Property(l => l.RentalId).IsRequired();
+            entity.Property(l => l.Lat).IsRequired();
+            entity.Property(l => l.Lng).IsRequired();
+            entity.HasIndex(l => l.RentalId).IsUnique();
+        });
+
         // -------------------- NOTIFICATION --------------------
         modelBuilder.Entity<NotificationEntity>(entity =>
         {
@@ -290,6 +352,8 @@ public class AppDbContext : DbContext
             entity.Property(r => r.Comment).IsRequired();
             entity.Property(r => r.Type).IsRequired();
             entity.Property(r => r.CreatedAt).IsRequired();
+            entity.Property(r => r.Status).IsRequired();
+            entity.Ignore(r => r.CountsForReputation);
         });
 
         // -------------------- MESSAGE (Chat) --------------------

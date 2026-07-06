@@ -16,7 +16,9 @@ public static class UserReviewResourceFromEntityAssembler
             entity.Comment,
             entity.Type,
             entity.CreatedAt,
-            reviewerName
+            reviewerName,
+            entity.Status,
+            entity.DisputeReason
         );
     }
 }
