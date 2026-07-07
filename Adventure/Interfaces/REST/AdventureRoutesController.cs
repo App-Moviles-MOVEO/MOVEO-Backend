@@ -6,6 +6,7 @@ using Moveo_backend.Adventure.Domain.Model.Queries;
 using Moveo_backend.Adventure.Domain.Services;
 using Moveo_backend.Adventure.Interfaces.REST.Resources;
 using Moveo_backend.Adventure.Interfaces.REST.Transform;
+using Moveo_backend.UserManagement.Domain.Repositories;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace Moveo_backend.Adventure.Interfaces.REST;
@@ -18,7 +19,8 @@ public class AdventureRoutesController(
     IAdventureRouteCommandService adventureRouteCommandService,
     IAdventureRouteQueryService adventureRouteQueryService,
     IRoutePassengerCommandService routePassengerCommandService,
-    IRoutePassengerQueryService routePassengerQueryService) : ControllerBase
+    IRoutePassengerQueryService routePassengerQueryService,
+    IUserRepository userRepository) : ControllerBase
 {
     [HttpGet("{routeId:int}")]
     [SwaggerOperation(
@@ -58,7 +60,8 @@ public class AdventureRoutesController(
         [FromQuery] string? difficulty = null,
         [FromQuery] bool? featured = null,
         [FromQuery] bool? onlyWomen = null,
-        [FromQuery] string? community = null)
+        [FromQuery] string? community = null,
+        [FromQuery] int? viewerId = null)
     {
         IEnumerable<Domain.Model.Aggregate.AdventureRoute> routes;
 
@@ -94,6 +97,28 @@ public class AdventureRoutesController(
         {
             routes = routes.Where(r =>
                 string.Equals(r.Community, community, StringComparison.OrdinalIgnoreCase));
+        }
+
+        // US14 (revisado) — segmentación por comunidad de correo: quien mira solo ve
+        // las rutas de carpool publicadas por usuarios de su mismo grupo de dominio
+        // (@upc.edu.pe ven a institucionales; correos normales .com ven a los "public").
+        if (viewerId.HasValue)
+        {
+            var viewer = await userRepository.FindByIdAsync(viewerId.Value);
+            var viewerGroup = InstitutionalEmail.GroupOf(viewer?.Email);
+
+            var materialized = routes.ToList();
+            var ownerGroupById = new Dictionary<int, string>();
+            foreach (var ownerIdValue in materialized.Select(r => r.OwnerId).Distinct())
+            {
+                var owner = await userRepository.FindByIdAsync(ownerIdValue);
+                ownerGroupById[ownerIdValue] = InstitutionalEmail.GroupOf(owner?.Email);
+            }
+
+            routes = materialized.Where(r =>
+                !IsCarpool(r) ||
+                string.Equals(ownerGroupById.GetValueOrDefault(r.OwnerId, "public"),
+                    viewerGroup, StringComparison.OrdinalIgnoreCase));
         }
 
         var resources = routes.Select(AdventureRouteResourceFromEntityAssembler.ToResourceFromEntity);
@@ -324,6 +349,11 @@ public class AdventureRoutesController(
             routes = created
         });
     }
+
+    // Una ruta es de carpool (no aventura clásica) si ofrece asientos o tiene fecha/hora de salida.
+    private static bool IsCarpool(Domain.Model.Aggregate.AdventureRoute r) =>
+        r.SeatsTotal.HasValue || r.DepartureDate.HasValue || r.PricePerSeat.HasValue
+        || !string.IsNullOrWhiteSpace(r.Community);
 
     // Genera las fechas de las próximas `weeks` semanas para los días indicados (1=Lun..7=Dom).
     private static List<DateTime> WeeklyOccurrences(DateTime start, List<int> weekdays, int weeks)
