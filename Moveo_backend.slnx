@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Moveo_backend.csproj" />
+  <Project Path="Moveo_backend.UnitTests/Moveo_backend.UnitTests.csproj" />
+</Solution>

@@ -38,4 +38,11 @@
       <Folder Include="Rental\Domain\Model\Entity\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Moveo_backend.UnitTests\**" />
+      <Content Remove="Moveo_backend.UnitTests\**" />
+      <EmbeddedResource Remove="Moveo_backend.UnitTests\**" />
+      <None Remove="Moveo_backend.UnitTests\**" />
+    </ItemGroup>
+
 </Project>
